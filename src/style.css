@@ -12,3 +12,38 @@ a {
 li {
     list-style: none;
 }
+
+#signup {
+    position: absolute;
+    top: 26px;
+    right: 25px;
+}
+
+#signup a{
+    color: white;
+}
+
+h1{
+    position: relative;
+    text-align: center;
+    top: 60px;
+    color: white;
+}
+
+h3{
+    position: relative;
+    text-align: center;
+    top: 60px;
+    color: white;
+}
+
+header {
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(index_image.png);
+    background-size: cover;
+    background-position: center;
+    padding: 105px 0px;
+    text-align: center;
+    font-family: 'Poppins';
+    margin: -8px;
+    position: relative;
+}
