@@ -48,7 +48,7 @@ header {
     position: relative;
 }
 
-nav {
+#menu {
     width: 907px;
     margin: auto;
     padding: 105px
@@ -87,4 +87,14 @@ h2 a {
 
 h2 a:hover {
     color: #BDCAD5;
+}
+
+.navigation{
+    display: inline;
+    float: right;
+}
+
+.nav_elem{
+    display: inline;
+    padding-right: 3em;
 }
