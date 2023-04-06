@@ -49,10 +49,15 @@ header {
 }
 
 #menu {
-    max-width: 907px;
+    max-width: 90%;
     margin: auto;
     padding: 105px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 h2 {
@@ -63,7 +68,6 @@ h2 {
     text-align: center;
     padding: 24px;
     margin: 8px; 
-    height: 300px;
     display: inline-block;
     vertical-align: top;
 }
@@ -103,16 +107,24 @@ h2 a:hover {
 @media only screen and (max-width: 600px) {
     /* CSS rules for screens smaller than 600px */
     h1 {
-      font-size: 1.5em;
+        font-size: 1.5em;
     }
-    
+
+    h2 {
+        width: 100%;
+        display: block;
+        max-width: 180px;
+    }
+
     #menu {
-      width: 100%;
-      padding: 0;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
     }
 
     header {
-        width: 10 0%;
+        width: 100%;
     }
+}
 
-  }
+
