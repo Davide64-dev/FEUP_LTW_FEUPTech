@@ -17,7 +17,6 @@
             <div id="signup">
                 <a href ="profile.html"><i class="fa-solid fa-user"></i></a>
                 <a href="register.html">Register</a>
-                <!-- <p>|</p> -->
                 <a href="login.html">Login</a>
             </div>
         </header>

@@ -1,4 +1,4 @@
 <?php
-    include 'templates/index.php';
-
-    drawMainHeader() ?>
+    include 'templates/main_page.php';
+    drawMainHeader() 
+?>
