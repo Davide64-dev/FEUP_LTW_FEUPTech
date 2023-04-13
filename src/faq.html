@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>Title of the Website - Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale=1.0">
+    <link href="css/nav_style.css" rel="stylesheet">
+    <link href="css/faq_style.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script src="https://kit.fontawesome.com/38229b6c34.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+  <!-- Title -->
+  <nav>
+    <ul class = "navigation">
+        <li class = "nav_elem"><a href = "inquiries.html"><i class="fa-solid fa-list-check"></i> Inquiries</a></li>
+        <li class = "nav_elem"><a href = "index.html"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
+        <li class = "nav_elem"><a href = "index.html"><i class="fas fa-circle-info"></i> About Us</a></li>
+        <li class = "nav_elem"><a href = "https://www.google.com"><i class="fa-solid fa-question"></i> FAQ</a></li>
+        <li class = "nav_elem"><a href = "profile.html"><i class="fa-solid fa-user"></i></a></li>
+    </ul>
+    <section>
+        <h2>Frequently Asked Questions - FAQ</h2>
+        <h3>Here you'll be able to clarify any doubts you may have!</h3>
+    
+    </section>
+</nav>
+
+<main> 
+    
+<h2>Categories</h2>  
+<div id="myBtnContainer">
+    <button class="btn pressed" role = "button" onclick="filterSelection('all')"><span class="text"> Show all</span></button>
+    <button class="btn" role = "button" onclick="filterSelection('posts')"><span class="text"> Posts</span></button>
+    <button class="btn" role = "button" onclick="filterSelection('info')"><span class="text"> Info</span></button>
+    <button class="btn" role = "button" onclick="filterSelection('tags')"><span class="text"> Tags</span></button>
+</div> 
+  
+  <h2>Questions</h2>  
+    <div class="container">
+    <div class="filterDiv posts">
+      
+      <div class ="filterDiv_question">
+        <p style="padding-top: 15px;"id="questions"> 
+          How can I create a question/post?
+        </p>
+      </div>
+
+      <div style="margin-top: 78px;" class ="filterDiv_answer">
+        <p> 
+          Just go to the homepage and click on the Ask Question button and type the title and content that you want. After this just press submit and "voilá "!
+        </p>
+      </div>
+      
+    </div>
+
+    <div class="filterDiv info">
+
+      <div class ="filterDiv_question">
+        <p id= "info">
+          How can I be sure about the corectiveness of the information that we, as users, are able access?
+        </p>
+      </div>
+
+      <div class ="filterDiv_answer">
+        <p> 
+          We, Collabstech, always make sure that all the infomation that is presented to our users is previously analyzed by specialists in technology.
+        </p>
+      </div>
+    </div>
+
+    <div class="filterDiv tags">
+      <div class ="filterDiv_question">
+        <p id="tags">
+          When is it appropriate to create a tag, and how does it work?
+        </p>
+      </div>
+      
+      <div class ="filterDiv_answer">
+        <p> 
+          Tags should be created only when there is a clear need for them. This is determined by considering the two main purposes of tags as described below:
+          <br>
+          1. Tags connect experts with questions they will be able to answer.
+          The most important purpose of a tag is to connect topical questions to an audience of qualified answerers. This allows answerers that are knowledgeable in a given subject area to be connected to questions related to their area of expertise, and allows askers to more easily funnel their questions to said experts.
+
+          Thus, if a tag is created about something that no one can really be an "expert" in, it may not be a good tag. This is most obvious with so-called "meta-tags," which are often very ambiguous and often describe the nature of a question rather than the content within the question. Examples of this include homework and hard-question.
+          <br>
+          2. Tags sort questions into specific, well-defined categories.
+          Another purpose of tags is to sort questions about related subject areas into narrow, well-defined categories. This allows questions that are about similar subjects to be grouped together, which helps keep the site organized and aids in searching and finding related questions.
+          <br>  
+          Keep in mind that new tags, by nature, won't be used by anyone else until other questions adopt the tag. If there's already a tag or tags in use that adequately describe the specific content of your question, you may not need to create a new tag.
+        </p>
+      </div>
+      
+    </div>
+    
+  </div>
+</main>
+
+  <script>
+
+
+let answers = document.querySelectorAll(".filterDiv");
+answers.forEach((event) => {
+  event.addEventListener("click", () => {
+    if (event.classList.contains("active")) {
+      event.classList.remove("active");
+    } else {
+      event.classList.add("active");
+    }
+  });
+});
+
+
+    filterSelection("all")
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("filterDiv");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+    }
+    
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+      }
+    }
+    
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+    
+    // Add pressed class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("pressed");
+        current[0].className = current[0].className.replace(" pressed", "");
+        this.className += " pressed";
+      });
+    }
+    </script>
+  
+
+
+</body>
+  
+</html>

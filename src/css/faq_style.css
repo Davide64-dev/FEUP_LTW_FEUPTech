@@ -1,0 +1,145 @@
+
+.filterDiv {
+    float: left;
+    background-color: #4981DB;
+    color: #ffffff;
+    width: 478px;
+    height: 91px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+    display: none;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .container {
+    margin: 0px 148px;
+    overflow: hidden;
+    height: 1000px;
+  }
+  
+  /* Style the buttons */
+  #myBtnContainer {
+    margin: -21px 165px;
+  }
+  
+  .btn {
+    background-image: linear-gradient(135deg, #7656CC 40%, #4981DB);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 700;
+    height: 54px;
+    justify-content: center;
+    letter-spacing: .4px;
+    line-height: 1;
+    margin: 18px 3px;
+    max-width: 100%;
+    outline: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    font-family: 'Poppins';
+  }
+  
+  .btn:hover {
+    background: linear-gradient(#593CA9,#2F6AC9);
+    color: #BDCAD5;
+  }
+  
+  .btn.pressed {
+    outline: 0;
+    background: linear-gradient(#593CA9,#2F6AC9);
+    color: #BDCAD5;
+  }
+  
+  .btn span {
+    transition: all 200ms;
+    position: relative;
+    top: 36%;
+  }
+  
+  .btn:hover span {
+    transform: scale(.9);
+    opacity: .75;
+  }
+  
+  @media screen and (max-width: 991px) {
+    .btn {
+      font-size: 15px;
+      height: 50px;
+    }
+  
+
+  }
+  /*----------------------------------------------------------*/
+  
+  .filterDiv_question p {
+    margin: 18px;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .filterDiv_answer p {
+    margin-top: 69px;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(135deg, #7656CC 40%, #4981DB);
+    border-radius: 10px;
+  }
+  
+  .filterDiv_answer {
+    display: none;
+  }
+  
+  .filterDiv:hover {
+    cursor: pointer;
+  }
+  
+  .filterDiv.active .filterDiv_answer {
+    display: block;
+  }
+  
+  main h2 {
+    padding-top: 83px;
+    margin-left: 163px;
+    font-weight: 600; 
+  }
+  
+  main h2::after{
+    background-color: #333;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 80%;
+    margin: 13px;
+  }
+  
+  .title_card:after {
+    background-color: #333;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+   }
+   
