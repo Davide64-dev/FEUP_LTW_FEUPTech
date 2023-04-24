@@ -16,9 +16,8 @@
             <h1>FEUPTech</h1>
             <h3>Slogan of Website</h3>
             <div id="signup">
-                <a href ="profile.html"><i class="fa-solid fa-user"></i></a>
+                <a href ="../pages/profile.php"><i class="fa-solid fa-user"></i></a>
                 <a href="test.html">Register</a>
-                <!-- <p>|</p> -->
                 <a href="login.html">Login</a>
             </div>
         </header>

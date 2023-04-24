@@ -1,3 +1,33 @@
+<?php function drawHeader() { ?>
+    <!DOCTYPE html>
+<html lang = "en-Us">
+
+    <head>
+        <title>FEUPTech</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale=1.0">
+        <link href="../css/nav_style.css" rel="stylesheet">
+        <link href="../css/profile_style.css" rel="stylesheet">
+        <link href="../css/newTicket.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <script src="https://kit.fontawesome.com/38229b6c34.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        
+        <nav>
+            <ul class = "navigation">
+                <li class = "nav_elem"><a href = "inquiries.html"><i class="fa-solid fa-list-check"></i> Inquiries</a></li>
+                <li class = "nav_elem"><a href = "../contacts.html"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
+                <li class = "nav_elem"><a href = "../pages/index.php"><i class="fas fa-circle-info"></i> About Us</a></li>
+                <li class = "nav_elem"><a href = "faq.html"><i class="fa-solid fa-question"></i> FAQ</a></li>
+                <li class = "nav_elem"><a href = "../pages/profile.php"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+
+<?php } ?>
+
+
+
 <?php function drawFooter() { ?>
         <footer class="footer">
             <h4 class="sm-header">Follow us on</h4>
