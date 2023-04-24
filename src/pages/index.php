@@ -1,6 +1,6 @@
 <?php
-    include '../templates/common.php';
-    include '../templates/main_page.php';
+    include '../templates/common.tpl.php';
+    include '../templates/main_page.tpl.php';
     drawMainHeader();
     drawFooter();
 ?>

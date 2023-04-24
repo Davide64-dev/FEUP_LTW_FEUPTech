@@ -28,7 +28,7 @@
                 </h2>
                 <h2>
                     <img src="images/About.png" alt="About Us Image">
-                    <a href="about.html"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="../pages/about_us.php"><i class="fa-solid fa-arrow-right"></i></a>
                 </h2>
                 <h2>
                     <img src="images/Contacts.png" alt="Contacts Image">
