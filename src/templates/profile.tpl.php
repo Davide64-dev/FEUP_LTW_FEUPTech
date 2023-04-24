@@ -23,7 +23,17 @@
                 </section>
 
                 <aside>
-                    <img src="../images/admin_badge.png" alt ="Badge of admin">
+                    <?php
+                    if ($user instanceof Admin){
+                        echo "<img src=\"../images/admin_badge.png\" alt =\"Badge of admin\">";
+                    }
+                    elseif($user instanceof Agent){
+                        echo "<img src=\"../images/agent_badge.png\" alt =\"Badge of agent\">";
+                    }
+                    else{
+                        echo "<img src=\"../images/client_badge.png\" alt =\"Badge of client\">";
+                    }
+                    ?>
                     <h2>Status</h2>
                     <p style = "font-weight: 600;">Open</p>
                     <p style="position: absolute; left: 71px; bottom: 100px">5</p>
