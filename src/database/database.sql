@@ -144,3 +144,24 @@ create table AgentChange(
     idOldAgent integer references Agent(idAgent)
 
 );
+
+INSERT INTO users (email, name, username, password) VALUES
+  ('john@example.com', 'John Doe', 'johndoe', 'password'),
+  ('jane@example.com', 'Jane Smith', 'janesmith', 'password');
+
+INSERT INTO admins (email) VALUES
+  ('jane@example.com');
+
+INSERT INTO clients (email) VALUES
+  ('john@example.com');
+
+INSERT INTO department (title, description) VALUES
+  ('Sales', 'Department for managing sales related issues'),
+  ('IT', 'Department for managing IT related issues');
+
+INSERT INTO agents (email, idDepartment) VALUES
+  ('john@example.com', 2),
+  ('jane@example.com', 2);
+
+INSERT INTO users (email, name, username, password)
+VALUES ('alan.turing@example.com', 'Alan Turing', 'alanturing', 'password');

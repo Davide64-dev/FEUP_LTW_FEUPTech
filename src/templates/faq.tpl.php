@@ -16,7 +16,7 @@
     <nav>
         <ul class = "navigation">
             <li class = "nav_elem"><a href = "inquiries.html"><i class="fa-solid fa-list-check"></i> Inquiries</a></li>
-            <li class = "nav_elem"><a href = "contacts.html"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
+            <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
             <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>
             <li class = "nav_elem"><a href = "../pages/faq.php"><i class="fa-solid fa-question"></i> FAQ</a></li>
             <li class = "nav_elem"><a href = "../pages/profile.php"><i class="fa-solid fa-user"></i></a></li>
