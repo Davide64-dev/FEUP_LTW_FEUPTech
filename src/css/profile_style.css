@@ -112,12 +112,20 @@ main a{
     transform: translateY(0);
 }
 
-#info p{
+#info h3{
     position: absolute;
     top: 319px;
     left: 198px;
     font-weight: 600;
     font-size: larger;  
+    margin: 18px 0px;  
+}
+
+#info p{
+    position: absolute;
+    top: 339px;
+    left: 198px;
+    font-weight: 600; 
     margin: 18px 0px;  
 }
 
@@ -197,6 +205,12 @@ aside button:after {
   background-color: #FFFFFF;
 }
 
+
+#content {
+    display: grid;
+    grid-template-columns: 272px 320px;
+}
+
 main section {
     position: absolute;
     display: flex;
@@ -205,7 +219,7 @@ main section {
     background: white;
     box-shadow: 0 0 16px rgba(0,0,0,0.1);
     border-radius: 4px;
-    width: 840px;
+    width: 600px;
     height: 308px;
 }
 
@@ -218,3 +232,5 @@ main section h2{
 main{
     margin-bottom: 50px;
 }
+
+
