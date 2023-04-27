@@ -1,4 +1,4 @@
-<?php function drawMainHeader() { ?>
+<?php function drawMainHeader(Session $session, User $user) { ?>
 
     <!DOCTYPE html>
 <html lang = "en-US">
@@ -16,15 +16,21 @@
             <h1>FEUPTech</h1>
             <h3>Slogan of Website</h3>
             <div id="signup">
-                <a href ="../pages/profile.php"><i class="fa-solid fa-user"></i></a>
-                <a href="test.html">Register</a>
-                <a href="login.html">Login</a>
+                <?php
+                if (!$session->isLoggedIn()){
+                echo "<a href=\"test.html\">Register</a>";
+                echo "<a href=\"login.html\">Login</a>";
+                }
+                else{
+                    echo "<a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"> Profile</i></a>";
+                }
+                ?>
             </div>
         </header>
         <nav id="menu">
                 <h2>
                     <img src="images/FAQ.png" alt="Frequently Asked Questions image">
-                    <a href="faq.html"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="../pages/faq.php"><i class="fa-solid fa-arrow-right"></i></a>
                 </h2>
                 <h2>
                     <img src="images/About.png" alt="About Us Image">
@@ -32,7 +38,7 @@
                 </h2>
                 <h2>
                     <img src="images/Contacts.png" alt="Contacts Image">
-                    <a href="contacts.html"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="../pages/contacts.php"><i class="fa-solid fa-arrow-right"></i></a>
                 </h2>
         </nav> 
 <?php } ?>
