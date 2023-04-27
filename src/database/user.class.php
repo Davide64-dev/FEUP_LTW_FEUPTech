@@ -2,24 +2,50 @@
      declare(strict_types = 1);
 
      class User{
-        public int $id;
         public string $email;
         public string $name;
 
+        public string $username;
         public string $last_name;
 
-        public function __construct(int $id, string $email, string $name, string $last_name){
+        public function __construct(string $email, string $name, string $username){
             
-            $this->id = $id;
             $this->email = $email;
             $this->name = $name;
-            $this->last_name = $last_name;
+            $this->username = $username;
         }
 
         function name(){
             return $this->name . ' ' . $this->last_name;
         }
-
+        
+        static function getUser(PDO $db, String $email) : User {
+            $stmt = $db->prepare('
+              SELECT email, name, username
+              FROM users
+              WHERE email = ?
+            ');
+      
+            $stmt->execute(array($email));
+            $user = $stmt->fetch();
+            
+            return new User(
+              $user['email'],
+              $user['name'],
+              $user['username'],
+            );
+        }
+        
+          /*
+        public function getUser(PDO $db){
+            $stmt = $db->prepare('
+                SELECT COUNT(*) AS tracks
+                FROM Ticket JOIN Client USING (AlbumId) 
+                WHERE ArtistId = ?
+                GROUP BY AlbumId
+                ');
+        }
+        */
 
 
      }

@@ -41,7 +41,8 @@ create table tickets(
     title text NOT NULL,
     description text,
     status text references Status(title),
-    emailAgent text references Agent(email),
+    emailAgent text references Agents(email),
+    emailClient text references Clients(email),
     idDepartment integer references department(idDepartment)
 );
 
@@ -145,23 +146,4 @@ create table AgentChange(
 
 );
 
-INSERT INTO users (email, name, username, password) VALUES
-  ('john@example.com', 'John Doe', 'johndoe', 'password'),
-  ('jane@example.com', 'Jane Smith', 'janesmith', 'password');
-
-INSERT INTO admins (email) VALUES
-  ('jane@example.com');
-
-INSERT INTO clients (email) VALUES
-  ('john@example.com');
-
-INSERT INTO department (title, description) VALUES
-  ('Sales', 'Department for managing sales related issues'),
-  ('IT', 'Department for managing IT related issues');
-
-INSERT INTO agents (email, idDepartment) VALUES
-  ('john@example.com', 2),
-  ('jane@example.com', 2);
-
-INSERT INTO users (email, name, username, password)
-VALUES ('alan.turing@example.com', 'Alan Turing', 'alanturing', 'password');
+INSERT INTO USERS values ('alan.turing@example.com', 'Alan Turing', 'alanturing', 'password');
