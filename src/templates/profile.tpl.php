@@ -1,4 +1,4 @@
-<?php function drawProfile(User $user) { ?>
+<?php function drawProfile(User $user, Session $session) { ?>
     <section>
                 <h2>Welcome to your profile!</h2>
                 <h3>Here you'll be able to keep track of your tickets and their status</h3>
