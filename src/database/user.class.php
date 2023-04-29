@@ -1,5 +1,5 @@
 <?php
-     declare(strict_types = 1);
+     declare(strict_types = 1); 
 
      class User{
 
@@ -36,24 +36,47 @@
                 );
             } else return null;
         }
+        
 
-        static function getUserWithEmail(PDO $db, string $email) : User{
+
+
+        static function getUserWithEmail(PDO $db, string $email) : ?User {
             $stmt = $db->prepare('
-              SELECT email, name, username
-              FROM users
-              WHERE lower(email) = ?');
-              
-              $stmt->execute(array(strtolower($email)));
-              $user = $stmt->fetch();
-              return new User(
-                $user['email'],
-                $user['name'],
-                $user['username']
-              );
+                SELECT u.email, u.name, u.username
+                FROM users u JOIN admins a ON u.email = a.email
+                WHERE lower(u.email) = ?');
+            $stmt->execute(array(strtolower($email)));
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($row !== false) {
+                return new Admin($row['email'], $row['name'], $row['username']);
+            }
+        
+            $stmt = $db->prepare('
+                SELECT u.email, u.name, u.username
+                FROM users u JOIN agents a ON u.email = a.email
+                WHERE lower(u.email) = ?');
+            $stmt->execute(array(strtolower($email)));
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($row !== false) {
+                return new Agent($row['email'], $row['name'], $row['username']);
+            }
+        
+            $stmt = $db->prepare('
+                SELECT email, name, username
+                FROM users
+                WHERE lower(email) = ?');
+            $stmt->execute(array(strtolower($email)));
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($row !== false) {
+                return new Client($row['email'], $row['name'], $row['username']);
+            }
+        
+            return null;
         }
         
         
-        public static function addUser(PDO $db, $username, $name, $password, $email){
+        
+        static function addUser(PDO $db, $username, $name, $password, $email){
           $stmt = $db->prepare(
               "INSERT INTO USERS VALUES (\"$email\", \"$name\", \"$username\", \"$password\")"
           );
@@ -71,5 +94,16 @@
         
      }
 
+     class Admin extends User{
+        
+     }
+
+     class Client extends User{
+        
+    }
+
+    class Agent extends Client{
+
+    }
 
 ?>
