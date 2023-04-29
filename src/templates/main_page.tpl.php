@@ -19,7 +19,7 @@
                 <?php
                 if (!$session->isLoggedIn()){
                 echo "<a href=\"test.html\">Register</a>";
-                echo "<a href=\"login.html\">Login</a>";
+                echo "<a href=\"../pages/login.php\">Login</a>";
                 }
                 else{
                     echo "<a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"> Profile</i></a>";
