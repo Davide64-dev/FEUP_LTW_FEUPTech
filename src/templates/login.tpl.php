@@ -26,20 +26,20 @@
         <h2>FeupTech - Sign in</h2>
         <main class="general_container">  
             <section class="column">
-                <form action="" method="post">
+                <form action="../actions/action_login.php" method="post">
                         <div class="imgcontainer">
                             <img src='../images/profile.png' alt="Avatar" class="avatar">
                         </div>
                         
                         <div class="container">
-                            <label for="uname"><b>Username</b></label>
-                            <input type="text" class="username" placeholder="Enter Username" name="uname" required autofocus>
+                            <label for="uname"><b>Email</b></label>
+                            <input type="email" class="username" placeholder="Enter Email" name="email" required autofocus>
                             <i class="fas fa-user" style="margin-left: -40px;"></i>
                             
                             
                         
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" id="psw" required autofocus>
+                            <input name ="password" type="password" placeholder="Enter Password" id="psw" required autofocus>
                             <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer;"></i>
                                 
                             <button type="submit"><a style="text-decoration: none; color: #f1f1f1;" href="profile.html">Login</a></button>
@@ -54,7 +54,7 @@
                         <div class="container1">
                             <!-- <button type="button" class="cancelbtn">Cancel</button>  -->
                             <button class="cancelbtn"><a style="text-decoration: none; color: aliceblue;" href="login.html">cancel</a></button>
-                            <span class="psw">Don't have an account? <a href="register.html">Sign up</a></span>
+                            <span class="psw">Don't have an account? <a href="../pages/register.php">Sign up</a></span>
                         </div>
                 </form>
             </section>

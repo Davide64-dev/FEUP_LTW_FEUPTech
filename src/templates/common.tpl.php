@@ -26,8 +26,8 @@
                 <li class = "nav_elem"><a href = "../pages/faq.php"><i class="fa-solid fa-question"></i> FAQ</a></li>
                 <?php
                 if (!$session->isLoggedIn()){
-                echo "<li class = \"nav-elem\"><a href=\"../pages/register.php\">Register</a></li>";
-                echo "<li class = \"nav-elem\"><a href=\"../pages/login.php\">Login</a></li>";
+                    echo "<li class = \"nav-elem\"><a href=\"../pages/register.php\">Register</a></li>";
+                    echo "<li class = \"nav-elem\"><a href=\"../pages/login.php\">Login</a></li>";
                 }
                 else{
                     echo "<li class = \"nav-elem\"><a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"> Profile</i></a></li>";

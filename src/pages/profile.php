@@ -9,8 +9,6 @@
     $session = new Session();
     $db = getDatabaseConnection();
 
-    $user = User::getUser($db, $session->getEmail());
-
-    drawHeader();
+    drawHeader($session);
     drawProfile($user, $session);
 ?>

@@ -2,6 +2,7 @@
      declare(strict_types = 1);
 
      class User{
+
         public string $email;
         public string $name;
 
@@ -19,24 +20,23 @@
             return $this->name . ' ' . $this->last_name;
         }
         
-        /*
-        static function getUser(PDO $db, String $email) : User {
+        
+        static function getUser(PDO $db, String $email, String $password) : ?User {
             $stmt = $db->prepare('
               SELECT email, name, username
               FROM users
-              WHERE email = ?
-            ');
-      
-            $stmt->execute(array($email));
-            $user = $stmt->fetch();
-            
-            return new User(
-              $user['email'],
-              $user['name'],
-              $user['username'],
-            );
+              WHERE lower(email) = ? AND password = ?');
+              $stmt->execute(array(strtolower($email), $password));
+
+            if ($user = $stmt->fetch()){
+                return new User(
+                $user['email'],
+                $user['name'],
+                $user['username'],
+                );
+            } else return null;
         }
-        */
+        
         
         public static function addUser(PDO $db, $username, $name, $password, $email){
           $stmt = $db->prepare(
@@ -53,25 +53,8 @@
           $stmt->execute();
           */
       }
-      
-          /*
-        public function getUser(PDO $db){
-            $stmt = $db->prepare('
-                SELECT COUNT(*) AS tracks
-                FROM Ticket JOIN Client USING (AlbumId) 
-                WHERE ArtistId = ?
-                GROUP BY AlbumId
-                ');
-        }
-        */
-
-
+        
      }
-
-
-
-
-
 
 
 ?>
