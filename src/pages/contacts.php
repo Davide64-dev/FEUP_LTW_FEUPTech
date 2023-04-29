@@ -1,6 +1,8 @@
 <?php
     include '../templates/common.tpl.php';
     include '../templates/contacts.tpl.php';
-    drawHeader();
+    include '../utils/session.php';
+    $session = new Session();
+    drawHeader($session);
     drawContacts();
 ?>

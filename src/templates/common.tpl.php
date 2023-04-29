@@ -1,4 +1,4 @@
-<?php function drawHeader() { ?>
+<?php function drawHeader(Session $session) { ?>
     <!DOCTYPE html>
 <html lang = "en-Us">
 
@@ -24,7 +24,15 @@
                 <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
                 <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>
                 <li class = "nav_elem"><a href = "../pages/faq.php"><i class="fa-solid fa-question"></i> FAQ</a></li>
-                <li class = "nav_elem"><a href = "../pages/profile.php"><i class="fa-solid fa-user"></i></a></li>
+                <?php
+                if (!$session->isLoggedIn()){
+                echo "<li class = \"nav-elem\"><a href=\"../pages/register.php\">Register</a></li>";
+                echo "<li class = \"nav-elem\"><a href=\"../pages/login.php\">Login</a></li>";
+                }
+                else{
+                    echo "<li class = \"nav-elem\"><a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"> Profile</i></a></li>";
+                }
+                ?>
             </ul>
 
 <?php } ?>

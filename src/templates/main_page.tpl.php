@@ -18,7 +18,7 @@
             <div id="signup">
                 <?php
                 if (!$session->isLoggedIn()){
-                echo "<a href=\"test.html\">Register</a>";
+                echo "<a href=\"../pages/register.php\">Register</a>";
                 echo "<a href=\"../pages/login.php\">Login</a>";
                 }
                 else{

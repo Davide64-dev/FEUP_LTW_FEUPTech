@@ -19,6 +19,7 @@
             return $this->name . ' ' . $this->last_name;
         }
         
+        /*
         static function getUser(PDO $db, String $email) : User {
             $stmt = $db->prepare('
               SELECT email, name, username
@@ -35,7 +36,24 @@
               $user['username'],
             );
         }
+        */
         
+        public static function addUser(PDO $db, $username, $name, $password, $email){
+          $stmt = $db->prepare(
+              "INSERT INTO USERS VALUES (\"$email\", \"$name\", \"$username\", \"$password\")"
+          );
+          $stmt->execute();
+      
+          // assuming the 'clients' table has a foreign key constraint linking it to the 'users' table
+          /*
+          $clientId = $db->lastInsertId();
+          $stmt = $db->prepare(
+              "INSERT INTO CLIENTS (email) VALUES (email)"
+          );
+          $stmt->execute();
+          */
+      }
+      
           /*
         public function getUser(PDO $db){
             $stmt = $db->prepare('
