@@ -8,6 +8,8 @@
 
     $session = new Session();
     $db = getDatabaseConnection();
+    
+    $user = User::getUserWithEmail($db, $_SESSION['email']);
 
     drawHeader($session);
     drawProfile($user, $session);

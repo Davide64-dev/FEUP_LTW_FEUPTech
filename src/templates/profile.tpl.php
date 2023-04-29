@@ -14,7 +14,7 @@
                 <div id="info">
                     <img src = "../images/profile.png" alt = "profile" width = 100>
                     <button type = "button">Edit Profile</button>
-                    <?php echo "<p>$user->name $user->last_name</p>" ?>
+                    <?php echo "<p>$user->name</p>" ?>
                 </div>
 
                 <section>

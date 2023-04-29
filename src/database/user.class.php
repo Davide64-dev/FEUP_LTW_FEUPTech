@@ -36,6 +36,21 @@
                 );
             } else return null;
         }
+
+        static function getUserWithEmail(PDO $db, string $email) : User{
+            $stmt = $db->prepare('
+              SELECT email, name, username
+              FROM users
+              WHERE lower(email) = ?');
+              
+              $stmt->execute(array(strtolower($email)));
+              $user = $stmt->fetch();
+              return new User(
+                $user['email'],
+                $user['name'],
+                $user['username']
+              );
+        }
         
         
         public static function addUser(PDO $db, $username, $name, $password, $email){
