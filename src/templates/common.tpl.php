@@ -30,7 +30,8 @@
                     echo "<li class = \"nav-elem\"><a href=\"../pages/login.php\">Login</a></li>";
                 }
                 else{
-                    echo "<li class = \"nav-elem\"><a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"> Profile</i></a></li>";
+                    echo "<li class = \"nav-elem\"><a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"></i> Profile</a></li>";
+                    echo "<form action=\"../actions/action_logout.php\" method=\"post\" class=\"logout\"><a href = \"#\" type=\"submit\" onclick=\"this.parentNode.submit(); return false;\">Logout</a></form>";
                 }
                 ?>
             </ul>

@@ -22,7 +22,11 @@
                 echo "<a href=\"../pages/login.php\">Login</a>";
                 }
                 else{
-                    echo "<a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"> Profile</i></a>";
+                    echo "<a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"></i> Profile</a>";
+                    echo "<form action=\"../actions/action_logout.php\" method=\"post\" class=\"logout\">
+                    <a href = \"#\" type=\"submit\" onclick=\"this.parentNode.submit(); return false;\">Logout</a>
+                  </form>
+                  ";
                 }
                 ?>
             </div>

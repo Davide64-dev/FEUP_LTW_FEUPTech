@@ -1,4 +1,4 @@
-<?php function drawFAQ() { ?>
+<?php function drawFAQ(Session $session) { ?>
     <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +20,16 @@
             <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
             <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>
             <li class = "nav_elem"><a href = "../pages/faq.php"><i class="fa-solid fa-question"></i> FAQ</a></li>
-            <li class = "nav_elem"><a href = "../pages/profile.php"><i class="fa-solid fa-user"></i></a></li>
+            <?php
+            if (!$session->isLoggedIn()){
+                    echo "<li class = \"nav-elem\"><a href=\"../pages/register.php\">Register</a></li>";
+                    echo "<li class = \"nav-elem\"><a href=\"../pages/login.php\">Login</a></li>";
+                }
+                else{
+                    echo "<li class = \"nav-elem\"><a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"></i> Profile</a></li>";
+                    echo "<form action=\"../actions/action_logout.php\" method=\"post\" class=\"logout\"><a href = \"#\" type=\"submit\" onclick=\"this.parentNode.submit(); return false;\">Logout</a></form>";
+                }
+            ?>
         </ul>
         <section>
             <h2>Frequently Asked Questions - FAQ</h2>

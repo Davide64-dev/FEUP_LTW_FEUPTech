@@ -1,5 +1,7 @@
 <?php
     include '../templates/common.tpl.php';
     include '../templates/faq.tpl.php';
-    drawFAQ();
+    include '../utils/session.php';
+    $session = new Session();
+    drawFAQ($session);
 ?>
