@@ -11,6 +11,10 @@
     
     $user = User::getUserWithEmail($db, $_SESSION['email']);
 
+    $assigned = $user->getNumberTickets($db, "Assigned");
+    $closed = $user->getNumberTickets($db, "Closed");
+    $opened = $user->getNumberTickets($db, "Opened");
+
     drawHeader($session);
-    drawProfile($user, $session);
+    drawProfile($user, $session, $opened, $assigned, $closed);
 ?>

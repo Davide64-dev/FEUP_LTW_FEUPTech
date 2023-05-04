@@ -16,8 +16,13 @@
             $this->username = $username;
         }
 
-        function name(){
-            return $this->name . ' ' . $this->last_name;
+        public function getNumberTickets(PDO $db, string $status) : int{
+            $stmt = $db->prepare('SELECT count(emailClient)
+              FROM tickets
+              WHERE emailClient = ? AND status = ?');
+              $stmt->execute(array(strtolower($this->email), $status));
+              $count = $stmt->fetchColumn();
+              return intval($count);
         }
         
         
@@ -81,15 +86,12 @@
               "INSERT INTO USERS VALUES (\"$email\", \"$name\", \"$username\", \"$password\")"
           );
           $stmt->execute();
-      
-          // assuming the 'clients' table has a foreign key constraint linking it to the 'users' table
-          /*
-          $clientId = $db->lastInsertId();
+
           $stmt = $db->prepare(
-              "INSERT INTO CLIENTS (email) VALUES (email)"
+            "INSERT INTO CLIENTS VALUES (\"$email\")"
           );
+
           $stmt->execute();
-          */
       }
         
      }

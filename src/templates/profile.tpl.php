@@ -1,4 +1,4 @@
-<?php function drawProfile(User $user, Session $session) { ?>
+<?php function drawProfile(User $user, Session $session, $open, $assigned, $closed) { ?>
     <section>
                 <h2>Welcome to your profile!</h2>
                 <h3>Here you'll be able to keep track of your tickets and their status</h3>
@@ -36,13 +36,15 @@
                     ?>
                     <h2>Status</h2>
                     <p style = "font-weight: 600;">Open</p>
-                    <p style="position: absolute; left: 71px; bottom: 100px">5</p>
+                    <p style="position: absolute; left: 71px; bottom: 100px">
+                    <?php echo $open?>
+                    </p>
                     <br>
                     <p style = "font-weight: 600;">Assigned</p>
-                    <p style="position: absolute; right: 258px; bottom: 100px">2</p>
+                    <p style="position: absolute; right: 258px; bottom: 100px"><?php echo $assigned?></p>
                     <br>
                     <p style = "font-weight: 600;">Closed</p>
-                    <p style="position: absolute; right: 80px; bottom: 100px">3</p>   
+                    <p style="position: absolute; right: 80px; bottom: 100px"><?php echo $closed?></p>   
                     <button type = "button">More info</button>
                 </aside>
                 <div class ="popup" id ="popup">
