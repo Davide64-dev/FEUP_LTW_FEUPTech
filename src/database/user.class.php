@@ -7,7 +7,6 @@
         public string $name;
 
         public string $username;
-        public string $last_name;
 
         public function __construct(string $email, string $name, string $username){
             
@@ -93,6 +92,14 @@
 
           $stmt->execute();
       }
+
+        function getTickets(PDO $db){
+            $stmt = $db->prepare('
+                SELECT email, name, username
+                FROM users
+                WHERE lower(email) = ?');
+            $stmt->execute(array(strtolower($this->email)));
+        } 
         
      }
 

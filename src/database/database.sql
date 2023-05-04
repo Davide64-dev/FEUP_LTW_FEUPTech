@@ -37,7 +37,7 @@ drop table if exists tickets;
 
 create table tickets(
 
-    idTicket integer primary key,
+    idTicket integer primary key AUTOINCREMENT,
     title text NOT NULL,
     description text,
     status text references Status(title),

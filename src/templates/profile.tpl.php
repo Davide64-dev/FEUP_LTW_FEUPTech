@@ -18,8 +18,9 @@
                 </div>
 
                 <section>
-                    <a href = "tickets.html"></a>
                     <h2>Your Tickets</h2>
+                    
+
                 </section>
 
                 <aside>
@@ -48,11 +49,15 @@
                     <button type = "button">More info</button>
                 </aside>
                 <div class ="popup" id ="popup">
-                    <form class="popup-content ">
+                    <form action="../actions/action_addTicket.php" method = "post"class="popup-content ">
+                        <input class="email" placeholder="email" name="email" type = "hidden" value="<?php echo $session->getEmail(); ?>">
+
                         <img src="../images/close.png" alt ="Close" class="close">
                             <p class="write">Write your ticket here</p><br>
+
                             <label for="Title"><b>Title</b></label>
                             <input type="text" id="title" name="title">
+
                             <p>Department</p>
                             <select name = "department">
                                 <option value = "Finance">Finance</option>
@@ -77,8 +82,8 @@
                                 </div>
                             </div>
                             <label for="New Ticket"><b>Description</b></label>
-                            <textarea id = "answer" name = "answer" required autofocus></textarea>
-                        <button type="button" class = "button_sub"><i class="far fa-paper-plane-top"></i> Submit ticket!</button>
+                            <textarea class = "description" id = "description" name = "description" name = "description" required autofocus></textarea>
+                        <button type="submit" class = "button_sub"><i class="far fa-paper-plane-top"></i> Submit ticket!</button>
                     </form>
                 </div>
         </main>

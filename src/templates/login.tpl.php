@@ -33,10 +33,11 @@
                         
                         <div class="container">
                             <label for="uname"><b>Email</b></label>
+                            
                             <input type="email" class="username" placeholder="Enter Email" name="email" required autofocus>
                             <i class="fas fa-user" style="margin-left: -40px;"></i>
                             
-                            
+                
                         
                             <label for="psw"><b>Password</b></label>
                             <input name ="password" type="password" placeholder="Enter Password" id="psw" required autofocus>
