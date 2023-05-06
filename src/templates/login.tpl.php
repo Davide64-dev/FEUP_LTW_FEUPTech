@@ -23,7 +23,6 @@
                 <li class = "nav_elem"><a href = "../pages/faq.php"><i class="fa-solid fa-question"></i> FAQ</a></li>
             </ul>
         </nav>
-        <h2>FeupTech - Sign in</h2>
         <main class="general_container">  
             <section class="column">
                 <form action="../actions/action_login.php" method="post">
@@ -58,6 +57,11 @@
                             <span class="psw">Don't have an account? <a href="../pages/register.php">Sign up</a></span>
                         </div>
                 </form>
+                <div class="colimgcont">
+                    <h2>FeupTech - Sign in</h2>
+                    <h2 class="subtitle">Welcome to FeupTech! Use your login credentials.</h2>
+                    <img src='../images/login_mock.png' alt="mockup" class="mockup">
+                </div>
             </section>
         </main>
     </body>

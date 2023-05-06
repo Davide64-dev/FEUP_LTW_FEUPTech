@@ -1,19 +1,22 @@
 body {
-    margin:0;
-    font-family: 'Poppins';
+  margin-top: 0;
+  font-family: 'Poppins';
+  margin-bottom: 10%;
+  background: white;
 }
 
 h2{
-    color:  #243f61;
+    color:  white;
     text-align: center;
-    padding: 26px 0px;
+    padding: 0px;
 }
 
 form {
-  width: 588px;
+  width: 90%;
   height: fit-content;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   border-radius: 92px;
+  background: white;
 }
 
 
@@ -52,10 +55,10 @@ input[type=password], input[type=text], input[type=email] {
   }
   
   .imgcontainer {
-      width: 377px; 
-      height: 170px;
-      margin: auto;
-      padding: 10px;
+    width: 25em;
+    height: 10em;
+    margin: auto;
+    padding: 10px;
   }
   
   img.avatar {
@@ -101,4 +104,39 @@ input[type=password], input[type=text], input[type=email] {
 .general_container {
   display: grid;
   place-items: center;
+}
+
+.column {
+  width: 70em;
+  display: grid;
+  grid-template-columns: 40em auto;
+  margin-top: 5em;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  border-radius: 92px;
+  background-image: url("../images/background.png");
+}
+.colimgcont {
+  display: grid;
+  place-items: flex-start;
+  align-content: center;
+}
+.colimgcont img{
+  max-width: 100%;
+  height: auto;
+}
+.subtitle{
+  padding: 0px 0px;
+  margin-top: 0px;
+  font-size: smaller;
+  font-weight: 400;
+}
+.resimgcont{
+  display: grid;
+  place-items: flex-start;
+  align-content: center;
+  width:80%;
+}
+.resimgcont img{
+  max-width: 100%;
+  height: auto;
 }

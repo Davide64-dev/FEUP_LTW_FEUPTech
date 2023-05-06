@@ -22,7 +22,6 @@
                 <li class = "nav_elem"><a href = "../pages/faq.php"><i class="fa-solid fa-question"></i> FAQ</a></li>
             </ul>
         </nav>
-        <h2>FeupTech</h2>
         <main class="general_container">  
             <section class="column">
                 <form action="../actions/action_register.php" method="POST">
@@ -65,6 +64,11 @@
                             <span class="psw">Already have an account? <a href="login.html">Sign in</a></span>
                         </div>
                 </form>
+                <div class="resimgcont">
+                    <h2>FeupTech - Sign up</h2>
+                    <h2 class="subtitle">Welcome to FeupTech! Provide us all the requested info to be part of our community.</h2>
+                    <img src='../images/register_mock.png' alt="mockup" class="mockup">
+                </div>
             </section>
         </main>
     </body>
