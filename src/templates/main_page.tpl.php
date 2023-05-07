@@ -14,7 +14,7 @@
     <body>
         <header>
             <h1>FEUPTech</h1>
-            <h3>Slogan of Website</h3>
+            <h3>FEUPTech: Your One-Stop Solution for Streamlined Ticket Management</h3>
             <div id="signup">
                 <?php
                 if (!$session->isLoggedIn()){
