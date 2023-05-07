@@ -30,7 +30,7 @@
               SELECT email, name, username
               FROM users
               WHERE lower(email) = ? AND password = ?');
-              $stmt->execute(array(strtolower($email), $password));
+              $stmt->execute(array(strtolower($email), sha1($password)));
 
             if ($user = $stmt->fetch()){
                 return new User(
