@@ -9,7 +9,7 @@
     $session = new Session();
     $db = getDatabaseConnection();
     
-    $user = User::getUserWithEmail($db, $_SESSION['email']);
+    $user = User::getUserWithEmail($db, $session->getEmail());
 
     $assigned = $user->getNumberTickets($db, "Assigned");
     $closed = $user->getNumberTickets($db, "Closed");

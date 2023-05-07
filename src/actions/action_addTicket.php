@@ -6,8 +6,7 @@
     require_once(__DIR__ . '/../database/user.class.php');
     require_once(__DIR__ . '/../database/ticket.class.php');
     $db = getDatabaseConnection();
-    $user = User::getUserWithEmail($db, $_POST['email']);
-
+    $user = User::getUserWithEmail($db, $session->getEmail());
     Ticket::addTicket($db, $_POST['title'], $_POST['description'], $user);
 
     header('Location: ../pages/profile.php');

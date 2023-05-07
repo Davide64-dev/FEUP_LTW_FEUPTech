@@ -50,7 +50,6 @@
                 </aside>
                 <div class ="popup" id ="popup">
                     <form action="../actions/action_addTicket.php" method = "post"class="popup-content ">
-                        <input class="email" placeholder="email" name="email" type = "hidden" value="<?php echo $session->getEmail(); ?>">
 
                         <img src="../images/close.png" alt ="Close" class="close">
                             <p class="write">Write your ticket here</p><br>
