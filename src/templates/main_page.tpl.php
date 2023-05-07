@@ -1,6 +1,6 @@
 <?php function drawMainHeader(Session $session, User $user) { ?>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang = "en-US">
     <head>
         <title>FEUPTech</title>
