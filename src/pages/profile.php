@@ -9,6 +9,7 @@
     $session = new Session();
     $db = getDatabaseConnection();
     
+    if (!$session->isLoggedIn()) die(header('Location: /'));
     $user = User::getUserWithEmail($db, $session->getEmail());
 
     $assigned = $user->getNumberTickets($db, "Assigned");

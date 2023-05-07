@@ -50,18 +50,18 @@
                             <i class="fas fa-at" style="margin-left: -40px;"></i>
 
                             
-                            <button type="submit"><a style="text-decoration: none; color: #f1f1f1;" href="profile.html">Register</a></button>
+                            <button type="submit"><a style="text-decoration: none; color: #f1f1f1;" href="../pages/login.php">Register</a></button>
                             <label>
                             <input type="checkbox" checked="checked" name="remember" style="background-color: #5A4ECE; cursor: pointer;" > Remember me
                             </label>
                             <br>
-                            <a href="www.google.com" >Forgot your password?</a>    
+                            <a href="https://www.google.com" >Forgot your password?</a>    
                         </div>
     
                         <div class="container1">
                             <!-- <button type="button" class="cancelbtn">Cancel</button>  -->
-                            <button class="cancelbtn"><a style="text-decoration: none; color: aliceblue;" href="login.html">cancel</a></button>
-                            <span class="psw">Already have an account? <a href="login.html">Sign in</a></span>
+                            <button class="cancelbtn"><a style="text-decoration: none; color: aliceblue;" href="../pages">cancel</a></button>
+                            <span class="psw">Already have an account? <a href="../pages/login.php">Sign in</a></span>
                         </div>
                 </form>
                 <div class="resimgcont">
