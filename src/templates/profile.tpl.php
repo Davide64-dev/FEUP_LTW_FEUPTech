@@ -10,20 +10,36 @@
             
             </section>
         </nav>
-        <main>
+        <main class="mainprofile">
                 <div id="info">
-                    <img src = "../images/profile.png" alt = "profile" width = 100>
-                    <button type = "button">Edit Profile</button>
-                    <?php echo "<p>$user->name</p>" ?>
+                    <img src = "../images/profile.png" alt = "profile" width = "100">
+                    <button id="editProfileButton" type="button">Edit Profile</button>
+                    <?php echo "<h3>$user->name</h3>" ?>
+                    <br>
+                    <?php echo "<p>@$user->username</p>" ?>
                 </div>
 
-                <section>
-                    <h2>Your Tickets</h2>
-                    
+            <div id="sections">
+                <section class="profile-section" style="display: none;">
+                <h2 style="color: white; font-size: xx-large; text-align:center;">Edit Profile</h2>
+                <form id="editProfileForm" style="display: none;">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" value="<?php echo $user->name; ?>"><br>
+                    <br>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" value="<?php echo $user->username; ?>"><br>
+                    <br>
+                    <label for="password">Password</label>
+                    <input name ="password" type="password" id="psw" required autofocus>
+                    <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer;"></i>
+                    <br>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="<?php echo $user->email; ?>"><br>
 
+                    <button type="submit">Save</button>
+                </form>
                 </section>
-
-                <aside>
+                <section class="ticket-section">
                     <?php
                     if ($user instanceof Admin){
                         echo "<img src=\"../images/admin_badge.png\" alt =\"Badge of admin\">";
@@ -35,21 +51,37 @@
                         echo "<img src=\"../images/client_badge.png\" alt =\"Badge of client\">";
                     }
                     ?>
-                    <h2>Status</h2>
-                    <p style = "font-weight: 600;">Open</p>
-                    <p style="position: absolute; left: 71px; bottom: 100px">
-                    <?php echo $open?>
-                    </p>
-                    <br>
-                    <p style = "font-weight: 600;">Assigned</p>
-                    <p style="position: absolute; right: 258px; bottom: 100px"><?php echo $assigned?></p>
-                    <br>
-                    <p style = "font-weight: 600;">Closed</p>
-                    <p style="position: absolute; right: 80px; bottom: 100px"><?php echo $closed?></p>   
-                    <button type = "button">More info</button>
-                </aside>
+
+                    <a href="../html_not_used/tickets.html">Status</a>
+                    <div id ="text">
+                        <p style = "font-weight: 600;">Open</p>
+                        <p style = "font-weight: 600;">Assigned</p>
+                        <p style = "font-weight: 600;">Closed</p>
+                    </div>
+
+                    <div id="number">
+                        <p class="number"><?php echo $open?></p>
+                        <p class="number"><?php echo $assigned?></p>
+                        <p class="number"><?php echo $closed?></p>   
+                    </div>
+                    
+                    <span id="dots"></span>
+                    <span id="more">
+                        
+                    <?php    
+                        if($user instanceof Admin || $user instanceof Agent){
+                            echo "<h2>Tickets assigned <span class=\"assigned\">$assigned</span></h2>";
+                        } 
+
+                    ?>
+                    </span>
+                    <button onclick="moreInfo()" id="btnInfo" type="button">More info</button>
+                </section>
+                    
+            </div>
                 <div class ="popup" id ="popup">
                     <form action="../actions/action_addTicket.php" method = "post"class="popup-content ">
+                        <input class="email" placeholder="email" name="email" type = "hidden" value="<?php echo $session->getEmail(); ?>">
 
                         <img src="../images/close.png" alt ="Close" class="close">
                             <p class="write">Write your ticket here</p><br>
@@ -97,6 +129,79 @@
         document.querySelector(".close").addEventListener("click",function(){
             document.querySelector(".popup").style.display = "none";
         })
+        
+        function moreInfo() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("btnInfo");
+
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "More info"; 
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Show less"; 
+                moreText.style.display = "inline";
+            }
+        }
+
+        document.querySelector("#info button").addEventListener("click", function() {
+            var profileSection = document.querySelector(".profile-section");
+            if (profileSection.style.display === "none") {
+                profileSection.style.display = "block";
+            } else {
+                profileSection.style.display = "none";
+            }
+        });
+
+        document.getElementById("editProfileButton").addEventListener("click", function() {
+    var profileForm = document.getElementById("editProfileForm");
+    if (profileForm.style.display === "none") {
+        profileForm.style.display = "block";
+    } else {
+        profileForm.style.display = "none";
+    }
+});
+
+document.getElementById("editProfileForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Fetch the form data
+    var formData = new FormData(this);
+
+    // Send the form data to the server using an AJAX request
+    fetch("../actions/action_editProfile.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(function(response) {
+        if (response.ok) {
+            // Profile updated successfully, you can show a success message or reload the page
+            alert("Profile updated successfully!");
+            location.reload();
+        } else {
+            // Handle error response from the server
+            alert("Failed to update profile. Please try again.");
+        }
+    })
+    .catch(function(error) {
+        // Handle network error or other exceptions
+        alert("An error occurred. Please try again later.");
+        console.error(error);
+    });
+});
+
+const togglePassword = document.querySelector('#togglePassword');
+      const password = document.querySelector('#psw');
+    
+      togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye');
+    });
     </script>
 
 </html>

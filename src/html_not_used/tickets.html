@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang = "en-Us">
+
+    <head>
+        <title>FeupTech</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale=1.0">
+        <link href="../css/navLogin_style.css" rel="stylesheet">
+        <link href="../css/tickets_style.css" rel="stylesheet">
+        <link href="../css/newTicket.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <script src="https://kit.fontawesome.com/38229b6c34.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        
+        <nav>
+            <ul class = "navigation">
+                <li class = "nav_elem"><a href = "inquiries.html"><i class="fa-solid fa-list-check"></i> Inquiries</a></li>
+                <li class = "nav_elem"><a href = "contacts.html"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
+                <li class = "nav_elem"><a href = "about.html"><i class="fas fa-circle-info"></i> About Us</a></li>
+                <li class = "nav_elem"><a href = "faq.html"><i class="fa-solid fa-question"></i> FAQ</a></li>
+                <li class = "nav_elem"><a href = "profile.html"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </nav>
+
+        <div class="box">
+            <h2>Ticket Status</h2>
+            <div class="row">
+              <div class="property open">
+                <h3>Open</h3>
+                <section class="ticket">
+                  <a href="profile.html" class="ticket-title" onclick="openPopup(event)">Ticket #1</a>
+                  <p class="ticket-department">Accounting</p>
+                  <p class="ticket-assignment">To be assigned</p>
+                  <div class="ticket-container">
+                    <div class="ticket-priority">
+                      <span class="high">High</span>
+                    </div>
+                    <div class="ticket-hashtag">
+                      <span>#ticket123</span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="divider"></div>
+              <div class="property assigned">
+                <h3>Assigned</h3>
+                <section class="ticket">
+                  <a href="profile.html" class="ticket-title" onclick="openPopup(event)">Ticket #2</a>
+                  <p class="ticket-department">Accounting</p>
+                  <p class="ticket-assignment">Person1</p>
+                  <div class="ticket-container">
+                    <div class="ticket-priority">
+                      <span class="medium">Medium</span>
+                    </div>
+                    <div class="ticket-hashtag">
+                      <span>#ticket123</span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="divider"></div>
+              <div class="property closed">
+                <h3>Closed</h3>
+                <section class="ticket">
+                  <a href="profile.html" class="ticket-title" onclick="openPopup(event)">Ticket #3</a>
+                  <p class="ticket-department">Department1</p>
+                  <p class="ticket-assignment">Person1</p>
+                  <div class="ticket-container">
+                    <div class="ticket-priority">
+                      <span class="low">Low</span>
+                    </div>
+                    <div class="ticket-hashtag">
+                      <span>#ticket123</span>
+                    </div>
+                  </div>
+                </section>
+                <section class="ticket">
+                  <a href="profile.html" class="ticket-title" onclick="openPopup(event)">Ticket #4</a>
+                  <p class="ticket-department">Department2</p>
+                  <p class="ticket-assignment">Person2</p>
+                  <div class="ticket-container">
+                    <div class="ticket-priority">
+                      <span class="high">High</span>
+                    </div>
+                    <div class="ticket-hashtag">
+                      <span>#ticket123</span>
+                    </div>
+                  </div>
+                </section>
+                
+              </div>
+            </div>
+        </div>
+
+        
+        <div class ="popup" id ="popup">
+            <form class="popup-content ">
+                <img src="../images/close.png" alt ="Close" class="close">
+                    <p class="write">Write your ticket here</p><br>
+                    <label for="Title"><b>Title</b></label>
+                    <input type="text" id="title" name="title">
+                    <p>Department</p>
+                    <select name = "department">
+                        <option value = "Finance">Finance</option>
+                        <option value = "Repair">Repair</option>
+                        <option value = "department1">department1</option>
+                        <option value = "department2">department2</option>
+                        <option value = "department3">department3</option>
+                    </select>
+                    <p>Priority</p>
+                    <div class="two-column">
+                        <div>
+                        <input type="radio" id="high" name="priority" value="High">
+                        <label for="high"> High</label>
+                        </div>
+                        <div>
+                        <input type="radio" id="medium" name="priority" value="Medium">
+                        <label for="medium">Medium</label>
+                        </div>
+                        <div>
+                        <input type="radio" id="low" name="priority" value="Low">
+                        <label for="low">Low</label>
+                        </div>
+                    </div>
+                    <label for="New Ticket"><b>Description</b></label>
+                    <textarea id = "answer" name = "answer" required autofocus></textarea>
+                <button type="button" class = "button_sub"><i class="far fa-paper-plane-top"></i> Submit ticket!</button>
+            </form>
+        </div>
+    </body> 
+    <script>
+                document.getElementById("button").addEventListener("click", function(){
+            document.querySelector(".popup").style.display = "flex";
+        })
+
+        document.querySelector(".close").addEventListener("click",function(){
+            document.querySelector(".popup").style.display = "none";
+        })
+
+        function openPopup(event) {
+            event.preventDefault(); // Prevent the default behavior of the link
+
+            // Display the popup
+            document.querySelector(".popup").style.display = "flex";
+        }
+
+    </script>
+
+</html>
