@@ -2,38 +2,48 @@
      declare(strict_types = 1); 
 
      class User{
-
+        
+        public int $id;
         public string $email;
         public string $name;
 
         public string $username;
 
-        public function __construct(string $email, string $name, string $username){
+        public function __construct(int $id, string $email, string $name, string $username){
             
+            $this->id = $id;
             $this->email = $email;
             $this->name = $name;
             $this->username = $username;
         }
 
+        public function getEmail(){
+            return $this->email;
+        }
         public function getNumberTickets(PDO $db, string $status) : int{
-            $stmt = $db->prepare('SELECT count(emailClient)
+            $stmt = $db->prepare('SELECT count(idClient)
               FROM tickets
-              WHERE emailClient = ? AND status = ?');
-              $stmt->execute(array(strtolower($this->email), $status));
+              WHERE idClient = ? AND status = ?');
+              $stmt->execute(array($this->id, $status));
               $count = $stmt->fetchColumn();
               return intval($count);
+        }
+
+        public function getID(){
+            return $this->id;
         }
         
         
         static function getUser(PDO $db, String $email, String $password) : ?User {
             $stmt = $db->prepare('
-              SELECT email, name, username
+              SELECT idUser, email, name, username
               FROM users
               WHERE lower(email) = ? AND password = ?');
               $stmt->execute(array(strtolower($email), sha1($password)));
 
             if ($user = $stmt->fetch()){
                 return new User(
+                $user['idUser'],
                 $user['email'],
                 $user['name'],
                 $user['username'],
@@ -44,50 +54,72 @@
 
 
 
-        static function getUserWithEmail(PDO $db, string $email) : ?User {
+        static function getUserWithID(PDO $db, int $id) : ?User {
             $stmt = $db->prepare('
-                SELECT u.email, u.name, u.username
-                FROM users u JOIN admins a ON u.email = a.email
-                WHERE lower(u.email) = ?');
-            $stmt->execute(array(strtolower($email)));
+                SELECT u.idUser, u.email, u.name, u.username
+                FROM users u JOIN admins a ON u.idUser = a.idAdmin
+                WHERE u.idUser = ?');
+            $stmt->execute(array($id));
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($row !== false) {
-                return new Admin($row['email'], $row['name'], $row['username']);
+                return new Admin($row['idUser'], $row['email'], $row['name'], $row['username']);
             }
         
             $stmt = $db->prepare('
-                SELECT u.email, u.name, u.username
-                FROM users u JOIN agents a ON u.email = a.email
-                WHERE lower(u.email) = ?');
-            $stmt->execute(array(strtolower($email)));
+                SELECT u.idUser, u.email, u.name, u.username
+                FROM users u JOIN agents a ON u.idUser = a.idAgent
+                WHERE u.idUser = ?');
+            $stmt->execute(array($id));;
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($row !== false) {
-                return new Agent($row['email'], $row['name'], $row['username']);
+                return new Agent($row['idUser'], $row['email'], $row['name'], $row['username']);
             }
         
             $stmt = $db->prepare('
-                SELECT email, name, username
+                SELECT idUser, email, name, username
                 FROM users
-                WHERE lower(email) = ?');
-            $stmt->execute(array(strtolower($email)));
+                WHERE idUser = ?');
+            $stmt->execute(array($id));
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($row !== false) {
-                return new Client($row['email'], $row['name'], $row['username']);
+                return new Client($row['idUser'],$row['email'], $row['name'], $row['username']);
             }
         
             return null;
         }
         
         
+
+        function updateUser(PDO $db, $username, $name, $password, $email){
+            $stmt = $db->prepare("
+                UPDATE USERS
+                SET name = :name, password = :password, email = :newEmail, username = :username
+                WHERE email = :oldEmail
+            ");
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':newEmail', $email);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':oldEmail', $this->email);
+            $stmt->execute();
+        }
         
         static function addUser(PDO $db, $username, $name, $password, $email){
-          $stmt = $db->prepare(
-              "INSERT INTO USERS VALUES (\"$email\", \"$name\", \"$username\", \"$password\")"
-          );
-          $stmt->execute();
+
+            $stmt = $db->prepare(
+                "INSERT INTO Users (email, name, username, password)
+                VALUES (:email, :name, :username, :password)"
+            );
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':password', $password);
+            $stmt->execute();
+
+            $id = $db->lastInsertId();
 
           $stmt = $db->prepare(
-            "INSERT INTO CLIENTS VALUES (\"$email\")"
+            "INSERT INTO CLIENTS VALUES ($id)"
           );
 
           $stmt->execute();

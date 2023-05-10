@@ -6,7 +6,8 @@ PRAGMA foreign_keys = ON;
 drop table if exists users;
 
 create table users(
-    email text primary KEY,
+    idUser integer primary key AUTOINCREMENT,
+    email text,
     name text NOT NULL,
     username text NOT NULL,
     password text NOT NULL
@@ -16,20 +17,20 @@ drop table if exists admins;
 
 create table admins(
 
-    email text primary key references users(email)
+    idAdmin text primary key references users(idUser)
 
 );
 
 drop table if exists clients;
 
 create table clients(
-    email text primary key references users(email)
+    idClient text primary key references users(idUser)
 );
 
 drop table if exists agents;
 
 create table agents(
-    email text primary key references clients(email),
+    idAgent text primary key references clients(idClient),
     idDepartment integer references department(idDepartment)
 );
 
@@ -41,9 +42,10 @@ create table tickets(
     title text NOT NULL,
     description text,
     status text references Status(title),
-    emailAgent text references Agents(email),
-    emailClient text references Clients(email),
-    idDepartment integer references department(idDepartment)
+    idAgent text references Agents(idAgent),
+    idClient text references Clients(idClient),
+    idDepartment integer references department(idDepartment),
+    priority text
 );
 
 drop table if exists department;
@@ -146,4 +148,4 @@ create table AgentChange(
 
 );
 
-INSERT INTO USERS values ('alan.turing@example.com', 'Alan Turing', 'alanturing', 'password');
+INSERT INTO USERS values ('1' ,'alan.turing@example.com', 'Alan Turing', 'alanturing', 'password');

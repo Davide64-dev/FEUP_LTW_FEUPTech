@@ -22,22 +22,26 @@
             <div id="sections">
                 <section class="profile-section" style="display: none;">
                 <h2 style="color: white; font-size: xx-large; text-align:center;">Edit Profile</h2>
-                <form id="editProfileForm" style="display: none;">
+
+
+                <form id="editProfileForm" style="display: none;" action="../actions/action_editProfile.php" method = "post">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" value="<?php echo $user->name; ?>"><br>
+                    <input class="name" type="text" id="name" name="name" value="<?php echo $user->name; ?>"><br>
                     <br>
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" value="<?php echo $user->username; ?>"><br>
+                    <input class="username" type="text" id="username" name="username" value="<?php echo $user->username; ?>"><br>
                     <br>
                     <label for="password">Password</label>
-                    <input name ="password" type="password" id="psw" required autofocus>
+                    <input class="password" name ="password" type="password" id="psw" required autofocus>
                     <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer;"></i>
                     <br>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php echo $user->email; ?>"><br>
+                    <input class="email" type="email" id="email" name="email" value="<?php echo $user->email; ?>"><br>
 
                     <button type="submit">Save</button>
                 </form>
+
+
                 </section>
                 <section class="ticket-section">
                     <?php
@@ -81,7 +85,7 @@
             </div>
                 <div class ="popup" id ="popup">
                     <form action="../actions/action_addTicket.php" method = "post"class="popup-content ">
-                        <input class="email" placeholder="email" name="email" type = "hidden" value="<?php echo $session->getEmail(); ?>">
+                        <input class="email" placeholder="email" name="email" type = "hidden" value="<?php echo $user->getEmail(); ?>">
 
                         <img src="../images/close.png" alt ="Close" class="close">
                             <p class="write">Write your ticket here</p><br>
@@ -98,7 +102,7 @@
                                 <option value = "department3">department3</option>
                             </select>
                             <p>Priority</p>
-                            <div class="two-column">
+                            <div class="two-column" class = "priority">
                                 <div>
                                 <input type="radio" id="high" name="priority" value="High">
                                 <label for="high"> High</label>
@@ -108,7 +112,7 @@
                                 <label for="medium">Medium</label>
                                 </div>
                                 <div>
-                                <input type="radio" id="low" name="priority" value="Low">
+                                <input type="radio" id="low" name="priority" value="Low" checked>
                                 <label for="low">Low</label>
                                 </div>
                             </div>
@@ -121,7 +125,7 @@
 
     </body>
     <script>
-
+        
         document.getElementById("button").addEventListener("click", function(){
             document.querySelector(".popup").style.display = "flex";
         })
@@ -164,6 +168,8 @@
     }
 });
 
+ 
+/*
 document.getElementById("editProfileForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the form from submitting normally
 
@@ -192,6 +198,8 @@ document.getElementById("editProfileForm").addEventListener("submit", function(e
     });
 });
 
+*/
+
 const togglePassword = document.querySelector('#togglePassword');
       const password = document.querySelector('#psw');
     
@@ -202,6 +210,7 @@ const togglePassword = document.querySelector('#togglePassword');
         // toggle the eye slash icon
         this.classList.toggle('fa-eye');
     });
+    
     </script>
 
 </html>

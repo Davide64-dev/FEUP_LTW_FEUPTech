@@ -10,7 +10,7 @@
     $db = getDatabaseConnection();
     
     if (!$session->isLoggedIn()) die(header('Location: /'));
-    $user = User::getUserWithEmail($db, $session->getEmail());
+    $user = User::getUserWithId($db, $session->getID());
 
     $assigned = $user->getNumberTickets($db, "Assigned");
     $closed = $user->getNumberTickets($db, "Closed");

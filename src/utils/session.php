@@ -9,19 +9,19 @@ class Session{
       }
     
       public function isLoggedIn() : bool {
-        return isset($_SESSION['email']);    
+        return isset($_SESSION['id']);    
       }
 
       public function logout() {
         session_destroy();
       }
   
-      public function getEmail() : ?string {
-        return isset($_SESSION['email']) ? $_SESSION['email'] : null;    
+      public function getID() : ?int {
+        return isset($_SESSION['id']) ? $_SESSION['id'] : null;    
       }
 
-      public function setEmail(String $email){
-        $_SESSION['email'] = $email;
+      public function setID(int $id){
+        $_SESSION['id'] = $id;
       }
 
       public function setName(String $name){

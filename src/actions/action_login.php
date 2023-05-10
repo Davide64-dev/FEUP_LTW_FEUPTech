@@ -8,7 +8,7 @@
     $user = User::getUser($db, $_POST['email'], $_POST['password']);
 
     if ($user) {
-        $session->setEmail($user->email);
+        $session->setID($user->id);
         $session->setName($user->name);
         $session->addMessage('success', 'Login successful!');
       } else {

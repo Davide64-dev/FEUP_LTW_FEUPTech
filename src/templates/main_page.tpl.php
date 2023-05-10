@@ -1,4 +1,4 @@
-<?php function drawMainHeader(Session $session, User $user) { ?>
+<?php function drawMainHeader(Session $session) { ?>
 
 <!DOCTYPE html>
 <html lang = "en-US">
