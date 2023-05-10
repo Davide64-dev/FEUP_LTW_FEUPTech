@@ -8,24 +8,45 @@
         public string $priority;
         public string $description;
 
-        public function __construct(int $idTicket, string $title, string $description, string $priority = "Low"){
+        public string $department;
+
+        public function __construct(int $idTicket, string $title, 
+          string $description, string $department, string $priority = "Low"){
             
             $this->idTicket = $idTicket;
             $this->title = $title;
             $this->description = $description;
+            $this->department = $department;
             $this->priority = $priority;
         }
+
+        public function getTitle(){
+            return $this->title;
+        }
+
+        public function getStatus(){
+            return $this->description;
+        }
+
+        public function getPriority(){
+            return $this->priority;
+        }
+
+        public function getDepartment(){
+            return $this->department;
+        }
         
-        static function addTicket(PDO $db, $title, $description, $user, $priority = "Low"){
+        static function addTicket(PDO $db, $title, $description, $user, $department ,$priority = "Low"){
             $stmt = $db->prepare(
-                "INSERT INTO TICKETS (title, description, status, idAgent, idClient, idDepartment, priority)
-                VALUES (:title, :description, 'Opened', NULL, :idClient, NULL, :priority)"
+                "INSERT INTO TICKETS (title, description, status, idAgent, idClient, department, priority)
+                VALUES (:title, :description, 'Opened', NULL, :idClient, :department, :priority)"
             );
 
             $id = $user->getID();
             $stmt->bindParam(':title', $title);
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':idClient', $id);
+            $stmt->bindParam(':department', $department);
             $stmt->bindParam(':priority', $priority);
             $stmt->execute();
         }

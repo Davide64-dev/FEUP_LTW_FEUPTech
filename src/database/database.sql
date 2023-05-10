@@ -44,7 +44,7 @@ create table tickets(
     status text references Status(title),
     idAgent text references Agents(idAgent),
     idClient text references Clients(idClient),
-    idDepartment integer references department(idDepartment),
+    department text references department(title),
     priority text
 );
 
@@ -147,5 +147,3 @@ create table AgentChange(
     idOldAgent integer references Agent(idAgent)
 
 );
-
-INSERT INTO USERS values ('1' ,'alan.turing@example.com', 'Alan Turing', 'alanturing', 'password');

@@ -29,6 +29,29 @@
               return intval($count);
         }
 
+        public function getTickets(PDO $db, string $status): array{
+            $stmt = $db->prepare('SELECT idTicket, title, description, department, priority FROM tickets WHERE idClient = ? AND status = ?');
+            $stmt->execute([$this->id, $status]);
+            $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $tickets = [];
+            
+            foreach ($ticketRows as $row) {
+                $ticket = new Ticket(
+                    $row['idTicket'],
+                    $row['title'],
+                    $row['description'],
+                    $row['department'],
+                    $row['priority']
+                );
+                
+                array_push($tickets, $ticket);
+            }
+            
+            return $tickets;
+        }
+
+
         public function getID(){
             return $this->id;
         }
@@ -124,14 +147,6 @@
 
           $stmt->execute();
       }
-
-        function getTickets(PDO $db){
-            $stmt = $db->prepare('
-                SELECT email, name, username
-                FROM users
-                WHERE lower(email) = ?');
-            $stmt->execute(array(strtolower($this->email)));
-        } 
         
      }
 

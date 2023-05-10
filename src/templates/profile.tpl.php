@@ -56,7 +56,7 @@
                     }
                     ?>
 
-                    <a href="../html_not_used/tickets.html">Status</a>
+                    <a href="../pages/tickets.php">Status</a>
                     <div id ="text">
                         <p style = "font-weight: 600;">Open</p>
                         <p style = "font-weight: 600;">Assigned</p>
