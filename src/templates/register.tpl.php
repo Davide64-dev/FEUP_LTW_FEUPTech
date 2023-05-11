@@ -41,7 +41,7 @@
                             <i class="fas fa-pen" style="margin-left: -40px;"></i>
 
                             <label for="password"><b>Password</b></label>
-                            <input type="password" placeholder="password" id="password" name = "password" required autofocus>
+                            <input type="password" placeholder="password" id="psw" name = "password" required autofocus>
                             <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer;"></i>
 
 

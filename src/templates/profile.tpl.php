@@ -33,7 +33,7 @@
                     <br>
                     <label for="password">Password</label>
                     <input class="password" name ="password" type="password" id="psw" required autofocus>
-                    <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer;"></i>
+                    <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer; color: black;"></i>
                     <br>
                     <label for="email">Email</label>
                     <input class="email" type="email" id="email" name="email" value="<?php echo $user->email; ?>"><br>

@@ -42,7 +42,7 @@
                             <input name ="password" type="password" placeholder="Enter Password" id="psw" required autofocus>
                             <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer;"></i>
                                 
-                            <button type="submit"><a style="text-decoration: none; color: #f1f1f1;" href="profile.html">Login</a></button>
+                            <button type="submit"><a style="text-decoration: none; color: #f1f1f1;" href="../pages/profile.php">Login</a></button>
                             <label>
                             <input type="checkbox" checked="checked" name="remember" style="background-color: #5A4ECE; cursor: pointer;" > Remember me
                             </label>

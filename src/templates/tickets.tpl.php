@@ -99,7 +99,19 @@
         <p class="ticket-assignment"><?php echo $ticket->getStatus() ?></p>
         <div class="ticket-container">
         <div class="ticket-priority">
-            <span class="high"><?php echo $ticket->getPriority() ?></span>
+         <?php 
+          $priority = $ticket->getPriority();
+
+          if ($priority === 'High') {
+                    echo '<span class="high">' . $priority . '</span>';
+                } elseif ($priority === 'Medium') {
+                    echo '<span class="medium">' . $priority . '</span>';
+                } elseif ($priority === 'Low') {
+                    echo '<span class="low">' . $priority . '</span>';
+                } else {
+                    echo '<span>' . $priority . '</span>';
+                }
+                ?>
         </div>
         <div class="ticket-hashtag">
             <span>#ticket123</span>
