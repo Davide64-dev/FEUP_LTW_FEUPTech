@@ -35,7 +35,40 @@
         public function getDepartment(){
             return $this->department;
         }
+
+        public function changeDepartment($db, $newDepartment){
+                $stmt = $db->prepare("
+                    UPDATE Tickets
+                    SET department = :department
+                    WHERE idTicket = :idTicket
+                ");
+                $stmt->bindParam(':department', $newDepartment);
+                $stmt->bindParam(':oldEmail', $this->idTicket);
+                $stmt->execute();
+        }
         
+        function assignTicket(PDO $db, $agent){
+            $stmt = $db->prepare("
+                    UPDATE Tickets
+                    SET idAgent = :idAgent, status = \"Assigned\"
+                    WHERE idTicket = :idTicket
+            ");
+            $stmt->bindParam(':idAgent', $agent->id);
+            $stmt->bindParam(':idTicket', $this->idTicket);
+            $stmt->execute();
+        }
+
+        function updateStatus(PDO $db, $status){
+            $stmt = $db->prepare("
+                    UPDATE Tickets
+                    SET status = :status
+                    WHERE idTicket = :idTicket
+            ");
+            $stmt->bindParam(':status', $status);
+            $stmt->bindParam(':idTicket', $this->idTicket);
+            $stmt->execute();
+        }
+
         static function addTicket(PDO $db, $title, $description, $user, $department ,$priority = "Low"){
             $stmt = $db->prepare(
                 "INSERT INTO TICKETS (title, description, status, idAgent, idClient, department, priority)

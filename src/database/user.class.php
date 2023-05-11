@@ -109,7 +109,7 @@
             }
         
             return null;
-        }
+            }
         
         
 
@@ -117,13 +117,13 @@
             $stmt = $db->prepare("
                 UPDATE USERS
                 SET name = :name, password = :password, email = :newEmail, username = :username
-                WHERE email = :oldEmail
+                WHERE idUser = :oldEmail
             ");
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':password', $password);
             $stmt->bindParam(':newEmail', $email);
             $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':oldEmail', $this->email);
+            $stmt->bindParam(':oldEmail', $this->id);
             $stmt->execute();
         }
         
@@ -156,10 +156,61 @@
 
      class Client extends User{
         
+        function upgradeToAgent($db){
+            $stmt = $db->prepare(
+                "INSERT INTO Agents VALUES ($this->id)"
+            );
+            $stmt->execute();
+        }
+
     }
 
     class Agent extends Client{
 
+        function getTicketsWithDepartment($db, $department){
+            $stmt = $db->prepare('SELECT idTicket, title, description, department, priority FROM tickets WHERE idAdmin = ? AND department = ?');
+            $stmt->execute([$this->id, $department]);
+            $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $tickets = [];
+            
+            foreach ($ticketRows as $row) {
+                $ticket = new Ticket(
+                    $row['idTicket'],
+                    $row['title'],
+                    $row['description'],
+                    $row['department'],
+                    $row['priority']
+                );
+                
+                array_push($tickets, $ticket);
+            }
+            
+            return $tickets;
+        }
+
+        function upgradeToAdmin($db){
+            $stmt = $db->prepare(
+                "DELETE FROM Agents WHERE id = $this->id"
+            );
+            $stmt->execute();
+            $stmt = $db->prepare(
+                "DELETE FROM Clients WHERE id = $this->id"
+            );
+            $stmt->execute();
+            $stmt = $db->prepare(
+                "INSERT INTO Admins VALUES ($this->id)"
+            );
+            $stmt->execute();
+        }
+
+        function addDepartment($db, $department){
+            $stmt = $db->prepare(
+                "Insert into departmentUser VALUES ($department, $this->id)"
+            );
+
+            $stmt->execute();
+        }
     }
 
 ?>

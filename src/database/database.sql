@@ -30,8 +30,7 @@ create table clients(
 drop table if exists agents;
 
 create table agents(
-    idAgent text primary key references clients(idClient),
-    idDepartment integer references department(idDepartment)
+    idAgent text primary key references clients(idClient)
 );
 
 drop table if exists tickets;
@@ -53,6 +52,15 @@ drop table if exists department;
 create table department(
     title text primary key,
     description text
+);
+
+drop table if exists departmentUser;
+
+create table departmentUser(
+    idDepartment integer references department(idDepartment),
+    idAgent text references Agents(idAgent),
+
+    CONSTRAINT dapartmentUser_key primary key (idDepartment, idAgent)
 );
 
 drop table if exists hashtag;
