@@ -106,6 +106,6 @@ body{
 
   .tab {
     display: grid;
-    grid-template-columns: 13em 88em;
+    grid-template-columns: 13em 70em;
     column-gap: 2em;
   }
