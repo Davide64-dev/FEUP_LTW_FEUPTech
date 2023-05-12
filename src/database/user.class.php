@@ -167,8 +167,25 @@
 
     class Agent extends Client{
 
+        function getDepartments($db){
+            $stmt = $db->prepare(
+            'SELECT idDepartment
+            FROM departmentUser
+            WHERE idAgent = ?'
+            );
+            $stmt->execute([$this->id]);
+            $departmentsRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $departments = [];
+
+            foreach ($departmentsRows as $row) {
+                array_push($departments, $row['idDepartment']);
+            }
+
+            return $departments;
+        }
+
         function getTicketsWithDepartment($db, $department){
-            $stmt = $db->prepare('SELECT idTicket, title, description, department, priority FROM tickets WHERE idAdmin = ? AND department = ?');
+            $stmt = $db->prepare('SELECT idTicket, title, description, department, priority FROM tickets WHERE idAgent = ? AND department = ?');
             $stmt->execute([$this->id, $department]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -187,6 +204,11 @@
             }
             
             return $tickets;
+        }
+
+        function getNumberTicketsByDepartment($db, $department){
+            $tickets = $this->getTicketsWithDepartment($db, $department);
+            return count($tickets);
         }
 
         function upgradeToAdmin($db){

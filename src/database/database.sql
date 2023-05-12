@@ -58,7 +58,7 @@ drop table if exists departmentUser;
 
 create table departmentUser(
     idDepartment integer references department(idDepartment),
-    idAgent text references Agents(idAgent),
+    idAgent integer references Agents(idAgent),
 
     CONSTRAINT dapartmentUser_key primary key (idDepartment, idAgent)
 );
@@ -155,3 +155,19 @@ create table AgentChange(
     idOldAgent integer references Agent(idAgent)
 
 );
+
+
+INSERT INTO department (title, description)
+VALUES ('Marketing', 'Responsible for promoting the company and its products.');
+
+INSERT INTO department (title, description)
+VALUES ('Finance', 'Handles financial operations and budgeting.');
+
+INSERT INTO department (title, description)
+VALUES ('Human Resources', 'Manages employee relations and recruitment.');
+
+INSERT INTO department (title, description)
+VALUES ('Operations', 'Oversees day-to-day business activities.');
+
+INSERT INTO department (title, description)
+VALUES ('IT', 'Manages technology infrastructure and systems.');

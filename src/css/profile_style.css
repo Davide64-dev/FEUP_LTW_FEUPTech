@@ -151,6 +151,17 @@ img{
   bottom: 5em;
 }
 
+#section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+  position: relative;
+  bottom: 5em;
+}
+
+
 
 .ticket-section,
 .profile-section {
@@ -162,6 +173,7 @@ img{
   flex-grow: 1;
   max-width: 44em;
   color: #FFFFFF;
+  margin-bottom: 1em;
 }
 
 .ticket-section{
@@ -170,6 +182,9 @@ img{
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 0em 6em 6em 0em;
 }
+
+
+
 
 .profile-section {
   width: 60%;

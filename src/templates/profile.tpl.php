@@ -7,7 +7,7 @@
                     <i class="fa-solid fa-plus fa-bounce"></i> 
                     Create new Ticket
                 </button>
-            
+
             </section>
         </nav>
         <main class="mainprofile">
@@ -79,7 +79,14 @@
 
                     ?>
                     </span>
-                    <button onclick="moreInfo()" id="btnInfo" type="button">More info</button>
+                    <?php
+                        if($user instanceof Agent){
+                            echo '<a href="../pages/departments.php"><button onclick="moreInfo()" id="btnInfo" type="button">More info</button></a>';
+                        }
+                        else{
+                            echo "<button onclick=\"moreInfo()\" id=\"btnInfo\" type=\"button\">More info</button>"; 
+                        }
+                    ?>
                 </section>
                     
             </div>
