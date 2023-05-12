@@ -7,9 +7,9 @@ drop table if exists users;
 
 create table users(
     idUser integer primary key AUTOINCREMENT,
-    email text,
+    email text UNIQUE,
     name text NOT NULL,
-    username text NOT NULL,
+    username text UNIQUE NOT NULL,
     password text NOT NULL
 );
 
