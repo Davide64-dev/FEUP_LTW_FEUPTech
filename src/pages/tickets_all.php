@@ -9,8 +9,11 @@
     $db = getDatabaseConnection();
     $user = User::getUserWithId($db, $session->getID());
 
-    $tickets = "";
+    $tickets = $user->getTicketsWithDepartment($db, "Finance");
+    $tickets1 = $user->getTicketsWithDepartmentNotAssigned($db, "Finance");
 
+
+    $tickets = array_merge($tickets, $tickets1);
     drawTicketsHeader($session);
     drawTicketsAll($tickets);
 ?>

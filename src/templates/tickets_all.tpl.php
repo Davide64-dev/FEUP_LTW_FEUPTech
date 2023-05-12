@@ -24,42 +24,10 @@
                 
             <section class="table-container">
                 <table id="filter">
-                    <tr>
-                        <th>Title</th>
-                        <th>Priority</th>
-                        <th>Date</th>
-                        <th>Agent</th>
-                        <th>Status</th>
-                        <th>Hashtag</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>Task 1</td>
-                        <td>High</td>
-                        <td>2023-05-12</td>
-                        <td><i class="fa-solid fa-plus"></i></td>
-                        <td>In Progress</td>
-                        <td>#important</td>
-                        <td><i class="fa-solid fa-pencil"></i></td>
-                    </tr>
-                     <tr>
-                        <td>Task 1</td>
-                        <td>Low</td>
-                        <td>2023-05-12</td>
-                        <td><i class="fa-solid fa-plus"></i></td>
-                        <td>In Progress</td>
-                        <td>#important</td>
-                        <td><i class="fa-solid fa-pencil"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Task 2</td>
-                        <td>Medium</td>
-                        <td>2023-05-15</td>
-                        <td><i class="fa-solid fa-plus"></i></td>
-                        <td>Completed</td>
-                        <td>#urgent</td>
-                        <td><i class="fa-solid fa-pencil"></i></td>
-                    </tr>
+                    <?php
+                        foreach($tickets as $ticket)
+                            drawTicketAll($ticket);
+                    ?>
                     <!-- Add more rows as needed -->
                 </table>
             </section>    
@@ -118,7 +86,26 @@
     </body>
 </html>    
 
+<?php } ?>
 
-
-
+<?php function drawTicketAll($ticket) { ?>
+    <tr>
+        <td><?php echo $ticket->getTitle() ?></td>
+        <td><?php echo $ticket->getPriority() ?></td>
+        <td>2023-05-15</td>
+        <td>
+            <?php
+                if ($ticket->status == "Opened"){
+                    echo "<i class=\"fa-solid fa-plus\"></i>";
+                }
+                else{
+                    echo $ticket->status;
+                    echo $ticket->getidAgent();
+                }
+            ?>
+        </td>
+        <td><?php echo $ticket->status ?></td>
+        <td>#urgent</td>
+        <td><i class="fa-solid fa-pencil"></i></td>
+    </tr>
 <?php } ?>

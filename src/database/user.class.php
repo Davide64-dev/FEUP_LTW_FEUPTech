@@ -45,8 +45,8 @@
                 $ticket = new Ticket(
                     $row['idTicket'],
                     $row['title'],
-                    $row['status'],
                     $row['description'],
+                    $row['status'],
                     $row['department'],
                     $row['priority']
                 );
@@ -191,7 +191,7 @@
         }
 
         function getTicketsWithDepartment($db, $department){
-            $stmt = $db->prepare('SELECT idTicket, title, description, department, priority FROM tickets WHERE idAgent = ? AND department = ?');
+            $stmt = $db->prepare('SELECT idTicket, title, description, department, priority FROM tickets WHERE (idAgent = ?) AND department = ?');
             $stmt->execute([$this->id, $department]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -201,6 +201,30 @@
                 $ticket = new Ticket(
                     $row['idTicket'],
                     $row['title'],
+                    $row['status'],
+                    $row['description'],
+                    $row['department'],
+                    $row['priority']
+                );
+                
+                array_push($tickets, $ticket);
+            }
+            
+            return $tickets;
+        }
+
+        function getTicketsWithDepartmentNotAssigned($db, $department){
+            $stmt = $db->prepare('SELECT idTicket, title, status,description, department, priority FROM tickets WHERE idAgent is null AND department = ?');
+            $stmt->execute([$department]);
+            $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $tickets = [];
+            
+            foreach ($ticketRows as $row) {
+                $ticket = new Ticket(
+                    $row['idTicket'],
+                    $row['title'],
+                    $row['status'],
                     $row['description'],
                     $row['department'],
                     $row['priority']
