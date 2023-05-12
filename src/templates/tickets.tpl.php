@@ -96,22 +96,33 @@
     <section class="ticket">
         <a href="profile.html" class="ticket-title" onclick="openPopup(event)"><?php echo $ticket->getTitle() ?></a>
         <p class="ticket-department"><?php echo $ticket->getDepartment() ?></p>
-        <p class="ticket-assignment"><?php echo $ticket->getStatus() ?></p>
+        <p class="ticket-assignment">
+        <?php 
+         $status = $ticket->getStatus();
+  
+            if ($status === 'Opened') {
+              echo "<p>To be assigned</p>";
+            } elseif ($status === 'Assigned') {
+              $nameAgent = $ticket->getidAgent()->getName();
+              echo "<p> Assigned by $nameAgent <p>";
+            } elseif ($status === 'Closed') {
+              $nameAgent = $ticket->getidAgent()->getName();
+              echo "<p> Assigned by $nameAgent <p>";
+            } 
+        ?></p>
         <div class="ticket-container">
         <div class="ticket-priority">
          <?php 
-          $priority = $ticket->getPriority();
+            $priority = $ticket->getPriority();
 
-          if ($priority === 'High') {
-                    echo '<span class="high">' . $priority . '</span>';
-                } elseif ($priority === 'Medium') {
-                    echo '<span class="medium">' . $priority . '</span>';
-                } elseif ($priority === 'Low') {
-                    echo '<span class="low">' . $priority . '</span>';
-                } else {
-                    echo '<span>' . $priority . '</span>';
-                }
-                ?>
+            if ($priority === 'High') {
+                      echo '<span class="high">' . $priority . '</span>';
+                  } elseif ($priority === 'Medium') {
+                      echo '<span class="medium">' . $priority . '</span>';
+                  } elseif ($priority === 'Low') {
+                      echo '<span class="low">' . $priority . '</span>';
+                  } 
+          ?>
         </div>
         <div class="ticket-hashtag">
             <span>#ticket123</span>

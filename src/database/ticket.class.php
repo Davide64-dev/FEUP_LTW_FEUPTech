@@ -4,17 +4,19 @@
      class Ticket{
         public int $idTicket;
         public string $title;
-        
+        public string $status;
         public string $priority;
         public string $description;
 
+        public int $idAgent = -1;
         public string $department;
 
-        public function __construct(int $idTicket, string $title, 
+        public function __construct(int $idTicket, string $title, string $status,
           string $description, string $department, string $priority = "Low"){
             
             $this->idTicket = $idTicket;
             $this->title = $title;
+            $this->status = $status;
             $this->description = $description;
             $this->department = $department;
             $this->priority = $priority;
@@ -23,11 +25,18 @@
         public function getTitle(){
             return $this->title;
         }
-
-        public function getStatus(){
-            return $this->description;
+        public function getidAgent(){
+            return $this->idAgent;
         }
 
+        public function getStatus(){
+            return $this->status;
+        }
+
+        public function getDescription(){
+            return $this->description;
+        }
+        
         public function getPriority(){
             return $this->priority;
         }
@@ -48,6 +57,7 @@
         }
         
         function assignTicket(PDO $db, $agent){
+            $this->idAgent = $agent->id;
             $stmt = $db->prepare("
                     UPDATE Tickets
                     SET idAgent = :idAgent, status = \"Assigned\"

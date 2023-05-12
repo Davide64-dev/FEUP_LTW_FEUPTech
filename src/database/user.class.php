@@ -20,6 +20,11 @@
         public function getEmail(){
             return $this->email;
         }
+
+        public function getName(){
+            return $this->name;
+        }
+
         public function getNumberTickets(PDO $db, string $status) : int{
             $stmt = $db->prepare('SELECT count(idClient)
               FROM tickets
@@ -30,7 +35,7 @@
         }
 
         public function getTickets(PDO $db, string $status): array{
-            $stmt = $db->prepare('SELECT idTicket, title, description, department, priority FROM tickets WHERE idClient = ? AND status = ?');
+            $stmt = $db->prepare('SELECT idTicket, title, status, description, department, priority FROM tickets WHERE idClient = ? AND status = ?');
             $stmt->execute([$this->id, $status]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -40,6 +45,7 @@
                 $ticket = new Ticket(
                     $row['idTicket'],
                     $row['title'],
+                    $row['status'],
                     $row['description'],
                     $row['department'],
                     $row['priority']
