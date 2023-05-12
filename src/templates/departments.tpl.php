@@ -24,7 +24,7 @@
                     
     <section class="profile-section">
 
-        <a href="../pages/tickets.php"><?php echo $department ?></a>
+        <a href="../html_not_used/tickets_all.html"><?php echo $department ?></a>
             <div id ="text">
                 <p style = "font-weight: 600;">Nr. Tickets</p>
             </div>
