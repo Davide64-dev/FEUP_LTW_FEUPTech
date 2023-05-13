@@ -1,48 +1,98 @@
 <!DOCTYPE html>
+    <html lang = "en-Us">
 
-<html>
     <head>
-        <title>Title of the Website - Inquiries</title>
+        <title>FeupTech</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width = device-width, initial-scale=1.0">
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/layout.css" rel="stylesheet">
-        <link href="css/responsive.css" rel="stylesheet">
-        <link href="css/profile_style.css" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link href="./css/navLogin_style.css" rel="stylesheet">
+        <link href="./css/inquires_style.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
         <script src="https://kit.fontawesome.com/38229b6c34.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
+        
         <nav>
             <ul class = "navigation">
-                <li class = "nav_elem"><a href = "contacts.html">Contacts</a></li>
-                <li class = "nav_elem"><a href = "about.html">About Us</a></li>
-                <li class = "nav_elem"><a href = "faq.html">FAQ</a></li>
-                <li class = "nav_elem"><a href = "inquiries.html">Inquiries</a></li>
+                <li class = "nav_elem"><a href = "inquiries.html"><i class="fa-solid fa-list-check"></i> Inquiries</a></li>
+                <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
+                <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>
+                <li class = "nav_elem"><a href = "../pages/faq.php"><i class="fa-solid fa-question"></i> FAQ</a></li>
                 <li class = "nav_elem"><a href = "profile.html"><i class="fa-solid fa-user"></i></a></li>
             </ul>
         </nav>
+        <main class = inquiries>
+            <section class="clients">
+                <h3>Inquiries</h3>
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Clients..">
+                    <i style="position: relative; left: 4%; top: -7%" class="fa fa-magnifying-glass"></i>
+                <ul id="myUL">
+                    <li>
+                        <a href="#">Adele</a>
+                        <p>I needed some help with...</p>
+                    </li>
+                    <li>
+                        <a href="#">Sarah</a>
+                        <p>I needed some help with...</p>
+                    </li>
 
-        <main>
-            <h1>Tickets</h1>
-
-            <section>
-
-                <section>
-                    Open
+                </ul>
+            </section>
+            <section class="chat">
+                <section class="container">
+                    <h2>Client Chat</h2>
+                    <div id="message-container"></div>
                 </section>
-
-                <section>
-                    Assigned
-                </section>
-
-                <section>
-                    Closed
-                </section>
-
-
+                <input type="text" id="chat-input" placeholder="Write your message" title="Type in a message">
             </section>
         </main>
+        <script>
+            function myFunction() {
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myUL");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+
+            const chatInput = document.getElementById("chat-input");
+            const messageContainer = document.getElementById("message-container");
+
+            chatInput.addEventListener("keyup", function (event) {
+                if (event.keyCode === 13) {
+                    const message = chatInput.value.trim();
+                    if (message !== "") {
+                        addMessage(message, true);
+                        chatInput.value = "";
+                    }
+                }
+            });
+
+            function addMessage(message, isUser) {
+                const messageElement = document.createElement("div");
+                messageElement.classList.add("message");
+                messageElement.textContent = message;
+
+                if (isUser) {
+                    messageElement.classList.add("user-message");
+                } else {
+                    messageElement.classList.add("received-message");
+                }
+
+                messageContainer.appendChild(messageElement);
+                messageContainer.scrollTop = messageContainer.scrollHeight;
+            }
+            </script>
+            
     </body>
 </html>

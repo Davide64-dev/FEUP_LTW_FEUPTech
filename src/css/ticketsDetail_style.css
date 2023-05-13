@@ -9,6 +9,7 @@ body{
     max-width: 1150px;
     margin-left: 7em;
     margin-top: 2em;
+    margin-right: 0;
     background-color: white;
     border-radius: 10px;
     display: flex;
