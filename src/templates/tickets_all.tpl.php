@@ -24,6 +24,15 @@
                 
             <section class="table-container">
                 <table id="filter">
+                <tr>
+                        <th>Title</th>
+                        <th>Priority</th>
+                        <th>Date</th>
+                        <th>Agent</th>
+                        <th>Status</th>
+                        <th>Hashtag</th>
+                        <th></th>
+                    </tr>
                     <?php
                         foreach($tickets as $ticket)
                             drawTicketAll($ticket);
