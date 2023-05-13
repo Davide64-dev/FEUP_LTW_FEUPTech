@@ -33,6 +33,7 @@
             return $departments;
         }
 
+
         public function getEmail(){
             return $this->email;
         }
@@ -72,6 +73,24 @@
             }
             
             return $tickets;
+        }
+
+        public function getTicketWithID($db, $id){
+            $stmt = $db->prepare('SELECT idTicket, date, title, status, description, department, priority FROM tickets WHERE idTicket = ?');
+            $stmt->execute([$id]);
+            $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $row = $ticketRows[0];
+            $ticket = new Ticket(
+                $row['idTicket'],
+                $row['title'],
+                $row['status'],
+                $row['description'],
+                $row['department'],
+                $row['priority'],
+                $row['date']
+            );
+            return $ticket;
         }
 
 

@@ -9,8 +9,8 @@
     $db = getDatabaseConnection();
     $user = User::getUserWithId($db, $session->getID());
 
-    $tickets = $user->getTickets($db, "Opened");
+    $ticket = $user->getTicketWithID($db, $_GET['ticket']);
 
     drawTicketsHeader($session, "<link href=\"../css/ticketsDetail_style.css\" rel=\"stylesheet\">");
-    drawTicketDetail($tickets[0]);
+    drawTicketDetail($ticket, $user);
 ?>

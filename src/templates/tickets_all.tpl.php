@@ -98,7 +98,7 @@
 
 <?php function drawTicketAll($ticket) { ?>
     <tr>
-        <td><a href="../html_not_used/ticket_detail.html"><?php echo $ticket->getTitle() ?></a></td>
+        <td><a href="../pages/ticket_detail.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><?php echo $ticket->getTitle() ?></a></td>
         <td><?php echo $ticket->getPriority() ?></td>
         <td><?php echo $ticket->date ?></td>
         <td>

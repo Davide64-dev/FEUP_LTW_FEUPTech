@@ -1,4 +1,4 @@
-<?php function drawTicketDetail(Ticket $ticket) { ?>
+<?php function drawTicketDetail(Ticket $ticket, User $user) { ?>
     <h1 class="details">Ticket details</h1>
 
         <main class = "all">
