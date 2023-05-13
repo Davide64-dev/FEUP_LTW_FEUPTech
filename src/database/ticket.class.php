@@ -10,9 +10,10 @@
 
         public int $idAgent = -1;
         public string $department;
+        public string $date;
 
         public function __construct(int $idTicket, string $title, string $status,
-          string $description, string $department, string $priority = "Low"){
+          string $description, string $department, string $priority, string $date){
             
             $this->idTicket = $idTicket;
             $this->title = $title;
@@ -20,6 +21,7 @@
             $this->description = $description;
             $this->department = $department;
             $this->priority = $priority;
+            $this->date = $date;
         }
 
         public function getTitle(){
@@ -81,9 +83,11 @@
 
         static function addTicket(PDO $db, $title, $description, $user, $department ,$priority = "Low"){
             $stmt = $db->prepare(
-                "INSERT INTO TICKETS (title, description, status, idAgent, idClient, department, priority)
-                VALUES (:title, :description, 'Opened', NULL, :idClient, :department, :priority)"
+                "INSERT INTO TICKETS (title, description, status, idAgent, idClient, department, priority, date)
+                VALUES (:title, :description, 'Opened', NULL, :idClient, :department, :priority, :date)"
             );
+            
+            $currentDate = date('Y-m-d');
 
             $id = $user->getID();
             $stmt->bindParam(':title', $title);
@@ -91,6 +95,7 @@
             $stmt->bindParam(':idClient', $id);
             $stmt->bindParam(':department', $department);
             $stmt->bindParam(':priority', $priority);
+            $stmt->bindParam(':date', $currentDate);
             $stmt->execute();
         }
 

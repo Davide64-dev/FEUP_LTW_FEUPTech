@@ -17,6 +17,22 @@
             $this->username = $username;
         }
 
+        function getAllDepartments($db){
+            $stmt = $db->prepare(
+            'SELECT title
+            FROM department');
+
+            $stmt->execute();
+            $departmentsRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $departments = [];
+
+            foreach ($departmentsRows as $row) {
+                array_push($departments, $row['title']);
+            }
+
+            return $departments;
+        }
+
         public function getEmail(){
             return $this->email;
         }
@@ -35,7 +51,7 @@
         }
 
         public function getTickets(PDO $db, string $status): array{
-            $stmt = $db->prepare('SELECT idTicket, title, status, description, department, priority FROM tickets WHERE idClient = ? AND status = ?');
+            $stmt = $db->prepare('SELECT idTicket, date, title, status, description, department, priority FROM tickets WHERE idClient = ? AND status = ?');
             $stmt->execute([$this->id, $status]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -48,7 +64,8 @@
                     $row['description'],
                     $row['status'],
                     $row['department'],
-                    $row['priority']
+                    $row['priority'],
+                    $row['date']
                 );
                 
                 array_push($tickets, $ticket);
@@ -190,6 +207,17 @@
             return $departments;
         }
 
+        function checkDepartment($db, $department){
+            $stmt = $db->prepare('
+                Select idDepartment from departmentuser where idAgent = ? and iddepartment = ?');
+            $stmt->execute([$this->id, $department]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($row == false) {
+                return false;
+            }
+            return true;
+        }
+
         function getTicketsWithDepartment($db, $department){
             $stmt = $db->prepare('SELECT idTicket, title, description, department, priority FROM tickets WHERE (idAgent = ?) AND department = ?');
             $stmt->execute([$this->id, $department]);
@@ -204,7 +232,8 @@
                     $row['status'],
                     $row['description'],
                     $row['department'],
-                    $row['priority']
+                    $row['priority'],
+                    $row['date']
                 );
                 
                 array_push($tickets, $ticket);
@@ -213,8 +242,8 @@
             return $tickets;
         }
 
-        function getTicketsWithDepartmentNotAssigned($db, $department){
-            $stmt = $db->prepare('SELECT idTicket, title, status,description, department, priority FROM tickets WHERE idAgent is null AND department = ?');
+        function getAllTicketsWithDepartment($db, $department){
+            $stmt = $db->prepare('SELECT idTicket, date, status, title, description, department, priority FROM tickets WHERE department = ?');
             $stmt->execute([$department]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -227,7 +256,32 @@
                     $row['status'],
                     $row['description'],
                     $row['department'],
-                    $row['priority']
+                    $row['priority'],
+                    $row['date']
+                );
+                
+                array_push($tickets, $ticket);
+            }
+            
+            return $tickets;
+        }
+
+        function getTicketsWithDepartmentNotAssigned($db, $department){
+            $stmt = $db->prepare('SELECT idTicket, date,title, status,description, department, priority FROM tickets WHERE idAgent is null AND department = ?');
+            $stmt->execute([$department]);
+            $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $tickets = [];
+            
+            foreach ($ticketRows as $row) {
+                $ticket = new Ticket(
+                    $row['idTicket'],
+                    $row['title'],
+                    $row['status'],
+                    $row['description'],
+                    $row['department'],
+                    $row['priority'],
+                    $row['date']
                 );
                 
                 array_push($tickets, $ticket);

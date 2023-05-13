@@ -24,6 +24,15 @@
                 
             <section class="table-container">
                 <table id="filter">
+                    <tr>
+                        <th>Title</th>
+                        <th>Priority</th>
+                        <th>Date</th>
+                        <th>Agent</th>
+                        <th>Status</th>
+                        <th>Hashtag</th>
+                        <th></th>
+                    </tr>
                     <?php
                         foreach($tickets as $ticket)
                             drawTicketAll($ticket);
@@ -92,7 +101,7 @@
     <tr>
         <td><?php echo $ticket->getTitle() ?></td>
         <td><?php echo $ticket->getPriority() ?></td>
-        <td>2023-05-15</td>
+        <td><?php echo $ticket->date ?></td>
         <td>
             <?php
                 if ($ticket->status == "Opened"){
@@ -100,7 +109,6 @@
                 }
                 else{
                     echo $ticket->status;
-                    echo $ticket->getidAgent();
                 }
             ?>
         </td>

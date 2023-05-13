@@ -15,7 +15,8 @@
     $assigned = $user->getNumberTickets($db, "Assigned");
     $closed = $user->getNumberTickets($db, "Closed");
     $opened = $user->getNumberTickets($db, "Opened");
+    $departments = $user->getAllDepartments($db);
 
     drawHeader($session);
-    drawProfile($user, $session, $opened, $assigned, $closed);
+    drawProfile($user, $session, $opened, $assigned, $closed, $departments);
 ?>

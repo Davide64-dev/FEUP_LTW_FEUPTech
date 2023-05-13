@@ -1,4 +1,4 @@
-<?php function drawProfile(User $user, Session $session, $open, $assigned, $closed) { ?>
+<?php function drawProfile(User $user, Session $session, $open, $assigned, $closed, $departments) { ?>
     <section>
                 <h2>Welcome to your profile!</h2>
                 <h3>Here you'll be able to keep track of your tickets and their status</h3>
@@ -102,11 +102,10 @@
 
                             <p>Department</p>
                             <select name = "department">
-                                <option value = "Finance">Finance</option>
-                                <option value = "Repair">Repair</option>
-                                <option value = "department1">department1</option>
-                                <option value = "department2">department2</option>
-                                <option value = "department3">department3</option>
+                                <?php
+                                foreach ($departments as $department)
+                                    echo "<option value =\"$department\">$department</option>";
+                                ?>
                             </select>
                             <p>Priority</p>
                             <div class="two-column" class = "priority">

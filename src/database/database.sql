@@ -44,7 +44,9 @@ create table tickets(
     idAgent text references Agents(idAgent),
     idClient text references Clients(idClient),
     department text references department(title),
-    priority text
+    priority text,
+    hashtag text,
+    date datetime
 );
 
 drop table if exists department;
