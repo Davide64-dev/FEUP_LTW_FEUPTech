@@ -50,3 +50,36 @@ nav h3{
     font-size: medium;
     color: white;
 }
+
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .navigation {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .navigation a {
+      padding: 10px;
+    }
+    
+    nav h2, nav h3 {
+      position: static;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    nav {
+      padding: 20px 0px;
+    }
+    
+    nav h2 {
+      font-size: large;
+      top: 60px;
+    }
+    
+    nav h3 {
+      font-size: small;
+      top: 120px;
+    }
+  }
