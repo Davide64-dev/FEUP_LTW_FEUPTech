@@ -21,12 +21,12 @@
     <?php } ?>
 
 <?php function drawDepartment($department, $user, $db) { ?>
-                    
+    
     <section class="profile-section">
 
     <a href="../pages/tickets_all.php?department=<?php echo urlencode($department) ?>"><?php echo $department ?></a>
             <div id ="text">
-                <p style = "font-weight: 600;">Nr. Tickets</p>
+                <p style = "font-weight: 600;">Tickets Assigned to You</p>
             </div>
 
             <div id="number">
@@ -35,6 +35,5 @@
                     
             <span id="dots"></span>
             <span id="more"></span>
-            <button onclick="moreInfo()" id="btnInfo" type="button">More info</button>
     </section>
 <?php } ?>
