@@ -99,7 +99,7 @@
 
 <?php function drawTicketAll($ticket) { ?>
     <tr>
-        <td><?php echo $ticket->getTitle() ?></td>
+        <td><a href="../html_not_used/ticket_detail.html"><?php echo $ticket->getTitle() ?></a></td>
         <td><?php echo $ticket->getPriority() ?></td>
         <td>2023-05-15</td>
         <td>
