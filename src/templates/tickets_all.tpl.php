@@ -24,7 +24,6 @@
                 
             <section class="table-container">
                 <table id="filter">
-                    <tr>
                         <th>Title</th>
                         <th>Priority</th>
                         <th>Date</th>
@@ -99,7 +98,7 @@
 
 <?php function drawTicketAll($ticket) { ?>
     <tr>
-        <td><?php echo $ticket->getTitle() ?></td>
+        <td><a href="../html_not_used/ticket_detail.html"><?php echo $ticket->getTitle() ?></a></td>
         <td><?php echo $ticket->getPriority() ?></td>
         <td><?php echo $ticket->date ?></td>
         <td>
