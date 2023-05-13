@@ -8,7 +8,7 @@
         public string $priority;
         public string $description;
 
-        public int $idAgent = -1;
+        public int $idAgent;
         public string $department;
         public string $date;
 

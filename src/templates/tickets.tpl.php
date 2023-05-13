@@ -1,4 +1,4 @@
-<?php function drawTicketsHeader($session) { ?>
+<?php function drawTicketsHeader($session, $css = "") { ?>
     <!DOCTYPE html>
     <html lang = "en-Us">
 
@@ -10,6 +10,10 @@
         <link href="../css/tickets_style.css" rel="stylesheet">
         <link href="../css/newTicket.css" rel="stylesheet">
         <link href="../css/tickets_all.css" rel="stylesheet">
+        <?php 
+          echo $css;
+        ?>
+
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
         <script src="https://kit.fontawesome.com/38229b6c34.js" crossorigin="anonymous"></script>
     </head>
