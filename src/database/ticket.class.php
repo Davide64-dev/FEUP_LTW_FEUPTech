@@ -24,27 +24,45 @@
             $this->date = $date;
         }
 
-        public function getTitle(){
-            return $this->title;
-        }
-        public function getidAgent(){
-            return $this->idAgent;
-        }
-
         public function getStatus(){
             return $this->status;
         }
 
-        public function getDescription(){
-            return $this->description;
+        public function getDepartment(){
+            return $this->department;
         }
-        
+        public function getTitle(){
+            return $this->title;
+        }
+
         public function getPriority(){
             return $this->priority;
         }
 
-        public function getDepartment(){
-            return $this->department;
+        public function getInquiries($db){
+            
+            $stmt = $db->prepare("Select * from inquiries where idTicket = ?");
+
+            $stmt->execute([$this->idTicket]);
+
+            $inquiriesRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $inquiries = [];
+
+            foreach ($inquiriesRows as $row) {
+                $inquirie = new Inquirie(
+                    $row['idInquirie'],
+                    $row['content'],
+                    $row['date'],
+                    $row['idUser'],
+                    $row['idTicket'],
+                );
+                
+                array_push($inquiries, $inquirie);
+            }
+
+            return $inquiries;
+
+
         }
 
         public function changeDepartment($db, $newDepartment){

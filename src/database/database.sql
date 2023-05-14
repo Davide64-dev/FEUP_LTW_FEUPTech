@@ -69,8 +69,9 @@ create table departmentUser(
 drop table if exists inquiries;
 
 create table inquiries(
+    idInquirie integer primary key AUTOINCREMENT,
     content text NOT NULL,
-    date datetime,
+    date date,
     idUser integer references users(idUser),
     idTicket integer references Ticket(idTicket)
 );
