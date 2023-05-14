@@ -11,20 +11,11 @@
     $db = getDatabaseConnection();
     $user = User::getUserWithId($db, $session->getID());
 
+    $ticket = $user->getTicketWithID($db, $_GET['ticket']);
     
-    $inquirie = new Inquirie(
-        1,
-        "this is the first inquirie",
-        "2023-01-28",
-        1,
-        1
-    );
-    
+    $inquiries = $ticket->getInquiries($db);
 
-    $inquiries =[];
-
-    array_push($inquiries, $inquirie);
 
     drawTicketsHeader($session, "<link href=\"../css/inquires_style.css\" rel=\"stylesheet\">");
-    drawInquiries($inquiries);
+    drawInquiries($inquiries, $ticket);
 ?>

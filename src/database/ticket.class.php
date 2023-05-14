@@ -28,6 +28,7 @@
             return $this->status;
         }
 
+
         public function getDepartment(){
             return $this->department;
         }
@@ -117,6 +118,21 @@
             $stmt->execute();
         }
 
+     
+
+     public static function addInquirie(PDO $db, $inquirie){
+        
+        $stmt = $db->prepare(
+            "INSERT INTO INQUIRIES (content, date, idUser, idTicket)
+            VALUES (:content, :date, :idUser, :idTicket)"
+        );
+
+        $stmt->bindParam(':content', $inquirie->content);
+        $stmt->bindParam(':date', $inquirie->date);
+        $stmt->bindParam(':idUser', $inquirie->idUser);
+        $stmt->bindParam(':idTicket', $inquirie->idTicket);
+        $stmt->execute();
      }
+    }
 
 ?>

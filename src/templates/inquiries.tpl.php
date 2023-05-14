@@ -1,4 +1,4 @@
-<?php function drawInquiries($inquiries){ ?>
+<?php function drawInquiries($inquiries, $ticket){ ?>
 
     <main class = inquiries>
             <section class="clients">
@@ -21,7 +21,10 @@
                 <section class="container">
                     <h2>Client Chat</h2>
                     <div id="message-container">
+                        
                         <?php
+                            
+                            echo "<div class=\"message user-message\">Ticket n. $ticket->idTicket</div>";
 
                             foreach ($inquiries as $inquirie)
                                 echo "<div class=\"message user-message\">$inquirie->content</div>"
@@ -62,26 +65,29 @@
                 }
             });
 
-            function addMessage(message, isUser) {
-                const messageElement = document.createElement("div");
-                messageElement.classList.add("message");
-                messageElement.textContent = message;
+        function addMessage(message, isUser) {
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("message");
+            messageElement.textContent = message;
 
-                if (isUser) {
-                    messageElement.classList.add("user-message");
-                } else {
-                    messageElement.classList.add("received-message");
-                }
-
-                messageContainer.appendChild(messageElement);
-                messageContainer.scrollTop = messageContainer.scrollHeight;
+            if (isUser) {
+                messageElement.classList.add("user-message");       
+            } else {
+                messageElement.classList.add("received-message");
             }
-            </script>
+
+            messageContainer.appendChild(messageElement);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+
+            var ticketValue = "<?php echo $ticket->idTicket; ?>";
+
+            window.location.replace('../actions/action_insert_message.php?idTicket=' + ticketValue + '&content=' + message);
+        }
+
+    </script>
             
     </body>
 </html>
-
-
 
 
 <?php } ?>

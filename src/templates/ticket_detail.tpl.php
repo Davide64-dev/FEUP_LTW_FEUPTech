@@ -24,7 +24,7 @@
             <section class="assign">
                 <button class="button-assign" role="button">Assign</button>
                 <br>
-                <button class="button-assign" role="button">Start an inquiry</button>
+                <a a href="../pages/inquiries.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><button class="button-assign" role="button">Inquiries</button></a>
             </section>
         </main>
 
