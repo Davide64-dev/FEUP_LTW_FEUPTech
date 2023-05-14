@@ -65,46 +65,16 @@ create table departmentUser(
     CONSTRAINT dapartmentUser_key primary key (idDepartment, idAgent)
 );
 
-drop table if exists hashtag;
 
-create table hashtag(
-    name text primary key
-);
+drop table if exists inquiries;
 
-drop table if exists hashtagticket;
-
-create table hashtagticket(
-    idHashtag text references hashtag(idhashtag),
-    idticket integer references ticket(idticket),
-
-    CONSTRAINT Hashtag_key primary key (idHashtag, idticket)
-);
-drop table if exists status;
-
-create table status(
-    title text primary key,
-    description text
-);
-
-drop table if exists questions;
-
-create table questions(
-    idQuestion interger primary KEY,
-    title text NOT NULL,
+create table inquiries(
     content text NOT NULL,
     date datetime,
+    idUser integer references users(idUser),
     idTicket integer references Ticket(idTicket)
-
 );
 
-drop table if exists answers;
-
-create table answers(
-    idAnswer integer primary key,
-    title text NOT NULL,
-    content text NOT NULL,
-    idQuestion integer references Question(inQuestion)
-);
 
 drop table if exists changes;
 
