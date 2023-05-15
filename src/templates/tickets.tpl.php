@@ -22,7 +22,6 @@
         
         <nav>
         <ul class = "navigation">
-                <li class = "nav_elem"><a href = "inquiries.html"><i class="fa-solid fa-list-check"></i> Inquiries</a></li>
                 <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
                 <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>
                 <li class = "nav_elem"><a href = "../pages/faq.php"><i class="fa-solid fa-question"></i> FAQ</a></li>
@@ -99,7 +98,10 @@
 
 <?php function drawTicket($ticket) { ?>
     <section class="ticket">
-        <a href="profile.html" class="ticket-title" onclick="openPopup(event)"><?php echo $ticket->getTitle() ?></a>
+        <a href="../pages/ticket_detail_user.php?ticket=
+        <?php echo urlencode($ticket->idTicket) ?>" class="ticket-title">
+        <?php echo $ticket->getTitle() ?>
+      </a>
         <p class="ticket-department"><?php echo $ticket->getDepartment() ?></p>
         <p class="ticket-assignment">
         <?php 

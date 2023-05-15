@@ -1,4 +1,4 @@
-<?php function drawInquiries($inquiries, $ticket){ ?>
+<?php function drawInquiries($inquiries, $ticket, $user){ ?>
 
     <main class = inquiries>
             <section class="clients">
@@ -24,10 +24,13 @@
                         
                         <?php
                             
-                            echo "<div class=\"message user-message\">Ticket n. $ticket->idTicket</div>";
+                            echo "<div class=\"message agent-message\">Ticket n. $ticket->idTicket</div>";
 
                             foreach ($inquiries as $inquirie)
-                                echo "<div class=\"message user-message\">$inquirie->content</div>"
+                                if ($inquirie->idUser === $user->id)
+                                    echo "<div class=\"message user-message\">$inquirie->content</div>";
+                                else
+                                    echo "<div class=\"message agent-message\">$inquirie->content</div>"
                         ?>
                     </div>
                 </section>

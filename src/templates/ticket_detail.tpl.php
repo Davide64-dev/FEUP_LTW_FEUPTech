@@ -1,4 +1,4 @@
-<?php function drawTicketDetail(Ticket $ticket, User $user) { ?>
+<?php function drawTicketDetail(Ticket $ticket, User $user, $agent = true) { ?>
     <h1 class="details">Ticket details</h1>
 
         <main class = "all">
@@ -22,9 +22,13 @@
             </section>
 
             <section class="assign">
-                <button class="button-assign" role="button">Assign</button>
-                <br>
-                <a a href="../pages/inquiries.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><button class="button-assign" role="button">Inquiries</button></a>
+
+            <?php
+                if ($agent)
+                echo "<button class=\"button-assign\" role=\"button\">Assign</button>
+                <br>"
+            ?>
+                <a href="../pages/inquiries.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><button class="button-assign" role="button">Inquiries</button></a>
             </section>
         </main>
 

@@ -99,8 +99,12 @@
 }
 
 .user-message {
-    background-color: #f0f0f0;
+    background-color: #f0f0ff;
     align-self: flex-end;
+}
+
+.agent-message{
+  background-color: #90EE90;
 }
 
 .received-message {
