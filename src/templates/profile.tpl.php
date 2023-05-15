@@ -1,19 +1,30 @@
-<?php function drawProfile(User $user, Session $session, $open, $assigned, $closed, $departments) { ?>
+<?php function drawProfile(User $user, Session $session, $open, $assigned, $closed, $departments, $foreign = false) { ?>
     <section>
                 <h2>Welcome to your profile!</h2>
                 <h3>Here you'll be able to keep track of your tickets and their status</h3>
                 
-                <button type = "button" class = "button" id="button"> 
-                    <i class="fa-solid fa-plus fa-bounce"></i> 
+                <?php
+                if (!$foreign)
+                 echo "<button type = \"button\" class = \"button\" id=\"button\"> 
+                    <i class=\"fa-solid fa-plus fa-bounce\"></i> 
                     Create new Ticket
-                </button>
+                </button>";
+
+                else
+                echo "<button type = \"button\" class = \"button\" id=\"\"> 
+                Upgrade User
+                </button>";
+
+                ?>
 
             </section>
         </nav>
         <main class="mainprofile">
                 <div id="info">
                     <img src = "../images/profile.png" alt = "profile" width = "100">
-                    <button id="editProfileButton" type="button">Edit Profile</button>
+                    <?php
+                        echo "<button id=\"editProfileButton\" type=\"button\">Edit Profile</button>"
+                    ?>
                     <?php echo "<h3>$user->name</h3>" ?>
                     <br>
                     <?php echo "<p>@$user->username</p>" ?>
