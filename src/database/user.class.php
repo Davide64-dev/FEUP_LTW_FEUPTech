@@ -115,6 +115,27 @@
                 );
             } else return null;
         }
+
+        static function getAllUsers(PDO $db){
+            $stmt = $db->prepare('
+              SELECT idUser, email, name, username
+              FROM users');
+            $stmt->execute();
+            $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $users = [];
+
+            foreach ($ticketRows as $row){
+                $user = new User(
+                $row['idUser'],
+                $row['email'],
+                $row['name'],
+                $row['username']);
+                array_push($users, $user);
+            } 
+
+            return $users;
+        }
         
 
 
@@ -193,7 +214,44 @@
      }
 
      class Admin extends User{
+
+        function getDepartments($db){
+            return $this->getAllDepartments($db);
+        }
         
+        function getNumberTicketsByDepartment($db){
+            return "Not an Agent";
+        }
+
+        function checkDepartment($db, $department){
+            return true;
+        }
+
+        function getAllTicketsWithDepartment($db, $department){
+            $stmt = $db->prepare('SELECT idTicket, date, status, title, description, department, priority FROM tickets WHERE department = ?');
+            $stmt->execute([$department]);
+            $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $tickets = [];
+            
+            foreach ($ticketRows as $row) {
+                $ticket = new Ticket(
+                    $row['idTicket'],
+                    $row['title'],
+                    $row['status'],
+                    $row['description'],
+                    $row['department'],
+                    $row['priority'],
+                    $row['date']
+                );
+                
+                array_push($tickets, $ticket);
+            }
+            
+            return $tickets;
+        }
+
+
      }
 
      class Client extends User{
@@ -208,6 +266,30 @@
     }
 
     class Agent extends Client{
+
+        function getAllTicketsWithDepartment($db, $department){
+            $stmt = $db->prepare('SELECT idTicket, date, status, title, description, department, priority FROM tickets WHERE department = ?');
+            $stmt->execute([$department]);
+            $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $tickets = [];
+            
+            foreach ($ticketRows as $row) {
+                $ticket = new Ticket(
+                    $row['idTicket'],
+                    $row['title'],
+                    $row['status'],
+                    $row['description'],
+                    $row['department'],
+                    $row['priority'],
+                    $row['date']
+                );
+                
+                array_push($tickets, $ticket);
+            }
+            
+            return $tickets;
+        }
 
         function getDepartments($db){
             $stmt = $db->prepare(
@@ -261,30 +343,6 @@
             return $tickets;
         }
 
-        function getAllTicketsWithDepartment($db, $department){
-            $stmt = $db->prepare('SELECT idTicket, date, status, title, description, department, priority FROM tickets WHERE department = ?');
-            $stmt->execute([$department]);
-            $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            $tickets = [];
-            
-            foreach ($ticketRows as $row) {
-                $ticket = new Ticket(
-                    $row['idTicket'],
-                    $row['title'],
-                    $row['status'],
-                    $row['description'],
-                    $row['department'],
-                    $row['priority'],
-                    $row['date']
-                );
-                
-                array_push($tickets, $ticket);
-            }
-            
-            return $tickets;
-        }
-
         function getTicketsWithDepartmentNotAssigned($db, $department){
             $stmt = $db->prepare('SELECT idTicket, date,title, status,description, department, priority FROM tickets WHERE idAgent is null AND department = ?');
             $stmt->execute([$department]);
@@ -316,11 +374,11 @@
 
         function upgradeToAdmin($db){
             $stmt = $db->prepare(
-                "DELETE FROM Agents WHERE id = $this->id"
+                "DELETE FROM Agents WHERE idAgent = $this->id"
             );
             $stmt->execute();
             $stmt = $db->prepare(
-                "DELETE FROM Clients WHERE id = $this->id"
+                "DELETE FROM Clients WHERE idClient = $this->id"
             );
             $stmt->execute();
             $stmt = $db->prepare(

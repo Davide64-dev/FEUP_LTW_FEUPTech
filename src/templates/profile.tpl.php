@@ -9,11 +9,14 @@
                     <i class=\"fa-solid fa-plus fa-bounce\"></i> 
                     Create new Ticket
                 </button>";
+                
 
                 else
-                echo "<button type = \"button\" class = \"button\" id=\"\"> 
-                Upgrade User
-                </button>";
+                echo "<a href=../actions/action_upgradeUser.php?user=$user->id>
+                <button type=\"button\" class=\"button\">
+                    Upgrade User
+                </button>
+                </a>"
 
                 ?>
 
@@ -23,7 +26,8 @@
                 <div id="info">
                     <img src = "../images/profile.png" alt = "profile" width = "100">
                     <?php
-                        echo "<button id=\"editProfileButton\" type=\"button\">Edit Profile</button>"
+                    if (!$foreign)
+                        echo "<button id=\"editProfileButton\" type=\"button\">Edit Profile</button>";
                     ?>
                     <?php echo "<h3>$user->name</h3>" ?>
                     <br>
@@ -91,7 +95,7 @@
                     ?>
                     </span>
                     <?php
-                        if($user instanceof Agent){
+                        if($user instanceof Agent || $user instanceof Admin){
                             echo '<a href="../pages/departments.php"><button onclick="moreInfo()" id="btnInfo" type="button">More info</button></a>';
                         }
                         else{
