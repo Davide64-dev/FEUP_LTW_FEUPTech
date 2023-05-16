@@ -7,13 +7,13 @@
         public string $status;
         public string $priority;
         public string $description;
-
+        public string $idClient;
         public int $idAgent;
         public string $department;
         public string $date;
 
         public function __construct(int $idTicket, string $title, string $status,
-          string $description, string $department, string $priority, string $date){
+          string $description, string $department, string $priority, string $date, string $idClient){
             
             $this->idTicket = $idTicket;
             $this->title = $title;
@@ -22,6 +22,7 @@
             $this->department = $department;
             $this->priority = $priority;
             $this->date = $date;
+            $this->idClient = $idClient;
         }
 
         public function getStatus(){
@@ -40,6 +41,7 @@
             return $this->priority;
         }
 
+       
         public function getInquiries($db){
             
             $stmt = $db->prepare("Select * from inquiries where idTicket = ?");
@@ -76,8 +78,8 @@
                 $stmt->bindParam(':oldEmail', $this->idTicket);
                 $stmt->execute();
         }
-        
-        function assignTicket(PDO $db, $agent){
+     
+         function assignTicket(PDO $db, $agent){
             $this->idAgent = $agent->id;
             $stmt = $db->prepare("
                     UPDATE Tickets

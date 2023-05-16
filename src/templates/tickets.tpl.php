@@ -10,6 +10,7 @@
         <link href="../css/tickets_style.css" rel="stylesheet">
         <link href="../css/newTicket.css" rel="stylesheet">
         <link href="../css/tickets_all.css" rel="stylesheet">
+        <link href="../css/assign_style.css" rel="stylesheet">
         <?php 
           echo $css;
         ?>
@@ -21,6 +22,7 @@
     <body>
         
         <nav>
+        <a href = "../pages"><img src ="../images/logo.png"></a>
         <ul class = "navigation">
                 <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
                 <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>

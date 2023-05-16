@@ -1,7 +1,8 @@
 <?php function drawAboutUs() { ?>
+    <section class="about-us">
     <h2>About Us</h2>
         <h3>In this community you have the opportunity to submit, track, and resolve tickets promptly and efficiently. </h3> 
-
+    </section>
 </nav>
 
 <h1 class= "title_card"> Our Purpose</h1>

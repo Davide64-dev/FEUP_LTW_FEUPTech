@@ -52,7 +52,7 @@
         }
 
         public function getTickets(PDO $db, string $status): array{
-            $stmt = $db->prepare('SELECT idTicket, date, title, status, description, department, priority FROM tickets WHERE idClient = ? AND status = ?');
+            $stmt = $db->prepare('SELECT idTicket, date, title, status, idAgent, idClient, description, department, priority FROM tickets WHERE idClient = ? AND status = ?');
             $stmt->execute([$this->id, $status]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -66,7 +66,8 @@
                     $row['status'],
                     $row['department'],
                     $row['priority'],
-                    $row['date']
+                    $row['date'],
+                    $row['idClient']
                 );
                 
                 array_push($tickets, $ticket);
@@ -76,7 +77,7 @@
         }
 
         public function getTicketWithID($db, $id){
-            $stmt = $db->prepare('SELECT idTicket, date, title, status, description, department, priority FROM tickets WHERE idTicket = ?');
+            $stmt = $db->prepare('SELECT idTicket, date, title, status, description, department, priority, idClient FROM tickets WHERE idTicket = ?');
             $stmt->execute([$id]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -88,7 +89,8 @@
                 $row['description'],
                 $row['department'],
                 $row['priority'],
-                $row['date']
+                $row['date'],
+                $row['idClient']
             );
             return $ticket;
         }
@@ -116,6 +118,7 @@
             } else return null;
         }
 
+        
         static function getAllUsers(PDO $db){
             $stmt = $db->prepare('
               SELECT idUser, email, name, username
@@ -133,11 +136,9 @@
                 $row['username']);
                 array_push($users, $user);
             } 
-
+ 
             return $users;
         }
-        
-
 
 
         static function getUserWithID(PDO $db, int $id) : ?User {
@@ -210,6 +211,23 @@
 
           $stmt->execute();
       }
+      
+      static function getAllAgentsByDepartment(PDO $db, $department, $client){
+        $stmt = $db->prepare('
+          SELECT idAgent
+          FROM departmentUser WHERE idDepartment = ?');
+        $stmt->execute([$department]);
+        $agentRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $agents = [];
+        foreach ($agentRows as $row){
+            if($client->id !== intval($row['idAgent'])){
+                array_push($agents,$row['idAgent']);
+            }
+        } 
+
+        return $agents;
+    }
         
      }
 
@@ -228,7 +246,7 @@
         }
 
         function getAllTicketsWithDepartment($db, $department){
-            $stmt = $db->prepare('SELECT idTicket, date, status, title, description, department, priority FROM tickets WHERE department = ?');
+            $stmt = $db->prepare('SELECT idTicket, date, status, title, description, department, priority, idClient FROM tickets WHERE department = ?');
             $stmt->execute([$department]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -242,7 +260,8 @@
                     $row['description'],
                     $row['department'],
                     $row['priority'],
-                    $row['date']
+                    $row['date'],
+                    $row['idClient']
                 );
                 
                 array_push($tickets, $ticket);
@@ -282,7 +301,8 @@
                     $row['description'],
                     $row['department'],
                     $row['priority'],
-                    $row['date']
+                    $row['date'],
+                    $row['idClient']
                 );
                 
                 array_push($tickets, $ticket);
@@ -334,7 +354,8 @@
                     $row['description'],
                     $row['department'],
                     $row['priority'],
-                    $row['date']
+                    $row['date'],
+                    $row['idClient']
                 );
                 
                 array_push($tickets, $ticket);
@@ -344,7 +365,7 @@
         }
 
         function getTicketsWithDepartmentNotAssigned($db, $department){
-            $stmt = $db->prepare('SELECT idTicket, date,title, status,description, department, priority FROM tickets WHERE idAgent is null AND department = ?');
+            $stmt = $db->prepare('SELECT idTicket, date,title, status,description, department, priority, idClient FROM tickets WHERE idAgent is null AND department = ?');
             $stmt->execute([$department]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -358,7 +379,8 @@
                     $row['description'],
                     $row['department'],
                     $row['priority'],
-                    $row['date']
+                    $row['date'],
+                    $row['idClient']
                 );
                 
                 array_push($tickets, $ticket);

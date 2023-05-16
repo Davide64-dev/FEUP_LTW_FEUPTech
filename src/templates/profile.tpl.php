@@ -105,6 +105,7 @@
                 </section>
                     
             </div>
+        </main>
                 <div class ="popup" id ="popup">
                     <form action="../actions/action_addTicket.php" method = "post"class="popup-content ">
                         <input class="email" placeholder="email" name="email" type = "hidden" value="<?php echo $user->getEmail(); ?>">
@@ -142,7 +143,6 @@
                         <button type="submit" class = "button_sub"><i class="far fa-paper-plane-top"></i> Submit ticket!</button>
                     </form>
                 </div>
-        </main>
 
     </body>
     <script>
