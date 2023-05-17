@@ -42,6 +42,18 @@
             return $this->name;
         }
 
+            
+        function getIDByName($db,$name){
+            $stmt = $db->prepare('
+            SELECT 
+            idUser FROM users
+            WHERE name = ?');
+        $stmt->execute(array($name));
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row !== false) {
+            return $row['idUser'];
+        }
+     }
         public function getNumberTickets(PDO $db, string $status) : int{
             $stmt = $db->prepare('SELECT count(idClient)
               FROM tickets
@@ -287,7 +299,7 @@
     class Agent extends Client{
 
         function getAllTicketsWithDepartment($db, $department){
-            $stmt = $db->prepare('SELECT idTicket, date, status, title, description, department, priority FROM tickets WHERE department = ?');
+            $stmt = $db->prepare('SELECT idTicket, date, status, title, description, department, priority, idClient FROM tickets WHERE department = ?');
             $stmt->execute([$department]);
             $ticketRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             

@@ -50,22 +50,22 @@
             <br>
                 <a href="../pages/inquiries.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><button class="button-assign" role="button">Inquiries</button></a>
             </section>
-
-
+            
             <div class ="popup-assign" id ="popup-assign">
-                    <form action="../actions/action_assignTicket.php" method = "post" class="popup-content-assign">
+            <form action="../actions/action_assignTicket.php" method="post" class="popup-content-assign">
                         <img src="../images/close.png" alt ="Close" class="close">
                         <h2 class="write">Assign the ticket here</h2><br>
                         <div class="two-column-assign">
-                        <?php foreach($agents as $agent) { ?>
-                            <div>
-                                <input type="radio" id="agentName" name="agent" value="name">
-                                <label for="agentName"> <?php echo User::getUserWithId($db, $agent)->getName()?>
-                                </label>
-                            </div>
-                            <?php } ?>
+                            <?php foreach($agents as $agent) { ?>
+                                <div>
+                                    <input type="radio" id="agent_<?php echo $agent ?>" name="idAgent" value="<?php echo $agent ?>">
+                                    <label name="idAgent" for="agentName"> <?php echo User::getUserWithID($db, $agent)->getName()?>
+                                    </label>
+                                </div>
+                                <?php } ?>
                         
                         </div>
+                        <input type="hidden" name="ticket_id" value="<?php echo $ticket->idTicket; ?>">
                         <button type="submit" class = "button_sub-assign"><i class="far fa-paper-plane-top"></i> Assign!</button>
                     </form>
                 </div>

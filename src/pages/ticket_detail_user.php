@@ -12,5 +12,5 @@
     $ticket = $user->getTicketWithID($db, $_GET['ticket']);
 
     drawTicketsHeader($session, "<link href=\"../css/ticketsDetail_style.css\" rel=\"stylesheet\">");
-    drawTicketDetail($ticket, $user, false);
+    drawTicketDetail($db,$ticket, $user);
 ?>

@@ -24,6 +24,7 @@
             $this->date = $date;
             $this->idClient = $idClient;
         }
+       // public function getTick
 
         public function getStatus(){
             return $this->status;
@@ -79,14 +80,15 @@
                 $stmt->execute();
         }
      
-         function assignTicket(PDO $db, $agent){
-            $this->idAgent = $agent->id;
+        
+        function assignTicket(PDO $db, $id){
+            $this->idAgent = $id;
             $stmt = $db->prepare("
                     UPDATE Tickets
                     SET idAgent = :idAgent, status = \"Assigned\"
                     WHERE idTicket = :idTicket
             ");
-            $stmt->bindParam(':idAgent', $agent->id);
+            $stmt->bindParam(':idAgent', $id);
             $stmt->bindParam(':idTicket', $this->idTicket);
             $stmt->execute();
         }

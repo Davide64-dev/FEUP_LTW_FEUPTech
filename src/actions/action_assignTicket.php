@@ -7,15 +7,10 @@
     require_once(__DIR__ . '/../database/ticket.class.php');
     $db = getDatabaseConnection();
 
-    $user = User::getUserWithID($db, $session->getID()); // Uncomment this line if needed
+    $user = User::getUserWithID($db, $session->getID()); 
+    $agentID = intval($_POST["idAgent"]);
 
-    $agentID = (int) $_GET['idAgent'];
-    $agent = Agent::getUserWithID($db, $agentID); // Fetch the agent with the provided ID
-
-    if ($agent) {
-        Ticket::assignTicket($db, $agent); // Assign the ticket to the agent
-    }
-
-    header('Location: ../pages/tickets_all.php');
-    exit;
+    $ticket= $user->getTicketWithID($db, $_POST["ticket_id"]);
+    $ticket->assignTicket($db, $agentID); // Assign the ticket to the agent
+    header("Location: ../pages/ticket_detail.php?ticket=" . $_POST["ticket_id"]);
 ?>
