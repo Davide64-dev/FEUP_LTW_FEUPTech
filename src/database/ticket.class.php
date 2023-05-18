@@ -13,7 +13,7 @@
         public string $date;
 
         public function __construct(int $idTicket, string $title, string $status,
-          string $description, string $department, string $priority, string $date, string $idClient){
+          string $description, string $department, string $priority, string $date, string $idClient, int $idAgent){
             
             $this->idTicket = $idTicket;
             $this->title = $title;
@@ -23,6 +23,7 @@
             $this->priority = $priority;
             $this->date = $date;
             $this->idClient = $idClient;
+            $this->idAgent = $idAgent;
         }
        // public function getTick
 
@@ -82,7 +83,6 @@
      
         
         function assignTicket(PDO $db, $id){
-            $this->idAgent = $id;
             $stmt = $db->prepare("
                     UPDATE Tickets
                     SET idAgent = :idAgent, status = \"Assigned\"

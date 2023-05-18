@@ -14,5 +14,5 @@
     $tickets = $user->getAllTicketsWithDepartment($db, $_GET['department']);
     
     drawTicketsHeader($session);
-    drawTicketsAll($tickets);
+    drawTicketsAll($db, $tickets);
 ?>

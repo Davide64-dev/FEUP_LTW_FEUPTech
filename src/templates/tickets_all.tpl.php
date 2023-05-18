@@ -1,4 +1,4 @@
-<?php function drawTicketsAll($tickets) { ?>
+<?php function drawTicketsAll($db, $tickets) { ?>
 
     <main class="tab">
                 <section class="sidebar">
@@ -34,7 +34,7 @@
                     </tr>
                     <?php
                         foreach($tickets as $ticket)
-                            drawTicketAll($ticket);
+                            drawTicketAll($db, $ticket);
                     ?>
                     <!-- Add more rows as needed -->
                 </table>
@@ -96,18 +96,18 @@
 
 <?php } ?>
 
-<?php function drawTicketAll($ticket) { ?>
+<?php function drawTicketAll($db,$ticket) { ?>
     <tr>
         <td><a href="../pages/ticket_detail.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><?php echo $ticket->getTitle() ?></a></td>
         <td><?php echo $ticket->getPriority() ?></td>
         <td><?php echo $ticket->date ?></td>
         <td>
             <?php
-                if ($ticket->status == "Opened"){
+                if ($ticket->status == "Opened" ){
                     echo "<i class=\"fa-solid fa-plus\"></i>";
                 }
                 else{
-                    echo $ticket->status;
+                    echo $ticket->idAgent;
                 }
             ?>
         </td>

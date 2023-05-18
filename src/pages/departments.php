@@ -4,6 +4,7 @@
     include '../templates/departments.tpl.php';
     include '../utils/session.php';
     include '../database/user.class.php';
+    include '/home/linda/Desktop/project-ltw11g01/src/database/ticket.class.php';
     require_once(__DIR__ . '/../database/connection.db.php');
 
     $session = new Session();
