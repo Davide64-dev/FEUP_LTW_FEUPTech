@@ -80,7 +80,7 @@
                     $row['priority'],
                     $row['date'],
                     $row['idClient'],
-                    $row['idAgent']
+                    intval($row['idAgent'])
                 );
                 
                 array_push($tickets, $ticket);
@@ -104,7 +104,7 @@
                 $row['priority'],
                 $row['date'],
                 $row['idClient'],
-                $row['idAgent']
+                intval($row['idAgent'])
             );
             return $ticket;
         }
@@ -276,7 +276,7 @@
                     $row['priority'],
                     $row['date'],
                     $row['idClient'],
-                    $row['idAgent']
+                    intval($row['idAgent'])
                 );
                 
                 array_push($tickets, $ticket);
@@ -372,7 +372,7 @@
                     $row['priority'],
                     $row['date'],
                     $row['idClient'],
-                    $row['idAgent']
+                    intval($row['idAgent'])
                 );
                 
                 array_push($tickets, $ticket);

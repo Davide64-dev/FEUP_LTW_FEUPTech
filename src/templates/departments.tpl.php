@@ -8,7 +8,7 @@
             <div id="info">
                 <img src = "../images/profile.png" alt = "profile" width = "100">
                 <?php
-                      if ($agent instanceof Admin)  
+                    if ($agent instanceof Admin) 
                     echo "<a href = \"../pages/users_all.php\"><button id=\"editProfileButton\" type=\"button\">All Users</button></a>";
                 ?>
                 <br>
@@ -26,8 +26,6 @@
     <?php } ?>
 
 <?php function drawDepartment($department, $user, $db) { ?>
-
-
 
     
     

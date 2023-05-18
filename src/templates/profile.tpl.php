@@ -5,6 +5,7 @@
                 
                 <?php
                 if (!$foreign)
+
                  echo "<button type = \"button\" class = \"button\" id=\"button\"> 
                     <i class=\"fa-solid fa-plus fa-bounce\"></i> 
                     Create new Ticket
@@ -29,6 +30,7 @@
                     if (!$foreign)
                         echo "<button id=\"editProfileButton\" type=\"button\">Edit Profile</button>";
                     ?>
+
                     <?php echo "<h3>$user->name</h3>" ?>
                     <br>
                     <?php echo "<p>@$user->username</p>" ?>
