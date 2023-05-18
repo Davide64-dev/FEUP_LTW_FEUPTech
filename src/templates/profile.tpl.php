@@ -100,7 +100,7 @@
                         if($user instanceof Agent || $user instanceof Admin){
                             echo '<a href="../pages/departments.php"><button onclick="moreInfo()" id="btnInfo" type="button">More info</button></a>';
                         }
-                        else{
+                        if ($foreign){
                             echo "<button onclick=\"moreInfo()\" id=\"btnInfo\" type=\"button\">More info</button>"; 
                         }
                     ?>

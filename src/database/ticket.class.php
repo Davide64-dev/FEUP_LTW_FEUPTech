@@ -12,8 +12,10 @@
         public string $department;
         public string $date;
 
+        public string $hashtag;
+
         public function __construct(int $idTicket, string $title, string $status,
-          string $description, string $department, string $priority, string $date, string $idClient, int $idAgent){
+          string $description, string $department, string $priority, string $date, string $idClient, int $idAgent, string $hashtag = "#urgent"){
             
             $this->idTicket = $idTicket;
             $this->title = $title;
@@ -24,6 +26,7 @@
             $this->date = $date;
             $this->idClient = $idClient;
             $this->idAgent = $idAgent;
+            $this->hashtag = $hashtag;
         }
        // public function getTick
 
@@ -103,6 +106,7 @@
             $stmt->bindParam(':idTicket', $this->idTicket);
             $stmt->execute();
         }
+
 
         static function addTicket(PDO $db, $title, $description, $user, $department ,$priority = "Low"){
             $stmt = $db->prepare(

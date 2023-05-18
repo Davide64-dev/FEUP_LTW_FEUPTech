@@ -112,7 +112,7 @@
             ?>
         </td>
         <td><?php echo $ticket->status ?></td>
-        <td>#urgent</td>
+        <td><?php echo $ticket->hashtag ?></td>
         <td><i class="fa-solid fa-pencil"></i></td>
     </tr>
 <?php } ?>

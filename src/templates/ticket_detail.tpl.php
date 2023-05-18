@@ -44,7 +44,7 @@
             <section class="assign">
             <?php 
             $status = $ticket->getStatus();
-            if ($user->id !== $client->id && $status === 'Opened') {
+            if ($user->id !== $client->id && $status != 'Closed') {
                 echo '<button class="button-assign role="button" id="button">Assign</button>';
             }
             ?>

@@ -2,20 +2,11 @@
 
     <main class = inquiries>
             <section class="clients">
-                <h3>Inquiries</h3>
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Clients..">
-                    <i style="position: relative; left: 4%; top: -7%" class="fa fa-magnifying-glass"></i>
-                <ul id="myUL">
-                    <li>
-                        <a href="#">Adele</a>
-                        <p>I needed some help with...</p>
-                    </li>
-                    <li>
-                        <a href="#">Sarah</a>
-                        <p>I needed some help with...</p>
-                    </li>
 
-                </ul>
+            <?php
+                if($user->id == $ticket->idAgent)
+                    echo "<a href = \"../actions/action_closeTicket.php?ticket=" . urlencode($ticket->idTicket) . "\"><button>Close</button></a>";
+            ?>
             </section>
             <section class="chat">
                 <section class="container">

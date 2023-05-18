@@ -247,7 +247,7 @@
 
      class Admin extends User{
 
-        function getAdminDepartments($db){
+        function getDepartments($db){
             return $this->getAllDepartments($db);
         }
         
@@ -318,7 +318,7 @@
                     $row['priority'],
                     $row['date'],
                     $row['idClient'],
-                    $row['idAgent']
+                    intval($row['idAgent'])
                 );
                 
                 array_push($tickets, $ticket);
