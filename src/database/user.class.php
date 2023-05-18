@@ -80,7 +80,7 @@
                     $row['priority'],
                     $row['date'],
                     $row['idClient'],
-                    $row['idAgent']
+                    intval($row['idAgent'])
                 );
                 
                 array_push($tickets, $ticket);
@@ -104,7 +104,7 @@
                 $row['priority'],
                 $row['date'],
                 $row['idClient'],
-                $row['idAgent']
+                intval($row['idAgent'])
             );
             return $ticket;
         }
@@ -247,7 +247,7 @@
 
      class Admin extends User{
 
-        function getDepartments($db){
+        function getAdminDepartments($db){
             return $this->getAllDepartments($db);
         }
         
@@ -276,7 +276,7 @@
                     $row['priority'],
                     $row['date'],
                     $row['idClient'],
-                    $row['idAgent']
+                    intval($row['idAgent'])
                 );
                 
                 array_push($tickets, $ticket);
@@ -318,7 +318,7 @@
                     $row['priority'],
                     $row['date'],
                     $row['idClient'],
-                    intval($row['idAgent'])
+                    $row['idAgent']
                 );
                 
                 array_push($tickets, $ticket);
@@ -372,7 +372,7 @@
                     $row['priority'],
                     $row['date'],
                     $row['idClient'],
-                    $row['idAgent']
+                    intval($row['idAgent'])
                 );
                 
                 array_push($tickets, $ticket);
@@ -398,7 +398,7 @@
                     $row['priority'],
                     $row['date'],
                     $row['idClient'],
-                    $row['idAgent']
+                    intval($row['idAgent'])
                 );
                 
                 array_push($tickets, $ticket);
