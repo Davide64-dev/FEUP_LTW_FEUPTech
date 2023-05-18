@@ -26,8 +26,6 @@
     <?php } ?>
 
 <?php function drawDepartment($department, $user, $db) { ?>
-
-    
     
     <section class="profile-section">
 
