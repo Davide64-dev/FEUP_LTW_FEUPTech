@@ -59,7 +59,7 @@ create table department(
 drop table if exists departmentUser;
 
 create table departmentUser(
-    idDepartment integer references department(idDepartment),
+    idDepartment integer references department(title),
     idAgent integer references Agents(idAgent),
 
     CONSTRAINT dapartmentUser_key primary key (idDepartment, idAgent)
@@ -144,3 +144,72 @@ VALUES ('Operations', 'Oversees day-to-day business activities.');
 
 INSERT INTO department (title, description)
 VALUES ('IT', 'Manages technology infrastructure and systems.');
+
+INSERT INTO department (title, description)
+VALUES ('Sales', 'Responsible for driving sales and revenue generation.');
+
+
+INSERT INTO USERS (idUser, email, name, username, password)
+VALUES (1, 'alanturing@hotmail.com', 'Alan, Turing', 'alan_turing', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8');
+-- password: password
+
+INSERT INTO ADMINS VALUES(1);
+
+INSERT INTO USERS (idUser, email, name, username, password)
+VALUES (2, 'gracehopper@hotmail.com', 'Grace Hopper', 'grace_hopper', '7c4a8d09ca3762af61e59520943dc26494f8941b');
+-- password: 123456
+
+INSERT INTO ADMINS VALUES(2);
+
+INSERT INTO USERS (idUser, email, name, username, password)
+VALUES (3, 'adalovelace@hotmail.com', 'Ada Lovelace', 'ada_lovelace', 'b1b3773a05c0ed0176787a4f1574ff0075f7521e');
+-- password: qwerty
+
+INSERT INTO ADMINS VALUES(3);
+
+
+INSERT INTO USERS (idUser, email, name, username, password)
+VALUES (4, 'laramarques@hotmail.com', 'Lara Marques', 'laramarques', '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+-- password: 123
+
+INSERT INTO CLIENTS VALUES(4);
+INSERT INTO AGENTS VALUES(4);
+
+
+
+INSERT INTO USERS (idUser, email, name, username, password)
+Values (5, 'nessavanessa@hotmail.com', 'Vanessa Nessa', 'nessavanessa', 'a74b2c06d3b3845788dcb0f4900db823afa8f91a');
+-- password: notapass
+
+INSERT INTO CLIENTS VALUES(5);
+INSERT INTO AGENTS VALUES(5);
+
+INSERT INTO USERS (idUser, email, name, username, password)
+VALUES (6, 'manelbarbosa@hotmail.com', 'Manel Barbosa','manelbarbosa', 'b1b3773a05c0ed0176787a4f1574ff0075f7521e');
+-- password: qwerty
+
+INSERT INTO CLIENTS VALUES(6);
+INSERT INTO AGENTS VALUES(6);
+
+
+
+INSERT INTO USERS (idUser, email, name, username, password)
+VALUES 
+    (7, 'john.doe@hotmail.com', 'John Doe', 'johndoe', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8'),
+    (8, 'jane.smith@hotmail.com', 'Jane Smith', 'janesmith', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8'),
+    (9, 'mike.johnson@hotmail.com', 'Mike Johnson', 'mikejohnson', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8');
+
+-- password: password
+
+INSERT INTO CLIENTS VALUES(7);
+INSERT INTO CLIENTS VALUES(8);
+INSERT INTO CLIENTS VALUES(9);
+
+INSERT INTO DEPARTMENTUSER VALUES('Marketing', 4);
+INSERT INTO DEPARTMENTUSER VALUES('Finance', 4);
+
+INSERT INTO DEPARTMENTUSER VALUES('Human Resources', 5);
+INSERT INTO DEPARTMENTUSER VALUES('Operations', 5);
+
+INSERT INTO DEPARTMENTUSER VALUES('IT', 6);
+INSERT INTO DEPARTMENTUSER VALUES('Sales', 6);
