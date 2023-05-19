@@ -14,10 +14,10 @@
                     <input type="text" id="user_name" name="fname" required autofocus><br>
                     <br>
                     <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email" required autofocus><br><br>
+                    <input type="email" id="email" name="email" required><br><br>
                     <br>
-                    <label for="enter_mes">Enter your message:</label><br><br>
-                    <textarea id = "message" name = "message" required autofocus></textarea>
+                    <label for="message">Enter your message:</label><br><br>
+                    <textarea id = "message" name = "message" required></textarea>
                     <br>
                     <br>
                     <input type="submit" value="Submit">

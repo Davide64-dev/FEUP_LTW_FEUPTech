@@ -15,7 +15,7 @@
 <body>
     <nav>
         <div class = "navbar">
-            <a href = "../pages"><img src ="../images/logo.png"></a>
+            <a href = "../pages"><img src ="../images/logo.png" alt = "LOGO"></a>
             <ul class = "navigation">
                 <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
                 <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>
@@ -27,7 +27,7 @@
                     }
                     else{
                         echo "<li class = \"nav-elem\"><a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"></i> Profile</a></li>";
-                        echo "<form action=\"../actions/action_logout.php\" method=\"post\" class=\"logout\"><a href = \"#\" type=\"submit\" onclick=\"this.parentNode.submit(); return false;\">Logout</a></form>";
+                        echo "<li><form action=\"../actions/action_logout.php\" method=\"post\" class=\"logout\"><a href = \"#\" type=\"submit\" onclick=\"this.parentNode.submit(); return false;\">Logout</a></form></li>";
                     }
                 ?>
             </ul>
@@ -41,10 +41,10 @@
     <main>
         <h2>Categories</h2>  
         <ul id="categories">
-            <li class="btn pressed" role = "button" onclick="filterSelection('all')"><span class="text"> Show all</span></li>
-            <li class="btn" role = "button" onclick="filterSelection('tickets')"><span class="text"> Tickets</span></li>
-            <li class="btn" role = "button" onclick="filterSelection('departments')"><span class="text"> Departments</span></li>
-            <li class="btn" role = "button" onclick="filterSelection('roles')"><span class="text"> User Roles</span></li>
+            <li class="btn pressed" onclick="filterSelection('all')"><span class="text"> Show all</span></li>
+            <li class="btn" onclick="filterSelection('tickets')"><span class="text"> Tickets</span></li>
+            <li class="btn" onclick="filterSelection('departments')"><span class="text"> Departments</span></li>
+            <li class="btn"  onclick="filterSelection('roles')"><span class="text"> User Roles</span></li>
         </ul> 
         
         <h2>Questions</h2>  
@@ -113,7 +113,7 @@
 
         </section>
     </main>
-</body>
+
 <script>
     var faq = document.getElementsByClassName("faq-page");
 var i;
@@ -176,6 +176,8 @@ filterSelection("all")
       });
     }
 </script>
+
+</body>
 
 </html>
 

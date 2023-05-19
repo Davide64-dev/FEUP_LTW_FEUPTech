@@ -25,7 +25,7 @@
                         ?>
                     </div>
                 </section>
-                <input type="text" id="chat-input" placeholder="Write your message" title="Type in a message">
+                <input type="text" id="chat-input" placeholder="Write your message" title="Type in a message" autofocus>
             </section>
         </main>
         <script>

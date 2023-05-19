@@ -109,7 +109,7 @@
             </div>
         </main>
                 <div class ="popup" id ="popup">
-                    <form action="../actions/action_addTicket.php" method = "post"class="popup-content ">
+                    <form action="../actions/action_addTicket.php" method = "post" class="popup-content ">
                         <input class="email" placeholder="email" name="email" type = "hidden" value="<?php echo $user->getEmail(); ?>">
 
                         <img src="../images/close.png" alt ="Close" class="close">
