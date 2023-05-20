@@ -1,5 +1,6 @@
 <?php
      declare(strict_types = 1); 
+     include "change.class.php";
 
      class Ticket{
         public int $idTicket;
@@ -28,13 +29,94 @@
             $this->idAgent = $idAgent;
             $this->hashtag = $hashtag;
         }
-       // public function getTick
+
+        public function getChanges($db){
+            $stmt = $db->prepare("
+            Select * from changes c join hashtagchanges h on c.idChange = h.idChange
+            where c.idTicket = ?"
+            );
+            $stmt->execute([$this->idTicket]);
+            
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $changes = [];
+
+            foreach ($rows as $row) {
+                $change = new HashTagChange(
+                    $row['idChange'],
+                    $row['date'],
+                    $row['idTicket'],
+                    $row['oldHashtag'],
+                );
+                
+                array_push($changes, $change);
+            }
+
+            $stmt = $db->prepare("
+            Select * from changes c join descriptionchange h on c.idChange = h.idChange
+            where c.idTicket = ?"
+            );
+            $stmt->execute([$this->idTicket]);
+            
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $changes = [];
+
+            foreach ($rows as $row) {
+                $change = new DescriptionChange(
+                    $row['idChange'],
+                    $row['date'],
+                    $row['idTicket'],
+                    $row['oldDescription'],
+                );
+                
+                array_push($changes, $change);
+            }
+
+            $stmt = $db->prepare("
+            Select * from changes c join departmentchange h on c.idChange = h.idChange
+            where c.idTicket = ?"
+            );
+            $stmt->execute([$this->idTicket]);
+            
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $changes = [];
+
+            foreach ($rows as $row) {
+                $change = new DepartmentChange(
+                    $row['idChange'],
+                    $row['date'],
+                    $row['idTicket'],
+                    $row['oldDepartment'],
+                );
+                
+                array_push($changes, $change);
+            }
+
+            $stmt = $db->prepare("
+            Select * from  changes c join agentchange h on c.idChange = h.idChange
+            where c.idTicket = ?"
+            );
+            $stmt->execute([$this->idTicket]);
+            
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $changes = [];
+
+            foreach ($rows as $row) {
+                $change = new AgentChange(
+                    $row['idChange'],
+                    $row['date'],
+                    $row['idTicket'],
+                    $row['idOldAgent'],
+                );
+                
+                array_push($changes, $change);
+            }
+            return $changes;
+        }
 
         public function getStatus(){
             return $this->status;
         }
-
-
+        
         public function getDepartment(){
             return $this->department;
         }
@@ -86,6 +168,28 @@
      
         
         function assignTicket(PDO $db, $id){
+
+            $stmt = $db->prepare("
+                INSERT INTO CHANGES (date, idTicket) VALUES
+                (:date, :idTicket)
+            ");
+            $today = date("Y-m-d");
+            $stmt->bindParam(':date', $today);
+            $stmt->bindParam(':idTicket', $this->idTicket);
+            $stmt->execute();
+
+            $id = $db->lastInsertId();
+
+            $stmt = $db->prepare("
+                INSERT INTO AgentCHANGE VALUES
+                (:idChange, :idOldAgent)
+            ");
+
+            $stmt->bindParam(':idChange', $id);
+            $stmt->bindParam(':idOldAgent', $this->idAgent);
+
+            $stmt->execute();
+
             $stmt = $db->prepare("
                     UPDATE Tickets
                     SET idAgent = :idAgent, status = \"Assigned\"

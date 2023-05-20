@@ -1,4 +1,11 @@
-<?php function drawInquiries($inquiries, $ticket, $user){ ?>
+<?php function drawInquiries($inquiries, $ticket, $user, $changes){ ?>
+
+    <aside class = "changes">
+        <?php
+            foreach($changes as $change)
+                drawChange($change)
+        ?>
+    </aside>
 
     <main class = inquiries>
             <section class="clients">
@@ -83,5 +90,41 @@
     </body>
 </html>
 
+
+<?php } ?>
+
+<?php function drawChange($change){ ?>
+
+    <section class = "change">
+        <h3 class = "change_type">
+            <?php
+                if ($change instanceof HashTagChange)
+                    echo "HashTag Change";
+                else if ($change instanceof DepartmentChange)
+                    echo "Department Change";
+                else if ($change instanceof DescriptionChange)
+                    echo "Description Change";
+                else 
+                    echo "Agent Change"
+            ?>
+        </h3>
+        <p class = "change_info">
+        <?php
+                if ($change instanceof HashTagChange)
+                    echo "Old hashtag: $change->oldHashtag";
+                else if ($change instanceof DepartmentChange)
+                    echo "Old Department: $change->oldDepartment";
+                else if ($change instanceof DescriptionChange)
+                    echo "Old Description: $change->oldDescription";
+                else 
+                    echo "Old Agent: $change->oldAgent"
+            ?>
+        </p>
+        <p class = "change_info">
+            <?php
+                echo $change->date;
+            ?>
+        </p>
+    </section>
 
 <?php } ?>

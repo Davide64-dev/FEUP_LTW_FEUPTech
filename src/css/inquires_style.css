@@ -1,6 +1,45 @@
+
 * {
     box-sizing: border-box;
   }
+
+  .changes {
+    float: left;
+    background-color: #cbc2f6;
+    width: 16em;
+    margin-right: -12em;
+    margin-top: 2em;
+    margin-left: 1em;
+    border-radius: 1em;
+  }
+  
+  
+  .change {
+    background-color: #f1f6c2;
+    margin-left: 1em;
+    margin-right: 1em;
+    width: 100%;
+    max-width: 14em;
+    border-radius: 1em;
+  }
+
+  .change_type {
+    display: flex;
+    justify-content: center;
+  }
+
+  .change_info{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .change section {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+
   body{
     font-family: 'Poppins';
     margin: 8px;
@@ -55,8 +94,9 @@
   display: grid;
   grid-template-columns: 19em auto;
   grid-gap: 10em;
-  margin-top: 2em;
+  margin-top: 1em;
   margin-left:1em;
+  width: 80em;
 }
   
 .chat{

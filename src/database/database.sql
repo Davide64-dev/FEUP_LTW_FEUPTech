@@ -81,7 +81,7 @@ drop table if exists changes;
 
 create table changes(
 
-    idChange integer primary KEY,
+    idChange integer primary KEY AUTOINCREMENT,
     date datetime NOT NULL,
     idTicket integer references Ticket(idTicket)
 
@@ -91,16 +91,8 @@ create table changes(
 drop table if exists HashtagChanges;
 
 create table HashtagChanges(
-    idChange integer PRIMARY KEY references changes(idChange)
-);
-
-drop table if exists Hashtag_ChangeHashtag;
-
-create table Hashtag_ChangeHashtag(
-
-    name text references hashtag(name),
-    idChange integer references HashtagChanges(idChange),
-    CONSTRAINT HASHTAG_KEY primary key(name, idChange)
+    idChange integer PRIMARY KEY references changes(idChange),
+    oldHashtag text
 );
 
 drop table if exists DescriptionChange;
@@ -118,7 +110,6 @@ create table DepartmentChange(
     idChange integer primary key references change(idChange),
     idOldDepartment integer references Department(idDepartment)
     
-
 );
 
 drop table if exists AgentChange;
@@ -126,7 +117,6 @@ drop table if exists AgentChange;
 create table AgentChange(
     idChange integer primary key references change(idChange),
     idOldAgent integer references Agent(idAgent)
-
 );
 
 
@@ -210,6 +200,7 @@ INSERT INTO DEPARTMENTUSER VALUES('Finance', 4);
 
 INSERT INTO DEPARTMENTUSER VALUES('Human Resources', 5);
 INSERT INTO DEPARTMENTUSER VALUES('Operations', 5);
+INSERT INTO DEPARTMENTUSER VALUES('IT', 5);
 
 INSERT INTO DEPARTMENTUSER VALUES('IT', 6);
 INSERT INTO DEPARTMENTUSER VALUES('Sales', 6);

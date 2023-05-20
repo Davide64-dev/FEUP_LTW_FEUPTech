@@ -11,6 +11,6 @@
     $agentID = intval($_POST["idAgent"]);
 
     $ticket= $user->getTicketWithID($db, $_POST["ticket_id"]);
-    $ticket->assignTicket($db, $agentID); // Assign the ticket to the agent
+    $ticket->assignTicket($db, $agentID);
     header("Location: ../pages/ticket_detail.php?ticket=" . $_POST["ticket_id"]);
 ?>

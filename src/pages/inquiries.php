@@ -15,7 +15,15 @@
     
     $inquiries = $ticket->getInquiries($db);
 
+    $changes = $ticket->getChanges($db);
+
+    function compareTickets($a, $b) {
+        return $a->idChange < $b->idChange;
+    }
+
+    usort($changes, 'compareTickets');
+
 
     drawTicketsHeader($session, "<link href=\"../css/inquires_style.css\" rel=\"stylesheet\">");
-    drawInquiries($inquiries, $ticket, $user);
+    drawInquiries($inquiries, $ticket, $user, $changes);
 ?>
