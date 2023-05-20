@@ -17,5 +17,5 @@
     foreach($departments as $department){
         drawDepartment($department, $user, $db);
       }
-    drawEnd();
+    drawEnd($user);
 ?>

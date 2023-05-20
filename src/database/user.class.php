@@ -261,6 +261,12 @@
             return true;
         }
 
+        function addDepartment($db, $name, $content){
+            $stmt = $db->prepare("INSERT INTO department values (?, ?)");
+            $stmt->execute([$name, $content]);
+            
+        }
+
         function getAllTicketsWithDepartment($db, $department){
             $stmt = $db->prepare('SELECT idTicket, date, status, title, description, department, priority, idClient, idAgent, hashtag FROM tickets WHERE department = ?');
             $stmt->execute([$department]);

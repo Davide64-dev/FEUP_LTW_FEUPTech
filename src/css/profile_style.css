@@ -336,6 +336,67 @@ nav button:active {
     margin-left: 5em;
   }
 
+  #newDepartment {
+    background-color: white;
+    color: black;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 1em;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto; /* Center the box horizontally */
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1em;
+  }
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addDepartment {
+  max-width: 400px;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.addDepartment label {
+  display: block;
+  margin-bottom: 10px;
+  border: 1em;
+}
+
+.addDepartment input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.addDepartment button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 1em;
+
+}
+
+.addDepartment button:hover {
+  background-color: #45a049;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+  
+  
+
 
 /* Media Queries for Responsiveness */
 

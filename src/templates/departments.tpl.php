@@ -9,18 +9,33 @@
                 <img src = "../images/profile.png" alt = "profile" width = "100">
                 <?php
                     if ($agent instanceof Admin) 
-                    echo "<a href = \"../pages/users_all.php\"><button id=\"editProfileButton\" type=\"button\">All Users</button></a>";
+                        echo "<a href = \"../pages/users_all.php\"><button id=\"editProfileButton\" type=\"button\">All Users</button></a>";
                 ?>
                 <br>
             </div>
             <div id="section">
                 <section class="profile-section" style="display: none;">
-                    <h2 style="color: white; font-size: xx-large; text-align:center;">Edit Profile</h2>
+                    <button>Create new Department</button>
                 </section>
 <?php } ?>
 
-<?php function drawEnd() { ?>
-    </div> 
+<?php function drawEnd($user) { ?>
+    <div class="form-container">
+    <?php
+    if ($user instanceof Admin){
+        echo "<form class=\"addDepartment\" action=\"../actions/action_addDepartment.php\" method=\"post\">";
+        echo "<label for=\"name\" id=\"namelabel\"><b>Name</b></label>";
+        echo "<input type=\"text\" id=\"name\" name=\"name\">";
+
+        echo "<label for=\"description\" id=\"descriptionlabel\"><b>Description</b></label>";
+        echo "<input type=\"text\" id=\"description\" name=\"description\">";
+
+        echo "<button id=\"newDepartment\">Create new Department</button>";
+        echo "</form>";
+    }
+    ?>
+</div>
+
         </main>
 </html>
     <?php } ?>
