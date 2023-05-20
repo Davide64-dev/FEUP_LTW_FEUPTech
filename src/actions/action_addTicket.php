@@ -7,6 +7,6 @@
     require_once(__DIR__ . '/../database/ticket.class.php');
     $db = getDatabaseConnection();
     $user = User::getUserWithID($db, $session->getID());
-    Ticket::addTicket($db, $_POST['title'], $_POST['description'], $user, $_POST["department"],$_POST["priority"]);
+    Ticket::addTicket($db, $_POST['title'], $_POST['description'], $user, $_POST["department"],$_POST["priority"], $_POST['hashtag']);
 
     header('Location: ../pages/profile.php');

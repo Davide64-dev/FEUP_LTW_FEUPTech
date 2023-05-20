@@ -11,6 +11,11 @@
         <link href="../css/newTicket.css" rel="stylesheet">
         <link href="../css/tickets_all.css" rel="stylesheet">
         <link href="../css/assign_style.css" rel="stylesheet">
+        <script src="../javascript/filter.js"></script>
+        <script src="../javascript/filter_tickets.js"></script>
+        <script src="../javascript/chat.js" defer></script>
+        <script src="../javascript/pop_up.js" defer></script>
+        <script src="../javascript/tickets_popup.js" defer></script>
         <?php 
           echo $css;
         ?>
@@ -76,23 +81,6 @@
             </div>
         </div>
     </body> 
-    <script>
-                document.getElementById("button").addEventListener("click", function(){
-            document.querySelector(".popup").style.display = "flex";
-        })
-
-        document.querySelector(".close").addEventListener("click",function(){
-            document.querySelector(".popup").style.display = "none";
-        })
-
-        function openPopup(event) {
-            event.preventDefault(); // Prevent the default behavior of the link
-
-            // Display the popup
-            document.querySelector(".popup").style.display = "flex";
-        }
-
-    </script>
 
 </html>
 
@@ -134,7 +122,7 @@
           ?>
         </div>
         <div class="ticket-hashtag">
-            <span>#ticket123</span>
+            <span><?php echo '#' . $ticket->hashtag ?></span>
         </div>
         </div>
         </section>

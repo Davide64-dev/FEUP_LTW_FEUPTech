@@ -6,9 +6,9 @@
     require_once(__DIR__ . '/../database/user.class.php');
     $db = getDatabaseConnection();
     $user = User::getUserWithID($db, $session->getID());
-    $password = sha1($_POST['password']);
+    $new_pass = sha1($_POST['new_password']);
 
-    $user->updateUser($db, $_POST['username'], $_POST['name'], $password, $_POST['email']);
+    $user->updateUser($db, $_POST['username'], $_POST['name'], $new_pass, $_POST['email']);
 
     header('Location: ../pages/profile.php');
 
