@@ -231,18 +231,6 @@
             $stmt->bindParam(':idTicket', $this->idTicket);
             $stmt->execute();
 
-            $idOld = $db->lastInsertId();
-
-            $stmt = $db->prepare("
-                INSERT INTO AgentCHANGE VALUES
-                (:idChange, :oldStatus)
-            ");
-
-            $stmt->bindParam(':idChange', $idOld);
-            $stmt->bindParam(':idOldStatus', $this->status);
-
-            $stmt->execute();
-
 
             $stmt = $db->prepare("
                     UPDATE Tickets

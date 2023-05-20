@@ -40,7 +40,7 @@ create table tickets(
     idTicket integer primary key AUTOINCREMENT,
     title text NOT NULL,
     description text,
-    status text references Status(title),
+    status text,
     idAgent text references Agents(idAgent),
     idClient text references Clients(idClient),
     department text references department(title),
@@ -204,3 +204,76 @@ INSERT INTO DEPARTMENTUSER VALUES('IT', 5);
 
 INSERT INTO DEPARTMENTUSER VALUES('IT', 6);
 INSERT INTO DEPARTMENTUSER VALUES('Sales', 6);
+
+-- Ticket 1 - Marketing
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Marketing Campaign Planning', 'Plan and execute marketing campaigns for new product launch', 'Opened', null, '7', 'Marketing', 'High', '#marketing', datetime('now'));
+
+-- Ticket 2 - Marketing
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Social Media Management', 'Manage social media accounts and engage with followers', 'Opened', null, '8', 'Marketing', 'Medium', '#marketing', datetime('now'));
+
+-- Ticket 3 - Marketing
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Content Creation', 'Create compelling content for website and blog posts', 'Opened', null, '9', 'Marketing', 'Low', '#marketing', datetime('now'));
+
+-- Ticket 1 - Finance
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Budget Planning', 'Develop annual budget and financial forecasts', 'Opened', null, '7', 'Finance', 'High', '#finance', datetime('now'));
+
+-- Ticket 2 - Finance
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Expense Management', 'Review and approve expense reports', 'Opened', null, '8', 'Finance', 'Medium', '#finance', datetime('now'));
+
+-- Ticket 3 - Finance
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Financial Analysis', 'Perform financial analysis and provide recommendations', 'Opened', null, '9', 'Finance', 'Low', '#finance', datetime('now'));
+
+-- Ticket 1 - Human Resources
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Recruitment Process', 'Manage end-to-end recruitment process for new hires', 'Opened', null, '7', 'Human Resources', 'High', '#hr', datetime('now'));
+
+-- Ticket 2 - Human Resources
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Employee Onboarding', 'Coordinate and facilitate new employee onboarding', 'Opened', null, '8', 'Human Resources', 'Medium', '#hr', datetime('now'));
+
+-- Ticket 3 - Human Resources
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Performance Management', 'Develop and implement performance management system', 'Opened', null, '9', 'Human Resources', 'Low', '#hr', datetime('now'));
+
+-- Ticket 1 - Operations
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Supply Chain Optimization', 'Streamline supply chain processes for cost reduction', 'Opened', null, '7', 'Operations', 'High', '#operations', datetime('now'));
+
+-- Ticket 2 - Operations (continued)
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Facilities Maintenance', 'Coordinate and oversee maintenance activities for facilities', 'Opened', null, '8', 'Operations', 'Medium', '#operations', datetime('now'));
+
+-- Ticket 3 - Operations
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Process Improvement', 'Identify and implement process improvement initiatives', 'Opened', null, '9', 'Operations', 'Low', '#operations', datetime('now'));
+
+-- Ticket 1 - IT
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Software Upgrade', 'Upgrade company-wide software systems to the latest version', 'Opened', null, '7', 'IT', 'High', '#it', datetime('now'));
+
+-- Ticket 2 - IT
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Network Security', 'Implement enhanced network security measures', 'Opened', null, '8', 'IT', 'Medium', '#it', datetime('now'));
+
+-- Ticket 3 - IT
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('IT Support', 'Provide technical support to end users', 'Opened', null, '9', 'IT', 'Low', '#it', datetime('now'));
+
+-- Ticket 1 - Sales
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Sales Strategy Development', 'Develop sales strategy for new market expansion', 'Opened', null, '7', 'Sales', 'High', '#sales', datetime('now'));
+
+-- Ticket 2 - Sales
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Lead Generation', 'Implement lead generation campaigns', 'Opened', null, '8', 'Sales', 'Medium', '#sales', datetime('now'));
+
+-- Ticket 3 - Sales
+INSERT INTO tickets (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+VALUES ('Customer Relationship Management', 'Implement CRM system for sales team', 'Opened', null, '9', 'Sales', 'Low', '#sales', datetime('now'));
+
