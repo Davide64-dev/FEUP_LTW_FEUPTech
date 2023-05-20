@@ -1,4 +1,4 @@
-<?php function drawTicketsAll($db, $tickets) { ?>
+<?php function drawTicketsAll($db, $tickets, $departments) { ?>
 
     <main class="tab">
                 <section class="sidebar">
@@ -30,22 +30,25 @@
                         <th>Agent</th>
                         <th>Status</th>
                         <th>Hashtag</th>
-                        <th></th>
+                        <th>Department</th>
                     </tr>
                     <?php
                         foreach($tickets as $ticket)
-                            drawTicketAll($db, $ticket);
+                            drawTicketAll($db, $ticket, $departments);
                     ?>
                     <!-- Add more rows as needed -->
                 </table>
             </section>    
         </main>
+
+
     </body>
+
 </html>    
 
 <?php } ?>
 
-<?php function drawTicketAll($db,$ticket) { ?>
+<?php function drawTicketAll($db,$ticket,$departments) { ?>
     <tr>
         <td><a href="../pages/ticket_detail.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><?php echo $ticket->getTitle() ?></a></td>
         <td><?php echo $ticket->getPriority() ?></td>
@@ -62,6 +65,26 @@
         </td>
         <td><?php echo $ticket->status ?></td>
         <td><?php echo '#' . $ticket->hashtag ?></td>
-        <td><i class="fa-solid fa-pencil"></i></td>
+        <td>
+            <form action="../actions/action_updateDepartment.php" method="POST">
+            <select name = "department" id="departmentSelect">
+            <?php
+                foreach ($departments as $department)
+                    if ($department == $ticket->department)
+                        echo "<option value=\"$department\" selected>$department</option>";
+                    else 
+                        echo "<option value=\"$department\">$department</option>";
+            ?>
+
+            </select>
+            <input type="hidden" name="ticket_id" value="<?php echo $ticket->idTicket ?>">
+            <button type="submit" class="save-button">
+                <i class="fa-sharp fa-regular fa-floppy-disk"></i>
+            </button>
+            </form>
+
+        </td>
     </tr>
+
+    
 <?php } ?>

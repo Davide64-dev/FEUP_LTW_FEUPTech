@@ -12,7 +12,9 @@
     if (!($user->checkDepartment($db, $_GET['department']))) header("Location: profile.php");
 
     $tickets = $user->getAllTicketsWithDepartment($db, $_GET['department']);
+
+    $departments = $user->getAllDepartments($db);
     
     drawTicketsHeader($session);
-    drawTicketsAll($db, $tickets);
+    drawTicketsAll($db, $tickets, $departments);
 ?>

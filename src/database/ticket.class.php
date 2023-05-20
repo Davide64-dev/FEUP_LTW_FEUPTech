@@ -162,7 +162,7 @@
                     WHERE idTicket = :idTicket
                 ");
                 $stmt->bindParam(':department', $newDepartment);
-                $stmt->bindParam(':oldEmail', $this->idTicket);
+                $stmt->bindParam(':idTicket', $this->idTicket);
                 $stmt->execute();
         }
      

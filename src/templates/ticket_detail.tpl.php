@@ -10,6 +10,7 @@
     ?>
     <h1 class="details">Ticket details</h1>
 
+
         <main class = "all">
             <section class="box">
                 <div class="content">
@@ -51,7 +52,7 @@
 
                 <a href="../pages/inquiries.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><button class="button-assign" role="button">Inquiries</button></a>
             </section>
-            
+
             <div class ="popup-assign" id ="popup-assign">
             <form action="../actions/action_assignTicket.php" method="post" class="popup-content-assign">
                         <img src="../images/close.png" alt ="Close" class="close">
