@@ -282,7 +282,7 @@
                     $row['description'],
                     $row['department'],
                     $row['priority'],
-                    $row['hashtag'],
+                    strval($row['hashtag']),
                     $row['date'],
                     $row['idClient'],
                     intval($row['idAgent']),

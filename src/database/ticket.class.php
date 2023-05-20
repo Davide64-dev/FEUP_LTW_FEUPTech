@@ -201,6 +201,29 @@
         }
 
         function updateStatus(PDO $db, $status){
+
+            $stmt = $db->prepare("
+                INSERT INTO CHANGES (date, idTicket) VALUES
+                (:date, :idTicket)
+            ");
+            $today = date("Y-m-d");
+            $stmt->bindParam(':date', $today);
+            $stmt->bindParam(':idTicket', $this->idTicket);
+            $stmt->execute();
+
+            $idOld = $db->lastInsertId();
+
+            $stmt = $db->prepare("
+                INSERT INTO AgentCHANGE VALUES
+                (:idChange, :oldStatus)
+            ");
+
+            $stmt->bindParam(':idChange', $idOld);
+            $stmt->bindParam(':idOldStatus', $this->status);
+
+            $stmt->execute();
+
+
             $stmt = $db->prepare("
                     UPDATE Tickets
                     SET status = :status
@@ -212,7 +235,7 @@
         }
 
 
-        static function addTicket(PDO $db, $title, $description, $user, $department ,$priority = "Low", $hashtag){
+        static function addTicket(PDO $db, $title, $description, $user, $department ,$priority, $hashtag){
             $stmt = $db->prepare(
                 "INSERT INTO TICKETS (title, description, status, idAgent, idClient, department, priority, hashtag, date)
                 VALUES (:title, :description, 'Opened', NULL, :idClient, :department, :priority, :hashtag, :date)"
@@ -226,7 +249,7 @@
             $stmt->bindParam(':idClient', $id);
             $stmt->bindParam(':department', $department);
             $stmt->bindParam(':priority', $priority);
-            $stmt -> bindParam(':hashtag', $hashtag);
+            $stmt->bindParam(':hashtag', $hashtag);
             $stmt->bindParam(':date', $currentDate);
             $stmt->execute();
         }
