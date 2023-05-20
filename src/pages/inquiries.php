@@ -18,7 +18,7 @@
     $changes = $ticket->getChanges($db);
 
     function compareTickets($a, $b) {
-        return $a->idChange < $b->idChange;
+        return $a->idChange - $b->idChange;
     }
 
     usort($changes, 'compareTickets');
