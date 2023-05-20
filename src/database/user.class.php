@@ -276,7 +276,7 @@
                     $row['description'],
                     $row['department'],
                     $row['priority'],
-                    strval($row['hashtag']),
+                    $row['hashtag'],
                     $row['date'],
                     $row['idClient'],
                     intval($row['idAgent']),

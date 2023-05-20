@@ -29,6 +29,7 @@
             $this->idAgent = $idAgent;
         }
 
+
         public function getChanges($db){
             $stmt = $db->prepare("
             Select * from changes c join hashtagchanges h on c.idChange = h.idChange
