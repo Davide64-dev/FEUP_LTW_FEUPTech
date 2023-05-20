@@ -103,9 +103,19 @@
                             echo '<a href="../pages/departments.php"><button onclick="moreInfo()" id="btnInfo" type="button">More info</button></a>';
                         }
                         if ($foreign){
-                            echo "<button onclick=\"moreInfo()\" id=\"btnInfo\" type=\"button\">More info</button>"; 
+                            if ($user instanceof Agent){
+                            
+                            echo "<form action=\"../actions/action_assignDepartment.php\" method = \"post\">";
+                            echo "<input type=\"hidden\" name=\"id\" value=\"$user->id\">";
+                            echo "<select class = \"departmentsassign\" name = \"departmentsassign\">\n";
+                                foreach ($departments as $department)
+                                    echo "<option value =\"$department\">$department</option>\n";
+                            echo "</select>\n";
+                            echo "<button type = \"submit\">Assign Department</button>"; 
+                            }
                         }
                     ?>
+                    </form>
                 </section>
                     
             </div>

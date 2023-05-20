@@ -434,11 +434,15 @@
         }
 
         function addDepartment($db, $department){
+            try{
             $stmt = $db->prepare(
-                "Insert into departmentUser VALUES ($department, $this->id)"
+                "Insert into departmentUser VALUES (?, ?)"
             );
 
-            $stmt->execute();
+            $stmt->execute([$department, $this->id]);
+        } catch(PDOException $e) {
+
+            }
         }
     }
 

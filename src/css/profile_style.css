@@ -6,6 +6,20 @@ body {
   margin-left: 0;
 }
 
+.departmentsassign {
+  background-color: white;
+  color: black;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto; /* Center the box horizontally */
+  display: flex;
+  justify-content: center;
+}
+
+
 
 nav button {
   font-family: 'Poppins';

@@ -57,7 +57,6 @@ create table department(
 );
 
 drop table if exists departmentUser;
-
 create table departmentUser(
     idDepartment integer references department(title),
     idAgent integer references Agents(idAgent),
