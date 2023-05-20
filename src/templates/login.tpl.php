@@ -11,6 +11,7 @@
         <link href="../css/login_style.css" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
         <script src="https://kit.fontawesome.com/38229b6c34.js" crossorigin="anonymous"></script>
+        <script src="../javascript/toggle.js" defer></script>
     </head>
 
     <body>
@@ -67,19 +68,6 @@
         </main>
     </body>
     
-    <script> 
-    
-      const togglePassword = document.querySelector('#togglePassword');
-      const password = document.querySelector('#psw');
-    
-      togglePassword.addEventListener('click', function (e) {
-        // toggle the type attribute
-        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        // toggle the eye slash icon
-        this.classList.toggle('fa-eye');
-    });
-    </script>
     
 </html>
     

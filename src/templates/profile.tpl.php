@@ -48,16 +48,18 @@
                     <label for="username">Username</label>
                     <input class="username" type="text" id="username" name="username" value="<?php echo $user->username; ?>"><br>
                     <br>
-                    <label for="password">Password</label>
-                    <input class="password" name ="password" type="password" id="psw" required autofocus>
-                    <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer; color: black;"></i>
+                    <label for="password">Old Password</label>
+                    <input class="password" name="password" type="password" id="psw" required autofocus>
+                    <i class="fas fa-eye-slash" id="togglePasswordOld" style="margin-left: -40px; cursor: pointer; color: black;"></i>
+                    <label for="password">New Password</label>
+                    <input class="password" name="new_password" type="password" id="new_psw">
+                    <i class="fas fa-eye-slash" id="togglePasswordNew" style="margin-left: -40px; cursor: pointer; color: black;"></i>
                     <br>
                     <label for="email">Email</label>
                     <input class="email" type="email" id="email" name="email" value="<?php echo $user->email; ?>"><br>
 
                     <button type="submit">Save</button>
                 </form>
-
 
                 </section>
                 <section class="ticket-section">
@@ -139,7 +141,9 @@
                                 <input type="radio" id="low" name="priority" value="Low" checked>
                                 <label for="low">Low</label>
                                 </div>
-                            </div>
+                            </div>     
+                            <label for="hashtag"><b>Hashtag</b></label>
+                            <input type="text" id="hashtag" name="hashtag">
                             <label for="New Ticket"><b>Description</b></label>
                             <textarea class = "description" id = "description" name = "description" name = "description" required autofocus></textarea>
                         <button type="submit" class = "button_sub"><i class="far fa-paper-plane-top"></i> Submit ticket!</button>
@@ -147,94 +151,6 @@
                 </div>
 
     </body>
-    <script>
-        
-        document.getElementById("button").addEventListener("click", function(){
-            document.querySelector(".popup").style.display = "flex";
-        })
-
-        document.querySelector(".close").addEventListener("click",function(){
-            document.querySelector(".popup").style.display = "none";
-        })
-        
-        function moreInfo() {
-            var dots = document.getElementById("dots");
-            var moreText = document.getElementById("more");
-            var btnText = document.getElementById("btnInfo");
-
-            if (dots.style.display === "none") {
-                dots.style.display = "inline";
-                btnText.innerHTML = "More info"; 
-                moreText.style.display = "none";
-            } else {
-                dots.style.display = "none";
-                btnText.innerHTML = "Show less"; 
-                moreText.style.display = "inline";
-            }
-        }
-
-        document.querySelector("#info button").addEventListener("click", function() {
-            var profileSection = document.querySelector(".profile-section");
-            if (profileSection.style.display === "none") {
-                profileSection.style.display = "block";
-            } else {
-                profileSection.style.display = "none";
-            }
-        });
-
-        document.getElementById("editProfileButton").addEventListener("click", function() {
-    var profileForm = document.getElementById("editProfileForm");
-    if (profileForm.style.display === "none") {
-        profileForm.style.display = "block";
-    } else {
-        profileForm.style.display = "none";
-    }
-});
-
- 
-/*
-document.getElementById("editProfileForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
-
-    // Fetch the form data
-    var formData = new FormData(this);
-
-    // Send the form data to the server using an AJAX request
-    fetch("../actions/action_editProfile.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(function(response) {
-        if (response.ok) {
-            // Profile updated successfully, you can show a success message or reload the page
-            alert("Profile updated successfully!");
-            location.reload();
-        } else {
-            // Handle error response from the server
-            alert("Failed to update profile. Please try again.");
-        }
-    })
-    .catch(function(error) {
-        // Handle network error or other exceptions
-        alert("An error occurred. Please try again later.");
-        console.error(error);
-    });
-});
-
-*/
-
-const togglePassword = document.querySelector('#togglePassword');
-      const password = document.querySelector('#psw');
-    
-      togglePassword.addEventListener('click', function (e) {
-        // toggle the type attribute
-        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        // toggle the eye slash icon
-        this.classList.toggle('fa-eye');
-    });
-    
-    </script>
 
 </html>
 

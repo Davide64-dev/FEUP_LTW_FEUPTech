@@ -20,21 +20,19 @@
 }
 
 .close{
-  position: absolute;
-  top: -10px;
-  left: 474px;
-  background: #fff;
-  height: 32px;
-  width: 34px;
-  border-radius: 50%;
-  box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
-  cursor: pointer;
+ position: absolute;
+    top: 0px;
+    right: 0px;
+    background: #fff;
+    height: 32px;
+    width: 34px;
+    border-radius: 50%;
+    box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
+    cursor: pointer;
 }
+
 .button_sub{
 font-family: 'Poppins';
-position: absolute;
-bottom: 10%;
-left: 29%;
 appearance: none;
 background-color: #182139;
 border: 2px solid #182139;
@@ -42,7 +40,6 @@ border-radius: 15px;
 box-sizing: border-box;
 color: white;
 cursor: pointer;
-display: inline-block;
 font-size: 16px;
 font-weight: 600;
 line-height: normal;
@@ -52,7 +49,6 @@ min-width: 0;
 width: 230px;
 outline: none;
 padding: 16px 24px;
-text-align: center;
 text-decoration: none;
 transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
 user-select: none;
@@ -82,11 +78,12 @@ transform: translateY(0);
 }
 
 .popup form {
-  display: grid;
-  grid-template-columns: 150px 300px;
-  grid-template-rows: 92px 118px 118px 118px 118px;
-  max-width: 492px;
-  margin: 0 auto;
+    display: grid;
+    grid-template-columns: 150px 300px;
+    grid-template-rows: 92px 118px 118px 118px 102px 76px;
+    max-width: 494px;
+    margin: 0 auto;
+    position: relative;
 }
 .popup p{
   font-weight: bold;

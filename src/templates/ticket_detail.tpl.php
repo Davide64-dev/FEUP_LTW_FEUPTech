@@ -34,8 +34,7 @@
                           } 
                           ?></p>
                     <div class = "hashtags">
-                        <p class="hashtag">#hashtag</p>
-                        <p class="hashtag">#hashtag</p>
+                        <p class="hashtag"><?php echo $ticket->hashtag ?></p>
                         <!--Tamanho altera automaticamente ao serem acrescentadas mais hashtags-->
                     </div>    
                 </div>
@@ -44,11 +43,12 @@
             <section class="assign">
             <?php 
             $status = $ticket->getStatus();
-            if ($user->id !== $client->id && $status != 'Closed') {
+            if ($user->id !== $client->id && $status === 'Opened') {
                 echo '<button class="button-assign role="button" id="button">Assign</button>';
             }
             ?>
             <br>
+
                 <a href="../pages/inquiries.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><button class="button-assign" role="button">Inquiries</button></a>
             </section>
             
@@ -74,22 +74,7 @@
 
     </body>
 
-    <script>
-         
-         document.getElementById("button").addEventListener("click", function(){
-            document.querySelector(".popup-assign").style.display = "flex";
-        })
 
-        document.querySelector(".close").addEventListener("click",function(){
-            document.querySelector(".popup-assign").style.display = "none";
-        })
-        
-    </script>
 </html>
-        
-
-
-
-
 
 <?php } ?>

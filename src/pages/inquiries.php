@@ -11,7 +11,7 @@
     $db = getDatabaseConnection();
     $user = User::getUserWithId($db, $session->getID());
 
-    $ticket = $user->getTicketWithID($db, $_GET['ticket']);
+    $ticket = $user->getTicketWithID($db, intval($_GET['ticket']));
     
     $inquiries = $ticket->getInquiries($db);
 

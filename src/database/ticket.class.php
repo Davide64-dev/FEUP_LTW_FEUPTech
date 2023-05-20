@@ -11,11 +11,10 @@
         public int $idAgent;
         public string $department;
         public string $date;
-
         public string $hashtag;
 
         public function __construct(int $idTicket, string $title, string $status,
-          string $description, string $department, string $priority, string $date, string $idClient, int $idAgent, string $hashtag = "#urgent"){
+          string $description, string $department, string $priority, string $hashtag, string $date, string $idClient, int $idAgent){
             
             $this->idTicket = $idTicket;
             $this->title = $title;
@@ -23,10 +22,10 @@
             $this->description = $description;
             $this->department = $department;
             $this->priority = $priority;
+            $this->hashtag = $hashtag;
             $this->date = $date;
             $this->idClient = $idClient;
             $this->idAgent = $idAgent;
-            $this->hashtag = $hashtag;
         }
        // public function getTick
 
@@ -108,20 +107,21 @@
         }
 
 
-        static function addTicket(PDO $db, $title, $description, $user, $department ,$priority = "Low"){
+        static function addTicket(PDO $db, $title, $description, $user, $department ,$priority = "Low", $hashtag){
             $stmt = $db->prepare(
-                "INSERT INTO TICKETS (title, description, status, idAgent, idClient, department, priority, date)
-                VALUES (:title, :description, 'Opened', NULL, :idClient, :department, :priority, :date)"
+                "INSERT INTO TICKETS (title, description, status, idAgent, idClient, department, priority, hashtag, date)
+                VALUES (:title, :description, 'Opened', NULL, :idClient, :department, :priority, :hashtag, :date)"
             );
             
             $currentDate = date('Y-m-d');
-
+        
             $id = $user->getID();
             $stmt->bindParam(':title', $title);
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':idClient', $id);
             $stmt->bindParam(':department', $department);
             $stmt->bindParam(':priority', $priority);
+            $stmt -> bindParam(':hashtag', $hashtag);
             $stmt->bindParam(':date', $currentDate);
             $stmt->execute();
         }
