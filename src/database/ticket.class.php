@@ -58,7 +58,6 @@
             $stmt->execute([$this->idTicket]);
             
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $changes = [];
 
             foreach ($rows as $row) {
                 $change = new DescriptionChange(
@@ -72,20 +71,19 @@
             }
 
             $stmt = $db->prepare("
-            Select * from changes c join departmentchange h on c.idChange = h.idChange
+            Select * from changes c join DepartmentChange h on c.idChange = h.idChange
             where c.idTicket = ?"
             );
             $stmt->execute([$this->idTicket]);
             
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $changes = [];
 
             foreach ($rows as $row) {
                 $change = new DepartmentChange(
                     $row['idChange'],
                     $row['date'],
                     $row['idTicket'],
-                    $row['oldDepartment'],
+                    $row['idOldDepartment'],
                 );
                 
                 array_push($changes, $change);
@@ -98,7 +96,6 @@
             $stmt->execute([$this->idTicket]);
             
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $changes = [];
 
             foreach ($rows as $row) {
                 $change = new AgentChange(
@@ -156,11 +153,34 @@
         }
 
         public function changeDepartment($db, $newDepartment){
+
+                $stmt = $db->prepare("INSERT INTO CHANGES (date, idTicket) VALUES
+                    (:date, :idTicket)
+                ");
+
+                $today = date("Y-m-d");
+                $stmt->bindParam(':date', $today);
+                $stmt->bindParam(':idTicket', $this->idTicket);
+                $stmt->execute();
+
+                $idOld = $db->lastInsertId();
+
+                $stmt = $db->prepare("
+                INSERT INTO DepartmentChange VALUES
+                (:idChange, :idOldDepartment)
+                ");
+
+                $stmt->bindParam(':idChange', $idOld);
+                $stmt->bindParam(':idOldDepartment', $newDepartment);
+                $stmt->execute();
+
+
                 $stmt = $db->prepare("
                     UPDATE Tickets
                     SET department = :department
                     WHERE idTicket = :idTicket
                 ");
+
                 $stmt->bindParam(':department', $newDepartment);
                 $stmt->bindParam(':idTicket', $this->idTicket);
                 $stmt->execute();
