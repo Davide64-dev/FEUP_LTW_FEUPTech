@@ -7,7 +7,7 @@
     require_once(__DIR__ . '/../database/ticket.class.php');
     $db = getDatabaseConnection();
 
-    $user = User::getUserWithID($db, $session->getID()); 
+    $user = User::getUserWithID($db, $session->getID());
     $agentID = intval($_POST["idAgent"]);
 
     $ticket= $user->getTicketWithID($db, $_POST["ticket_id"]);

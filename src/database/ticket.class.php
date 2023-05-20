@@ -178,14 +178,14 @@
             $stmt->bindParam(':idTicket', $this->idTicket);
             $stmt->execute();
 
-            $id = $db->lastInsertId();
+            $idOld = $db->lastInsertId();
 
             $stmt = $db->prepare("
                 INSERT INTO AgentCHANGE VALUES
                 (:idChange, :idOldAgent)
             ");
 
-            $stmt->bindParam(':idChange', $id);
+            $stmt->bindParam(':idChange', $idOld);
             $stmt->bindParam(':idOldAgent', $this->idAgent);
 
             $stmt->execute();
