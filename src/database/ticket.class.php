@@ -262,6 +262,10 @@
             $stmt->execute();
         }
 
+    public function getidAgent(){
+        return $this->idAgent;
+    }
+
      
 
      public static function addInquirie(PDO $db, $inquirie){

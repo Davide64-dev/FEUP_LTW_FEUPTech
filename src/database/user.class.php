@@ -364,7 +364,7 @@
             }
             return true;
         }
-
+        
         function getTicketsWithDepartment($db, $department){
             $stmt = $db->prepare('SELECT idTicket, date, title, status, description, department, priority, idClient, idAgent, hashtag FROM tickets WHERE (idAgent = ?) AND department = ?');
             $stmt->execute([$this->id, $department]);

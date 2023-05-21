@@ -100,10 +100,10 @@
             if ($status === 'Opened') {
               echo "<p>To be assigned</p>";
             } elseif ($status === 'Assigned') {
-              $nameAgent = $ticket->getidAgent()->getName();
+              $nameAgent = $ticket->getidAgent();
               echo "<p> Assigned by $nameAgent <p>";
             } elseif ($status === 'Closed') {
-              $nameAgent = $ticket->getidAgent()->getName();
+              $nameAgent = $ticket->getidAgent();
               echo "<p> Assigned by $nameAgent <p>";
             } 
         ?></p>
