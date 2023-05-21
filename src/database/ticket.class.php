@@ -171,7 +171,7 @@
                 ");
 
                 $stmt->bindParam(':idChange', $idOld);
-                $stmt->bindParam(':idOldDepartment', $newDepartment);
+                $stmt->bindParam(':idOldDepartment', $this->department);
                 $stmt->execute();
 
 
