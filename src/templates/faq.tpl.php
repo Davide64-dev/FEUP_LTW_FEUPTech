@@ -52,10 +52,8 @@
         <section class="faq-container">
             <div class="filterDiv tickets">
 
-                <!-- faq question -->
                 <h1 id="tickets" class="filterDiv_question">What is a trouble ticket?</h1>
 
-                <!-- faq answer -->
                 <div class="filterDiv_answer">
                     <p> A trouble ticket, also known as a support ticket or help desk ticket, is a record of a customer or user's request for assistance or support with a particular issue or problem. It typically includes details such as the user's name and contact information, the nature of the issue or problem, and any relevant supporting information.
                         The trouble ticket serves as a communication channel between the user and the support team, allowing the team to track and manage the request until it is resolved. It also provides a history of the issue, including any actions taken and the resolution provided, which can be helpful for future reference.
@@ -66,10 +64,8 @@
 
             <div class="filterDiv departments">
 
-                <!-- faq question -->
                 <h1 id="departments" class="filterDiv_question">How do I know which department to submit my trouble ticket to?</h1>
 
-                <!-- faq answer -->
 
                 <div class="filterDiv_answer">
                     <p> Knowing which department to submit your trouble ticket to is important because it can help ensure that your issue is handled by the team that is best equipped to resolve it. Here are some tips for determining which department to submit your ticket to:
@@ -96,10 +92,8 @@
 
             <div class="filterDiv roles">
 
-                <!-- faq question -->
                 <h1 id="roles" class="">What actions can an administrator user take in a trouble ticket system?</h1>
 
-                <!-- faq answer -->
                 <div class="faq-body">
                     <p>-Upgrade a client to an agent or an admin.
                         <br>

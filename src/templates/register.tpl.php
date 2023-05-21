@@ -62,7 +62,6 @@
                         </div>
     
                         <div class="container1">
-                            <!-- <button type="button" class="cancelbtn">Cancel</button>  -->
                             <button class="cancelbtn"><a style="text-decoration: none; color: aliceblue;" href="../pages">cancel</a></button>
                             <span class="psw">Already have an account? <a href="../pages/login.php">Sign in</a></span>
                         </div>

@@ -36,7 +36,6 @@
                         foreach($tickets as $ticket)
                             drawTicketAll($db, $ticket, $departments);
                     ?>
-                    <!-- Add more rows as needed -->
                 </table>
             </section>    
         </main>

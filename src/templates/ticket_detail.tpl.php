@@ -36,7 +36,6 @@
                           ?></p>
                     <div class = "hashtags">
                         <p class="hashtag"><?php echo '#' . $ticket->hashtag ?></p>
-                        <!--Tamanho altera automaticamente ao serem acrescentadas mais hashtags-->
                     </div>    
                 </div>
             </section>

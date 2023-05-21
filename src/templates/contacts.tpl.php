@@ -7,7 +7,6 @@
     </nav>
 
     <h3 style="padding: 85px 85px; font-weight: 500;">Please provide the following informations so we can receive your message!</h3> 
-        <!--Forms-->
         <main class="row"> 
             <form class = "forms">
                     <label for="user_name">Name:</label><br>
@@ -23,7 +22,6 @@
                     <input type="submit" value="Submit">
                 </form>
         
-            <!--Additional information-->
             <div class="informations">  
                 <h3> <i class="fa-regular fa-at"></i>  Email</h3>
                 <p>info@FEUPTech.com</p>
