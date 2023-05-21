@@ -38,15 +38,7 @@
         
         </section>
     </nav>
-    <main>
-        <h2>Categories</h2>  
-        <ul id="categories">
-            <li class="btn pressed" role = "button" onclick="filterSelection('all')"><span class="text"> Show all</span></li>
-            <li class="btn" role = "button" onclick="filterSelection('tickets')"><span class="text"> Tickets</span></li>
-            <li class="btn" role = "button" onclick="filterSelection('departments')"><span class="text"> Departments</span></li>
-            <li class="btn" role = "button" onclick="filterSelection('roles')"><span class="text"> User Roles</span></li>
-        </ul> 
-        
+    <main>    
         <h2>Questions</h2>  
         <section class="faq-container">
             <div class="filterDiv tickets">
@@ -132,49 +124,6 @@ for (i = 0; i < faq.length; i++) {
     });
 }
 
-
-filterSelection("all")
-    function filterSelection(c) {
-      var x, i;
-      x = document.getElementsByClassName("filterDiv");
-      if (c == "all") c = "";
-      for (i = 0; i < x.length; i++) {
-        RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
-      }
-    }
-    
-    function AddClass(element, name) {
-      var i, arr1, arr2;
-      arr1 = element.className.split(" ");
-      arr2 = name.split(" ");
-      for (i = 0; i < arr2.length; i++) {
-        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-      }
-    }
-    
-    function RemoveClass(element, name) {
-      var i, arr1, arr2;
-      arr1 = element.className.split(" ");
-      arr2 = name.split(" ");
-      for (i = 0; i < arr2.length; i++) {
-        while (arr1.indexOf(arr2[i]) > -1) {
-          arr1.splice(arr1.indexOf(arr2[i]), 1);     
-        }
-      }
-      element.className = arr1.join(" ");
-    }
-    
-    // Add pressed class to the current button (highlight it)
-    var btnContainer = document.getElementById("categories");
-    var btns = btnContainer.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function(){
-        var current = document.getElementsByClassName("pressed");
-        current[0].className = current[0].className.replace(" pressed", "");
-        this.className += " pressed";
-      });
-    }
 </script>
 
 </html>

@@ -6,63 +6,6 @@ body {
 }
 
 
-/* Style the buttons */
-#categories{
-    margin-left: 5%;
-}
-
-.btn {
-    background-image: linear-gradient(135deg, #0B5F7E 40%,#243f61 );
-    border: 0;
-    border-radius: 10px;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-table;
-    font-size: 16px;
-    font-weight: 700;
-    height: 54px;
-    letter-spacing: .4px;
-    line-height: 1;
-    margin: 18px 3px;
-    max-width: 100%;
-    padding: 19px 30px;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    font-family: 'Poppins';
-}
-
-.btn:hover {
-    background: linear-gradient(#0B5F7E,#002337);
-    color: #BDCAD5;
-}
-
-.btn.pressed {
-    outline: 0;
-    background: linear-gradient(#0B5F7E,#002337);
-    color: #BDCAD5;
-}
-
-.btn span {
-    transition: all 200ms;
-    position: relative;
-    top: 36%;
-}
-
-.btn:hover span {
-    transform: scale(.9);
-    opacity: .75;
-}
-
-@media screen and (max-width: 991px) {
-    .btn {
-        font-size: 15px;
-        height: 50px;
-    }
-}
-
 main h2 {
     padding-top: 83px;
     margin-left: 5%;

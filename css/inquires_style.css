@@ -94,7 +94,7 @@
 .inquiries{
   display: grid;
   grid-template-columns: 19em 63em;
-  grid-gap: 10em;
+  grid-gap: 13em;
   margin-top: 5em;
   margin-left:1em;
   width: 80em;
