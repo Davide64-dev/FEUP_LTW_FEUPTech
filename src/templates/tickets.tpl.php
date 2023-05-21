@@ -27,7 +27,7 @@
     <body>
         
         <nav>
-        <a href = "../pages"><img src ="../images/logo.png"></a>
+        <a href = "../pages"><img src ="../images/logo.png" alt = "logo"></a>
         <ul class = "navigation">
                 <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
                 <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>

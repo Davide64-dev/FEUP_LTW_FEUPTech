@@ -8,7 +8,6 @@ body{
     margin: 5% auto;
     background-color: white;
     border-radius: 10px;
-    /* height: 580px;*/
     display: flex;
     flex-direction: column;
   }
@@ -21,11 +20,8 @@ body{
   
   .row {
     display: flex;
-   /* justify-content: space-between; */
     flex-wrap: wrap;
     align-items: flex-start;
-    /* height: 100%; 
-    flex-grow: 1; */
     padding: 20px;
     box-sizing: border-box;
   }
@@ -108,7 +104,6 @@ body{
   
   
   .divider {
-    /*height: 100%; */
     align-self: stretch;
     width: 0.5px;
     background-color: black;

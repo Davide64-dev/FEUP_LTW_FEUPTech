@@ -42,10 +42,10 @@
     <main>
         <h2>Categories</h2>  
         <ul id="categories">
-            <li class="btn pressed" role="button" onclick="filterSelection('all')"><span class="text"> Show all</span></li>
-            <li class="btn" role="button" onclick="filterSelection('tickets')"><span class="text"> Tickets</span></li>
-            <li class="btn" role="button" onclick="filterSelection('departments')"><span class="text"> Departments</span></li>
-            <li class="btn" role="button" onclick="filterSelection('roles')"><span class="text"> User Roles</span></li>
+            <li class="btn pressed" onclick="filterSelection('all')"><span class="text"> Show all</span></li>
+            <li class="btn" onclick="filterSelection('tickets')"><span class="text"> Tickets</span></li>
+            <li class="btn" onclick="filterSelection('departments')"><span class="text"> Departments</span></li>
+            <li class="btn" onclick="filterSelection('roles')"><span class="text"> User Roles</span></li>
         </ul> 
         
         <h2>Questions</h2>  

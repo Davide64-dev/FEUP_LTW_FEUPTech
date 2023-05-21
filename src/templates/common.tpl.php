@@ -20,9 +20,9 @@
         
         <nav>
         <div class = "navbar">
-            <a href = "../pages"><img src ="../images/logo.png"></a>
+            <a href = "../pages"><img src ="../images/logo.png" alt = "logo"></a>
             <ul class = "navigation">
-                <li class = "nav-elem"><a href = "../pages"></li>
+                <li class = "nav-elem"><a href = "../pages"></a></li>
                 <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
                 <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>
                 <li class = "nav_elem"><a href = "../pages/faq.php"><i class="fa-solid fa-question"></i> FAQ</a></li>

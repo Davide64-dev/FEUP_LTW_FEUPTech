@@ -17,7 +17,7 @@
     <body>
         
         <nav>
-            <a href = "../pages"><img src ="../images/logo.png"></a>
+            <a href = "../pages"><img src ="../images/logo.png" alt = "logo"></a>
             <ul class = "navigation">
                 <li class = "nav_elem"><a href = "../pages/inquiries.php"><i class="fa-solid fa-list-check"></i> Inquiries</a></li>
                 <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
@@ -33,15 +33,14 @@
                         </div>
                         
                         <div class="container">
-                            <label for="uname"><b>Email</b></label>
-                            
+                            <label for="email"><b>Email</b></label>
                             <input type="email" class="username" placeholder="Enter Email" name="email" required autofocus>
                             <i class="fas fa-user" style="margin-left: -40px;"></i>
                             
                 
                         
                             <label for="psw"><b>Password</b></label>
-                            <input name ="password" type="password" placeholder="Enter Password" id="psw" required autofocus>
+                            <input name ="password" type="password" placeholder="Enter Password" id="psw" required>
                             <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer;"></i>
                                 
                             <button type="submit"><a style="text-decoration: none; color: #f1f1f1;" href="../pages/profile.php">Login</a></button>
@@ -49,7 +48,7 @@
                             <input type="checkbox" checked="checked" name="remember" style="background-color: #5A4ECE; cursor: pointer;" > Remember me
                             </label>
                             <br>
-                            <a href="https://www.google.com" >Forgot your password?</a> 
+                            <a href="../pages" >Forgot your password?</a> 
     
                         </div>
     

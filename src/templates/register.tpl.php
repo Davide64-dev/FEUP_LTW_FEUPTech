@@ -17,7 +17,7 @@
     <body>
         
         <nav>
-            <a href = "../pages"><img src ="../images/logo.png"></a>
+            <a href = "../pages"><img src ="../images/logo.png" alt = "logo"></a>
             <ul class = "navigation">
                 <li class = "nav_elem"><a href = "../pages/inquiries.php"><i class="fa-solid fa-list-check"></i> Inquiries</a></li>
                 <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
@@ -32,7 +32,7 @@
                             <img src='../images/profile.png' alt="Avatar" class="avatar">
                         </div>
                         
-                        <div class="container" method="post">
+                        <div class="container">
 
                             <label for="username"><b>Username</b></label>
                             <input type="text" class="username" placeholder="username" name="username" required autofocus>
@@ -40,16 +40,16 @@
 
 
                             <label for="name"><b>Name</b></label>
-                            <input type="text" class="name" placeholder="name" name="name" required autofocus>
+                            <input type="text" class="name" placeholder="name" name="name" required>
                             <i class="fas fa-pen" style="margin-left: -40px;"></i>
 
                             <label for="password"><b>Password</b></label>
-                            <input type="password" placeholder="password" id="psw" name = "password" required autofocus>
+                            <input type="password" placeholder="password" id="psw" name = "password" required>
                             <i class="fas fa-eye-slash" id="togglePassword" style="margin-left: -40px; cursor: pointer;"></i>
 
 
                             <label for="email"><b>Email</b></label>
-                            <input type="email" placeholder="email" id="email" name ="email" required autofocus>
+                            <input type="email" placeholder="email" id="email" name ="email" required>
                             <i class="fas fa-at" style="margin-left: -40px;"></i>
 
                             

@@ -439,7 +439,7 @@
             $stmt->execute();
         }
 
-        function addDepartment($db, $department){
+        function assignDepartment($db, $department){
             try{
             $stmt = $db->prepare(
                 "Insert into departmentUser VALUES (?, ?)"
