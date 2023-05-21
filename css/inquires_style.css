@@ -8,7 +8,7 @@
     background-color: #243F61;
     width: 16em;
     margin-right: -12em;
-    margin-top: 2em;
+    margin-top: 5em;
     margin-left: 1em;
     border-radius: 1em;
   }
@@ -93,9 +93,9 @@
 
 .inquiries{
   display: grid;
-  grid-template-columns: 19em auto;
+  grid-template-columns: 19em 63em;
   grid-gap: 10em;
-  margin-top: 1em;
+  margin-top: 5em;
   margin-left:1em;
   width: 80em;
 }
@@ -155,7 +155,7 @@
 .clients button{
   font-family: 'Poppins';
   position: absolute;
-  top: 160px;
+  top: 207px;
   left: 306px;
   appearance: none;
   background-color: transparent;
