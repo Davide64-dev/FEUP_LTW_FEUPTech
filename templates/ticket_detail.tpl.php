@@ -54,7 +54,6 @@
 
             <div class ="popup-assign" id ="popup-assign">
             <form action="../actions/action_assignTicket.php" method="post" class="popup-content-assign">
-                        <img src="../images/close.png" alt ="Close" class="close">
                         <h2 class="write">Assign the ticket here</h2><br>
                         <div class="two-column-assign">
                             <?php foreach($agents as $agent) { ?>

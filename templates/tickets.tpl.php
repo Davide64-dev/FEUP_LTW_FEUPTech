@@ -88,7 +88,7 @@
 
 <?php function drawTicket($ticket) { ?>
     <section class="ticket">
-        <a href="../pages/ticket_detail_user.php?ticket=
+        <a href="../pages/ticket_detail.php?ticket=
         <?php echo urlencode($ticket->idTicket) ?>" class="ticket-title">
         <?php echo $ticket->getTitle() ?>
       </a>
