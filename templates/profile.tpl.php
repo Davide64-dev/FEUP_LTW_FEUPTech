@@ -12,12 +12,7 @@
                 </button>";
                 
 
-                else
-                echo "<a href=../actions/action_upgradeUser.php?user=$user->id>
-                <button type=\"button\" class=\"button\">
-                    Upgrade User
-                </button>
-                </a>"
+
 
                 ?>
 
@@ -29,6 +24,12 @@
                     <?php
                     if (!$foreign)
                         echo "<button id=\"editProfileButton\" type=\"button\">Edit Profile</button>";
+                    else
+                        echo "<a href=../actions/action_upgradeUser.php?user=$user->id>
+                        <button type=\"button\" class=\"button\">
+                            Upgrade User
+                        </button>
+                        </a>"
                     ?>
 
                     <?php echo "<h3>$user->name</h3>" ?>

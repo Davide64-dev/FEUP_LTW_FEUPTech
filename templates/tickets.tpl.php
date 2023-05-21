@@ -16,6 +16,7 @@
         <script src="../javascript/chat.js" defer></script>
         <script src="../javascript/pop_up.js" defer></script>
         <script src="../javascript/tickets_popup.js" defer></script>
+        <script src="../javascript/hashtags.js" defer></script>
         <?php 
           echo $css;
         ?>

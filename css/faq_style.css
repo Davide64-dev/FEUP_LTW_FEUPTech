@@ -97,8 +97,8 @@ main h2::after{
   margin: auto;
   
 }
-/* Style the buttons that are used to open and close the filterDiv_questions body */
-.filterDiv_question {
+/* Style the buttons that are used to open and close the faq-page body */
+.faq-page {
     /* background-color: #eee; */
     cursor: pointer;
     padding: 30px 20px;
@@ -111,7 +111,7 @@ main h2::after{
     font-size: larger;
 
 }
-.filterDiv_answer{
+.faq-body{
     margin: auto;
     /* text-align: center; */
    width: 50%; 
@@ -122,14 +122,14 @@ main h2::after{
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
-.filterDiv_question:hover {
+.faq-page:hover {
     background-color: #325075;
     border-radius: 10px;
     color: #fff;
 }
 
-/* Style the filterDiv_questions panel. Note: hidden by default */
-.filterDiv_answer {
+/* Style the faq-page panel. Note: hidden by default */
+.faq-body {
     padding: 0 18px;
     background-color: #889db8;
     display: none;
@@ -137,7 +137,7 @@ main h2::after{
     border-radius: 0px 0px 10px 10px;
 }
 
-.filterDiv_question:after {
+.faq-page:after {
     /* Unicode character for "plus" sign (+) */
     content: "\2795";
     font-size: 13px;

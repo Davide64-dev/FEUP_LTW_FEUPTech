@@ -50,10 +50,20 @@
             <br>
 
                 <a href="../pages/inquiries.php?ticket=<?php echo urlencode($ticket->idTicket) ?>"><button class="button-assign" role="button">Inquiries</button></a>
+
+                <form class="hashtags_form" autocomplete="off" action="../actions/action_editHashtag.php" method="POST">
+                    <div class="autocomplete">
+                        <input id="myInput" type="text" name="myHashtag" placeholder="Hashtag">
+                        <input type="hidden" name="ticket_id" value="<?php echo $ticket->idTicket; ?>">
+                    </div>
+                    <input type="submit">
+                </form>
+
             </section>
 
             <div class ="popup-assign" id ="popup-assign">
             <form action="../actions/action_assignTicket.php" method="post" class="popup-content-assign">
+            <img src="../images/close.png" alt ="Close" class="close" id="close">
                         <h2 class="write">Assign the ticket here</h2><br>
                         <div class="two-column-assign">
                             <?php foreach($agents as $agent) { ?>
@@ -70,9 +80,7 @@
                     </form>
                 </div>
         </main>
-
     </body>
-
 
 </html>
 

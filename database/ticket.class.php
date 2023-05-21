@@ -185,7 +185,17 @@
                 $stmt->bindParam(':idTicket', $this->idTicket);
                 $stmt->execute();
         }
-     
+
+        public function updateHashtag(PDO $db, $idTicket, $newHashtags) {
+            $stmt = $db->prepare("
+                UPDATE Tickets
+                SET hashtag = :newHashtags
+                WHERE idTicket = :idTicket
+            ");
+            $stmt->bindParam(':newHashtags', $newHashtags);
+            $stmt->bindParam(':idTicket', $idTicket);
+            $stmt->execute();
+        }
         
         function assignTicket(PDO $db, $id){
 

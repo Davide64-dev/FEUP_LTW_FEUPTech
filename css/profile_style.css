@@ -55,7 +55,7 @@ nav button:disabled {
   pointer-events: none;
 }
 
-nav button:hover {
+nav button:hover, #newDepartment:hover {
   color: #fff;
   background-color: #182139;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
@@ -114,7 +114,7 @@ nav button:active {
   pointer-events: none;
 }
 
-#info button:hover {
+#info button:hover{
   color: #fff;
   background-color: #182139;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
@@ -337,17 +337,27 @@ nav button:active {
   }
 
   #newDepartment {
-    background-color: white;
-    color: black;
+    font-family: 'Poppins';
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #182139;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;;
     padding: 8px 16px;
     font-size: 14px;
     border-radius: 1em;
-    cursor: pointer;
     text-align: center;
-    margin: 0 auto; /* Center the box horizontally */
+    margin:  auto; 
     display: flex;
     justify-content: center;
     padding-bottom: 1em;
+  }
+
+  #newDepartment:hover{
+    background-color: #243F61;
+    color: white;
   }
 
 .form-container {
@@ -358,9 +368,14 @@ nav button:active {
 
 .addDepartment {
   max-width: 400px;
-  padding: 20px;
-  background-color: #f8f8f8;
+  padding: 29px;
+  background-color: #243F61;
+  color: white;
   border-radius: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 64px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -375,26 +390,9 @@ nav button:active {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-bottom: 17px;
 }
 
-.addDepartment button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-bottom: 1em;
-
-}
-
-.addDepartment button:hover {
-  background-color: #45a049;
-  margin-top: 1em;
-  padding: 1em;
-}
-
-  
   
 
 

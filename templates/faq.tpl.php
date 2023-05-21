@@ -10,13 +10,12 @@
     <link href="../css/faq_style.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <script src="https://kit.fontawesome.com/38229b6c34.js" crossorigin="anonymous"></script>
-    <script src="../javascript/faq.js" defer></script>
 </head>
 
 <body>
     <nav>
         <div class = "navbar">
-            <a href = "../pages"><img src ="../images/logo.png" alt = "LOGO"></a>
+            <a href = "../pages"><img src ="../images/logo.png"></a>
             <ul class = "navigation">
                 <li class = "nav_elem"><a href = "../pages/contacts.php"><i class="fa-solid fa-address-book"></i> Contacts</a></li>
                 <li class = "nav_elem"><a href = "../pages/about_us.php"><i class="fas fa-circle-info"></i> About Us</a></li>
@@ -28,7 +27,7 @@
                     }
                     else{
                         echo "<li class = \"nav-elem\"><a href =\"../pages/profile.php\"><i class=\"fa-solid fa-user\"></i> Profile</a></li>";
-                        echo "<li><form action=\"../actions/action_logout.php\" method=\"post\" class=\"logout\"><a href = \"#\" type=\"submit\" onclick=\"this.parentNode.submit(); return false;\">Logout</a></form></li>";
+                        echo "<form action=\"../actions/action_logout.php\" method=\"post\" class=\"logout\"><a href = \"#\" type=\"submit\" onclick=\"this.parentNode.submit(); return false;\">Logout</a></form>";
                     }
                 ?>
             </ul>
@@ -42,32 +41,36 @@
     <main>
         <h2>Categories</h2>  
         <ul id="categories">
-            <li class="btn pressed" onclick="filterSelection('all')"><span class="text"> Show all</span></li>
-            <li class="btn" onclick="filterSelection('tickets')"><span class="text"> Tickets</span></li>
-            <li class="btn" onclick="filterSelection('departments')"><span class="text"> Departments</span></li>
-            <li class="btn" onclick="filterSelection('roles')"><span class="text"> User Roles</span></li>
+            <li class="btn pressed" role = "button" onclick="filterSelection('all')"><span class="text"> Show all</span></li>
+            <li class="btn" role = "button" onclick="filterSelection('tickets')"><span class="text"> Tickets</span></li>
+            <li class="btn" role = "button" onclick="filterSelection('departments')"><span class="text"> Departments</span></li>
+            <li class="btn" role = "button" onclick="filterSelection('roles')"><span class="text"> User Roles</span></li>
         </ul> 
         
         <h2>Questions</h2>  
         <section class="faq-container">
             <div class="filterDiv tickets">
 
-                <h1 id="tickets" class="filterDiv_question">What is a trouble ticket?</h1>
+                <!-- faq question -->
+                <h1 id="tickets" class="faq-page">What is a trouble ticket?</h1>
 
-                <div class="filterDiv_answer">
+                <!-- faq answer -->
+                <div class="faq-body">
                     <p> A trouble ticket, also known as a support ticket or help desk ticket, is a record of a customer or user's request for assistance or support with a particular issue or problem. It typically includes details such as the user's name and contact information, the nature of the issue or problem, and any relevant supporting information.
                         The trouble ticket serves as a communication channel between the user and the support team, allowing the team to track and manage the request until it is resolved. It also provides a history of the issue, including any actions taken and the resolution provided, which can be helpful for future reference.
-                    </p>
+                      </p>
                 </div>
             </div>
             <hr class="hr-line">
 
             <div class="filterDiv departments">
 
-                <h1 id="departments" class="filterDiv_question">How do I know which department to submit my trouble ticket to?</h1>
+                <!-- faq question -->
+                <h1 id="departments" class="faq-page">How do I know which department to submit my trouble ticket to?</h1>
 
+                <!-- faq answer -->
 
-                <div class="filterDiv_answer">
+                <div class="faq-body">
                     <p> Knowing which department to submit your trouble ticket to is important because it can help ensure that your issue is handled by the team that is best equipped to resolve it. Here are some tips for determining which department to submit your ticket to:
                         <br>
                         <br>
@@ -92,8 +95,10 @@
 
             <div class="filterDiv roles">
 
-                <h1 id="roles" class="">What actions can an administrator user take in a trouble ticket system?</h1>
+                <!-- faq question -->
+                <h1 id="roles" class="faq-page">What actions can an administrator user take in a trouble ticket system?</h1>
 
+                <!-- faq answer -->
                 <div class="faq-body">
                     <p>-Upgrade a client to an agent or an admin.
                         <br>
@@ -108,8 +113,69 @@
 
         </section>
     </main>
-
 </body>
+<script>
+    var faq = document.getElementsByClassName("faq-page");
+var i;
+for (i = 0; i < faq.length; i++) {
+    faq[i].addEventListener("click", function () {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+        /* Toggle between hiding and showing the active panel */
+        var body = this.nextElementSibling;
+        if (body.style.display === "block") {
+            body.style.display = "none";
+        } else {
+            body.style.display = "block";
+        }
+    });
+}
+
+
+filterSelection("all")
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("filterDiv");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+        RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+      }
+    }
+    
+    function AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+      }
+    }
+    
+    function RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+    
+    // Add pressed class to the current button (highlight it)
+    var btnContainer = document.getElementById("categories");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("pressed");
+        current[0].className = current[0].className.replace(" pressed", "");
+        this.className += " pressed";
+      });
+    }
+</script>
 
 </html>
 

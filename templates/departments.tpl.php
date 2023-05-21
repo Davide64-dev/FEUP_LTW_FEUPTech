@@ -14,9 +14,10 @@
                 <br>
             </div>
             <div id="section">
-                <section class="profile-section" style="display: none;">
-                    <button>Create new Department</button>
-                </section>
+                    <section class="profile-section" style="display: none;">
+                        <button>Create new Department</button>
+                    </section>
+    
 <?php } ?>
 
 <?php function drawEnd($user) { ?>
@@ -34,14 +35,13 @@
         echo "</form>";
     }
     ?>
-</div>
+    </div>
 
         </main>
 </html>
     <?php } ?>
 
 <?php function drawDepartment($department, $user, $db) { ?>
-    
     <section class="profile-section">
 
     <a href="../pages/tickets_all.php?department=<?php echo urlencode($department) ?>"><?php echo $department ?></a>
@@ -56,4 +56,5 @@
             <span id="dots"></span>
             <span id="more"></span>
     </section>
+
 <?php } ?>
