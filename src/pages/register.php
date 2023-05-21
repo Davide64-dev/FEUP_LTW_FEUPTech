@@ -1,4 +1,4 @@
 <?php
-    include '../templates/register.tpl.php';
+    require_once(__DIR__ . '/../templates/register.tpl.php');
     drawRegister();
 ?>

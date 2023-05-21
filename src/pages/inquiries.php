@@ -1,11 +1,11 @@
 <?php
     require_once(__DIR__ . '/../database/connection.db.php');
-    include '../database/ticket.class.php';
-    include '../database/user.class.php';
-    include '../utils/session.php';
-    include '../database/inquirie.class.php';
-    include '../templates/tickets.tpl.php';
-    include '../templates/inquiries.tpl.php';
+    require_once(__DIR__ . '/../database/ticket.class.php');
+    require_once(__DIR__ . '/../database/user.class.php');
+    require_once(__DIR__ . '/../utils/session.php');
+    require_once(__DIR__ . '/../database/inquirie.class.php');
+    require_once(__DIR__ . '/../templates/tickets.tpl.php');
+    require_once(__DIR__ . '/../templates/inquiries.tpl.php');
 
     $session = new Session();
     $db = getDatabaseConnection();

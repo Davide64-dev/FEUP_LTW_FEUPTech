@@ -1,6 +1,6 @@
 <?php
      declare(strict_types = 1); 
-     include "change.class.php";
+     require_once('change.class.php');
 
      class Ticket{
         public int $idTicket;

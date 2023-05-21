@@ -1,10 +1,8 @@
 <?php
-    include '../templates/common.tpl.php';
-    include '../templates/faq.tpl.php';
-    include '../templates/departments.tpl.php';
-    include '../utils/session.php';
-    include '../database/user.class.php';
-    include '../database/ticket.class.php';
+    require_once(__DIR__ . '/../templates/common.tpl.php');
+    require_once(__DIR__ . '/../templates/departments.tpl.php');
+    require_once(__DIR__ . '/../utils/session.php');
+    require_once(__DIR__ . '/../database/user.class.php');
     require_once(__DIR__ . '/../database/connection.db.php');
 
     $session = new Session();
@@ -16,6 +14,6 @@
     drawBegin($session, $user);
     foreach($departments as $department){
         drawDepartment($department, $user, $db);
-      }
+    }
     drawEnd($user);
 ?>

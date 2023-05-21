@@ -1,10 +1,9 @@
 <?php
-    include '../templates/common.tpl.php';
-    include '../templates/profile.tpl.php';
-    include '../database/user.class.php';
-    include '../database/connection.db.php';
-    include '../utils/session.php';
-    require_once(__DIR__ . '/../database/connection.db.php');
+    require_once(__DIR__ . '/../templates/common.tpl.php');
+    require_once(__DIR__ . '/../templates/profile.tpl.php');
+    require_once(__DIR__ . '/../database/user.tpl.php');
+    require_once(__DIR__ . '/../database/connection.tpl.php');
+    require_once(__DIR__ . '/../utils/session.tpl.php');
 
     $session = new Session();
     $db = getDatabaseConnection();
