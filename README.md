@@ -1,10 +1,14 @@
 # FEUPTech Trouble Tickets Management System
 
-## Instruções
+## Instructions to start the project
 
-### git clone git@github.com:FEUP-LTW-2023/project-ltw11g01.git
-### cd project-ltw11g01
-### php -S localhost:9000
+```
+git clone git@github.com:FEUP-LTW-2023/project-ltw11g01.git
+cd project-ltw11g01
+php -S localhost:9000
+```
+Check the project in:
+[http://localhost:9000/](http://localhost:9000/)
 
 
 ## Authors
