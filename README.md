@@ -20,6 +20,15 @@ sqlite3 database.db < database.sql
 
 Note: The original database is already populated when you clone the project
 
+
+### Screenshots
+
+
+![../screenshots/index.png](screenshots/index.png)
+
+
+
+
 ## Authors
 
 Davide Teixeira - up202109860
@@ -27,6 +36,7 @@ Davide Teixeira - up202109860
 Linda Rodrigues - up202005545
 <br>
 Inês Silva - up202008076
+
 
 
 
