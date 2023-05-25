@@ -27,6 +27,21 @@ Note: The original database is already populated when you clone the project
 ![../screenshots/index.png](screenshots/index.png)
 
 
+![../screenshots/login.png](screenshots/login.png)
+
+
+![../screenshots/profile.png](screenshots/profile.png)
+
+
+![../screenshots/all_tickets.png](screenshots/all_tickets.png)
+
+
+![../screenshots/ticket_detail.png](screenshots/ticket_detail.png)
+
+![../screenshots/tickets_user.png](screenshots/tickets_user.png)
+
+
+
 
 
 ## Authors
