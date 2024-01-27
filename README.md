@@ -4,7 +4,7 @@
 
 ```sh
 git clone https://github.com/Davide64-dev/FEUP_LTW_FEUPTech.git
-cd project-ltw11g01
+cd FEUP_LTW_FEUPTech
 php -S localhost:9000
 ```
 Check the project in:
