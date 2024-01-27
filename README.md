@@ -2,7 +2,7 @@
 
 ## Instructions to start the project
 
-```
+```sh
 git clone https://github.com/Davide64-dev/FEUP_LTW_FEUPTech.git
 cd project-ltw11g01
 php -S localhost:9000
@@ -12,7 +12,7 @@ Check the project in:
 
 ### Every time you want to repopulate the original database:
 
-```
+```sh
 cd database
 rm -f database.db
 sqlite3 database.db < database.sql
