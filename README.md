@@ -3,7 +3,7 @@
 ## Instructions to start the project
 
 ```
-git clone git@github.com:FEUP-LTW-2023/project-ltw11g01.git
+git clone https://github.com/Davide64-dev/FEUP_LTW_FEUPTech.git
 cd project-ltw11g01
 php -S localhost:9000
 ```
